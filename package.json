@@ -1,0 +1,44 @@
+{
+  "name": "dmn-moddle",
+  "version": "0.1.0",
+  "description": "A moddle wrapper for DMN 1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmn-io/dmn-moddle"
+  },
+  "keywords": [
+    "dmn",
+    "moddle",
+    "meta-model"
+  ],
+  "author": {
+    "name": "Sebastian Stamm",
+    "url": "https://github.com/SebastianStamm"
+  },
+  "contributors": [
+    {
+      "name": "dmn.io contributors",
+      "url": "https://github.com/dmn-io"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "cmof-parser": "^0.1.0",
+    "grunt": "^0.4.2",
+    "grunt-contrib-jshint": "^0.7.2",
+    "grunt-contrib-watch": "^0.5.0",
+    "grunt-jsdoc": "^0.5.1",
+    "grunt-mocha-test": "^0.11.0",
+    "grunt-release": "^0.7.0",
+    "ids": "^0.1.0",
+    "jsondiffpatch": "^0.1.4",
+    "load-grunt-tasks": "^0.3.0",
+    "xsd-schema-validator": "^0.3.0"
+  },
+  "dependencies": {
+    "lodash": "^3.0.0",
+    "moddle": "^0.6.0",
+    "moddle-xml": "^0.7.0"
+  }
+}

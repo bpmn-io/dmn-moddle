@@ -1,0 +1,163 @@
+{
+  "name": "DMN",
+  "uri": "http://www.omg.org/spec/DMN/20130901",
+  "prefix": "dmn",
+  "types": [
+    {
+      "name": "DMNElement",
+      "properties": [
+        { "name": "description", "type": "String" },
+        { "name": "id", "type": "String", "isAttr": true },
+        { "name": "name", "type": "String", "isAttr": true }
+      ]
+    },
+    {
+      "name": "DMNElementReference",
+      "properties": [
+        { "name": "href", "type": "String", "isAttr": true }
+      ]
+    },
+    {
+      "name": "Definitions",
+      "superClass": [ "DMNElement" ],
+      "properties": [
+        { "name": "namespace", "type": "String", "isAttr": true },
+        { "name": "typeLanguage", "type": "String", "isAttr": true, "default": "http://www.omg.org/spec/FEEL/20140401" },
+        { "name": "expressionLanguage", "type": "String", "isAttr": true, "default": "http://www.omg.org/spec/FEEL/20140401" },
+        { "name": "ItemDefinition", "type": "ItemDefinition", "isMany": true },
+        { "name": "Decision", "type": "Decision", "isMany": true }
+      ]
+    },
+    {
+      "name": "ItemDefinition",
+      "superClass": [ "DMNElement" ],
+      "properties": [
+        { "name": "typeDefinition", "type": "String" },
+        { "name": "typeLanguage", "type": "String", "isAttr": true },
+        { "name": "isCollection", "type": "Boolean", "isAttr": true, "default": false },
+        { "name": "typeRef", "type": "String", "isAttr": true },
+        { "name": "allowedValue", "type": "LiteralExpression", "isMany": true, "serialize": "asProperty" }
+      ]
+    },
+    {
+      "name": "Expression",
+      "superClass": [ "DMNElement" ],
+      "properties": [
+        { "name": "inputVariable", "type": "DMNElement", "isReference": true},
+        { "name": "itemDefinition", "type": "DMNElementReference", "serialize": "asProperty" }
+      ]
+    },
+    {
+      "name": "LiteralExpression",
+      "superClass": [ "Expression" ],
+      "properties": [
+        { "name": "expressionLanguage", "type": "String", "isAttr": true },
+        { "name": "text", "type": "String" }
+      ]
+    },
+    {
+      "name": "DRGElement",
+      "superClass": [ "DMNElement" ],
+      "properties": []
+    },
+    {
+      "name": "Decision",
+      "superClass": [ "DRGElement" ],
+      "properties": [
+        { "name": "question", "type": "String", "isAttr": true },
+        { "name": "allowedAnswers", "type": "String", "isAttr": true },
+        { "name": "DecisionTable", "type": "DecisionTable" },
+        { "name": "outputDefinition", "type": "DMNElementReference", "serialize": "asProperty" }
+      ]
+    },
+    {
+      "name": "DecisionTable",
+      "superClass": [ "Expression" ],
+      "properties": [
+        { "name": "hitPolicy", "type": "HitPolicy", "isAttr": true , "default": "UNIQUE" },
+        { "name": "aggregation", "type": "BuiltinAggregator", "isAttr": true },
+        { "name": "preferredOrientation", "type": "DecisionTableOrientation", "isAttr": true },
+        { "name": "isComplete", "type": "Boolean", "isAttr": true, "default": false },
+        { "name": "isConsistent", "type": "Boolean", "isAttr": true, "default": false },
+        { "name": "clause", "type": "Clause", "isMany": true, "serialize": "asProperty" },
+        { "name": "rule", "type": "DecisionRule", "isMany": true, "serialize": "asProperty" }
+      ]
+    },
+    {
+      "name": "Clause",
+      "properties": [
+        { "name": "name", "type": "String", "isAttr": true },
+        { "name": "inputExpression", "type": "Expression", "serialize": "asProperty"  },
+        { "name": "outputDefinition", "type": "DMNElementReference", "serialize": "asProperty"  },
+        { "name": "inputEntry", "type": "LiteralExpression", "isMany": true, "serialize": "asProperty" },
+        { "name": "outputEntry", "type": "LiteralExpression", "isMany": true, "serialize": "asProperty" }
+      ]
+    },
+    {
+      "name": "DecisionRule",
+      "properties": [
+        { "name": "condition", "type": "Expression", "isReference": true, "isMany": true },
+        { "name": "conclusion", "type": "Expression", "isReference": true, "isMany": true }
+      ]
+    }
+  ],
+  "emumerations": [
+    {
+      "name": "HitPolicy",
+      "literalValues": [
+        {
+          "name": "UNIQUE"
+        },
+        {
+          "name": "FIRST"
+        },
+        {
+          "name": "PRIORITY"
+        },
+        {
+          "name": "ANY"
+        },
+        {
+          "name": "COLLECT"
+        },
+        {
+          "name": "RULE ORDER"
+        },
+        {
+          "name": "OUTPUT ORDER"
+        }
+      ]
+    },
+    {
+      "name": "BuiltinAggregator",
+      "literalValues": [
+        {
+          "name": "SUM"
+        },
+        {
+          "name": "COUNT"
+        },
+        {
+          "name": "MIN"
+        },
+        {
+          "name": "MAX"
+        }
+      ]
+    },
+    {
+      "name": "DecisionTableOrientation",
+      "literalValues": [
+        {
+          "name": "Rule-as-Row"
+        },
+        {
+          "name": "Rule-as-Column"
+        },
+        {
+          "name": "CrossTable"
+        }
+      ]
+    }
+  ]
+}

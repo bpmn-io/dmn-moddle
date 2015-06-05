@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:ItemDefinition xmlns:dmn="http://www.omg.org/spec/DMN/20130901" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/DMN/20130901 dmn.xsd" id="item2" name="OrderSumType">
+  <dmn:typeDefinition>number</dmn:typeDefinition>
+</dmn:ItemDefinition>
