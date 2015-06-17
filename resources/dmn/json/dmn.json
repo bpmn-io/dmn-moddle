@@ -85,8 +85,8 @@
     },
     {
       "name": "Clause",
+      "superClass": [ "DMNElement" ],
       "properties": [
-        { "name": "name", "type": "String", "isAttr": true },
         { "name": "inputExpression", "type": "Expression", "serialize": "asProperty"  },
         { "name": "outputDefinition", "type": "DMNElementReference", "serialize": "asProperty"  },
         { "name": "inputEntry", "type": "LiteralExpression", "isMany": true, "serialize": "asProperty" },
@@ -95,6 +95,7 @@
     },
     {
       "name": "DecisionRule",
+      "superClass": [ "DMNElement" ],
       "properties": [
         { "name": "condition", "type": "Expression", "isReference": true, "isMany": true },
         { "name": "conclusion", "type": "Expression", "isReference": true, "isMany": true }

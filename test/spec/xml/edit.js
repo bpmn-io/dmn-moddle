@@ -10,18 +10,14 @@ describe('dmn-moddle - edit', function() {
 
   var moddle = Helper.createModdle();
 
-  function fromFile(file, done) {
-    XMLHelper.fromFile(moddle, file, done);
-  }
-
-
   describe('save after change', function() {
 
     it('should serialize changed name', function(done) {
 
       // given
-      fromFile('test/fixtures/dmn/item-definition.part.dmn', function(err, result) {
+      var fileContents = Helper.readFile('test/fixtures/dmn/item-definition.part.dmn');
 
+      moddle.fromXML(fileContents, 'dmn:ItemDefinition', function(err, result) {
         if (err) {
           return done(err);
         }
