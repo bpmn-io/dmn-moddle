@@ -87,7 +87,7 @@
       "name": "Clause",
       "superClass": [ "DMNElement" ],
       "properties": [
-        { "name": "inputExpression", "type": "Expression", "xml": { "serialize": "property" }  },
+        { "name": "inputExpression", "type": "LiteralExpression", "xml": { "serialize": "property" }  },
         { "name": "outputDefinition", "type": "DMNElementReference", "xml": { "serialize": "property" }  },
         { "name": "inputEntry", "type": "LiteralExpression", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "outputEntry", "type": "LiteralExpression", "isMany": true, "xml": { "serialize": "property" } }

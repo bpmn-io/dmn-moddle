@@ -18,8 +18,6 @@ describe('dmn-moddle - roundtrip', function() {
 
   describe('should serialize valid DMN xml after read', function() {
 
-    //this.timeout(15000);
-
     it('example decision', function(done) {
 
       // given
