@@ -33,10 +33,10 @@ describe('dmn-moddle - write', function() {
       it('Definitions (empty)', function(done) {
 
         // given
-        var definitions = moddle.create('dmn:Definitions');
+        var definitions = moddle.create('dmn:definitions');
 
         var expectedXML =
-          '<dmn:Definitions xmlns:dmn="http://www.omg.org/spec/DMN/20130901" />';
+          '<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20130901" />';
 
         // when
         write(definitions, function(err, result) {

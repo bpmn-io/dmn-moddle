@@ -17,26 +17,24 @@ describe('dmn-moddle - read', function() {
   }
 
 
-  describe('should import types', function() {
+  describe('should import Decisions', function() {
 
     describe('dmn', function() {
 
-      it('ItemDefinition', function(done) {
-
-        // given
+      it('Decision', function(done) {
 
         // when
-        fromFile('test/fixtures/dmn/item-definition.part.dmn', 'dmn:ItemDefinition', function(err, result) {
+        fromFile('test/fixtures/dmn/decision.part.dmn', 'dmn:definitions', function(err, result) {
 
           var expected = {
-            $type: 'dmn:ItemDefinition',
-            id: 'item2',
-            name: 'OrderSumType',
-            typeDefinition: 'number'
+            $type: 'dmn:Decision',
+            id: 'decision',
+            name: 'decision-name'
           };
 
           // then
-          expect(result).to.jsonEqual(expected);
+          expect(err).to.be.undefined;
+          expect(result.decision[0]).to.jsonEqual(expected);
 
           done(err);
         });

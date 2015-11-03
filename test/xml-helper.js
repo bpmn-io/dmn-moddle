@@ -10,7 +10,7 @@ var Helper = require('./helper');
 module.exports.fromFile = function(moddle, file, done) {
   var fileContents = Helper.readFile(file);
 
-  moddle.fromXML(fileContents, 'dmn:Definitions', done);
+  moddle.fromXML(fileContents, 'dmn:definitions', done);
 };
 
 module.exports.toXML = function(element, opts, done) {

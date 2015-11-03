@@ -15,9 +15,9 @@ describe('dmn-moddle - edit', function() {
     it('should serialize changed name', function(done) {
 
       // given
-      var fileContents = Helper.readFile('test/fixtures/dmn/item-definition.part.dmn');
+      var fileContents = Helper.readFile('test/fixtures/dmn/decision.part.dmn');
 
-      moddle.fromXML(fileContents, 'dmn:ItemDefinition', function(err, result) {
+      moddle.fromXML(fileContents, 'dmn:definitions', function(err, result) {
         if (err) {
           return done(err);
         }
