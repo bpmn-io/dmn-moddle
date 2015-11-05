@@ -6,8 +6,8 @@ __dmn-moddle__ uses the [DMN specification](http://www.omg.org/spec/DMN/1.0/) to
 
 ## Resources
 
-*   [Issues](https://github.com/dmn-io/dmn-moddle/issues)
-*   [Examples](https://github.com/dmn-io/dmn-moddle/tree/master/test/spec/xml)
+*   [Issues](https://github.com/bpmn-io/dmn-moddle/issues)
+*   [Examples](https://github.com/bpmn-io/dmn-moddle/tree/master/test/spec/xml)
 
 
 ## Building the Project

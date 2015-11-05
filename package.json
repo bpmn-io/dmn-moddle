@@ -4,7 +4,7 @@
   "description": "A moddle wrapper for DMN 1.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmn-io/dmn-moddle"
+    "url": "https://github.com/bpmn-io/dmn-moddle"
   },
   "keywords": [
     "dmn",
@@ -17,8 +17,8 @@
   },
   "contributors": [
     {
-      "name": "dmn.io contributors",
-      "url": "https://github.com/dmn-io"
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
     }
   ],
   "license": "MIT",
