@@ -17,7 +17,7 @@ describe('dmn-moddle - edit', function() {
       // given
       var fileContents = Helper.readFile('test/fixtures/dmn/decision.part.dmn');
 
-      moddle.fromXML(fileContents, 'dmn:definitions', function(err, result) {
+      moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result) {
         if (err) {
           return done(err);
         }

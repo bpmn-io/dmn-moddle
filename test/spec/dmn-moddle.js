@@ -31,9 +31,9 @@ describe('dmn-moddle', function() {
 
 
     it('should create Definitions', function() {
-      var definitions = moddle.create('dmn:definitions');
+      var definitions = moddle.create('dmn:Definitions');
 
-      expect(definitions.$type).to.eql('dmn:definitions');
+      expect(definitions.$type).to.eql('dmn:Definitions');
     });
 
 

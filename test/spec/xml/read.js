@@ -24,7 +24,7 @@ describe('dmn-moddle - read', function() {
       it('Decision', function(done) {
 
         // when
-        fromFile('test/fixtures/dmn/decision.part.dmn', 'dmn:definitions', function(err, result) {
+        fromFile('test/fixtures/dmn/decision.part.dmn', 'dmn:Definitions', function(err, result) {
 
           var expected = {
             $type: 'dmn:Decision',
