@@ -1,6 +1,6 @@
 {
   "name": "DMN",
-  "uri": "http://www.omg.org/spec/DMN/20130901",
+  "uri": "http://www.omg.org/spec/DMN/20151101/dmn11.xsd",
   "prefix": "dmn",
   "types": [
     {
