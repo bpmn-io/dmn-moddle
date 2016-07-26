@@ -36,7 +36,7 @@ describe('dmn-moddle - write', function() {
         var definitions = moddle.create('dmn:Definitions');
 
         var expectedXML =
-          '<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn11.xsd" />';
+          '<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd" />';
 
         // when
         write(definitions, function(err, result) {

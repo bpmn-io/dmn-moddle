@@ -1,7 +1,7 @@
 {
   "name": "DMN",
 
-  "uri": "http://www.omg.org/spec/DMN/20151101/dmn11.xsd",
+  "uri": "http://www.omg.org/spec/DMN/20151101/dmn.xsd",
   "xml": {
       "tagAlias": "lowerCase"
   },
