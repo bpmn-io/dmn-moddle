@@ -13,6 +13,7 @@ describe('dmn-moddle - read', function() {
 
   function fromFile(file, root, opts, callback) {
     var contents = Helper.readFile(file);
+
     return read(contents, root, opts, callback);
   }
 
@@ -20,6 +21,7 @@ describe('dmn-moddle - read', function() {
   describe('should import Decisions', function() {
 
     describe('dmn', function() {
+
 
       it('Decision', function(done) {
 
@@ -39,6 +41,44 @@ describe('dmn-moddle - read', function() {
           done(err);
         });
       });
+
     });
+
+    describe('camunda', function() {
+
+      it('Extension', function(done) {
+
+        // when
+        fromFile('test/fixtures/dmn/camunda.dmn', 'dmn:Definitions', function(err, result) {
+
+          var expected = {
+            $type: 'dmn:Decision',
+            id: 'decision',
+            name: 'Dish',
+            decisionTable: {
+              $type: 'dmn:DecisionTable',
+              id: 'decisionTable',
+              input: [
+                {
+                  $type: 'dmn:InputClause',
+                  id: 'input1',
+                  label: 'Season',
+                  inputVariable: 'currentSeason'
+                }
+              ]
+            }
+          };
+
+          // then
+          expect(err).to.be.undefined;
+          expect(result.decision[0]).to.jsonEqual(expected);
+
+          done(err);
+        });
+      });
+
+    });
+
   });
+
 });
