@@ -13,19 +13,21 @@ module.exports = function(grunt) {
       tests: 'test',
       dist: 'dist'
     },
-
-    jshint: {
-      src: [
-        ['<%=config.sources %>']
-      ],
-      gruntfile: [
-        'Gruntfile.js'
-      ],
-      options: {
-        jshintrc: true
+    eslint: {
+      check: {
+        src: [
+          '{lib,test}/**/*.js'
+        ]
+      },
+      fix: {
+        src: [
+          '{lib,test}/**/*.js'
+        ],
+        options: {
+          fix: true
+        }
       }
     },
-
     mochaTest: {
       test: {
         options: {
@@ -51,16 +53,6 @@ module.exports = function(grunt) {
         files: [ '<%= config.sources %>/**/*.js', '<%= config.tests %>/spec/**/*.js' ],
         tasks: [ 'test' ]
       }
-    },
-
-    jsdoc: {
-      dist: {
-        src: [ '<%= config.sources %>/**/*.js' ],
-        options: {
-          destination: 'docs/api',
-          plugins: [ 'plugins/markdown' ]
-        }
-      }
     }
   });
 
@@ -70,5 +62,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-test', [ 'test', 'watch:test' ]);
 
-  grunt.registerTask('default', [ 'jshint', 'test', 'jsdoc' ]);
+  grunt.registerTask('default', [ 'eslint:check', 'test' ]);
 };
