@@ -2,6 +2,11 @@
   "name": "dmn-moddle",
   "version": "0.2.3",
   "description": "A moddle wrapper for DMN 1.1",
+  "scripts": {
+    "all": "grunt",
+    "dev": "grunt auto-test",
+    "test": "grunt test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/dmn-moddle"
@@ -28,8 +33,9 @@
     "eslint": "^2.11.1",
     "eslint-plugin-mocha": "^3.0.0",
     "grunt": "^0.4.2",
-    "grunt-eslint": "^18.1.0",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-watch": "^0.5.0",
+    "grunt-eslint": "^18.1.0",
     "grunt-mocha-test": "^0.11.0",
     "grunt-release": "^0.7.0",
     "jsondiffpatch": "^0.1.4",
@@ -38,7 +44,7 @@
   },
   "dependencies": {
     "lodash": "^3.0.0",
-    "moddle": "^0.6.0",
-    "moddle-xml": "^0.8.0"
+    "moddle": "^0.8.0",
+    "moddle-xml": "^0.12.0"
   }
 }
