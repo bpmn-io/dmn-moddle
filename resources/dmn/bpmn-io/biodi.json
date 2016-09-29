@@ -1,0 +1,43 @@
+{
+  "name": "bpmn.io di",
+  "uri": "http://bpmn.io/ns/di",
+  "prefix": "biodi",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "types": [
+    {
+      "name": "ExtensionElements",
+      "properties": [
+        { "name": "bounds", "type": "Bounds" },
+        { "name": "edge", "type": "Edge", "isMany": true }
+      ]
+    },
+    {
+      "name": "Edge",
+      "properties": [
+        { "name": "target",
+          "type": "Target",
+          "isAttr": true
+        },
+        { "name": "waypoint",
+          "type": "dc:Point",
+          "isMany": true,
+          "xml": { "serialize": "property" }
+        }
+      ]
+    },
+    {
+      "name": "Bounds",
+      "superClass": [
+        "dc:Bounds"
+      ]
+    },
+    {
+      "name": "Target",
+      "superClass": [
+        "dmn:DRGElement"
+      ]
+    }
+  ]
+}

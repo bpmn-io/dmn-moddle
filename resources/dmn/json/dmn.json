@@ -8,6 +8,7 @@
   "types": [
     {
       "name": "DMNElement",
+      "isAbstract": true,
       "properties": [
         { "name": "description", "type": "String" },
         { "name": "id", "type": "String", "isAttr": true, "isId": true },
@@ -16,6 +17,7 @@
     },
     {
       "name": "NamedElement",
+      "isAbstract": true,
       "superClass": [ "DMNElement" ],
       "properties": [
         { "name": "name", "type": "String", "isAttr": true}
@@ -34,8 +36,91 @@
         { "name": "namespace", "type": "String", "isAttr": true },
         { "name": "typeLanguage", "type": "String", "isAttr": true, "default": "http://www.omg.org/spec/FEEL/20140401" },
         { "name": "expressionLanguage", "type": "String", "isAttr": true, "default": "http://www.omg.org/spec/FEEL/20140401" },
+        { "name": "exporter", "type": "String" },
+        { "name": "exporterVersion", "type": "String" },
+
         { "name": "itemDefinition", "type": "ItemDefinition", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "decision", "type": "Decision", "isMany": true, "xml": { "serialize": "property" } }
+        { "name": "decision", "type": "Decision", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "drgElement", "type": "DRGElement", "isReference": true, "isMany": true },
+        { "name": "artifact", "type": "Artifact", "isReference": true, "isMany": true },
+        { "name": "inputData", "type": "InputData", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "knowledgeSource", "type": "KnowledgeSource", "isMany": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "DRGElement",
+      "isAbstract": true,
+      "superClass": [ "NamedElement" ],
+      "properties": [
+        { "name": "extensionElements", "type": "biodi:ExtensionElements", "isMany": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "Decision",
+      "superClass": [ "DRGElement" ],
+      "properties": [
+        { "name": "question", "type": "String" },
+        { "name": "allowedAnswers", "type": "String" },
+        { "name": "informationRequirement", "type": "InformationRequirement", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "knowledgeRequirement", "type": "KnowledgeRequirement", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "authorityRequirement", "type": "AuthorityRequirement", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "decisionTable", "type": "DecisionTable", "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "BusinessKnowledgeModel",
+      "superClass": [ "DRGElement" ],
+      "properties": [
+        { "name": "encapsulatedLogic", "type": "FunctionDefinition" },
+        { "name": "variable", "type": "InformationItem", "xml": { "serialize": "property" } },
+        { "name": "knowledgeRequirement", "type": "KnowledgeRequirement", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "authorityRequirement", "type": "AuthorityRequirement", "isMany": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "InputData",
+      "superClass": [ "DRGElement" ],
+      "properties": [
+        { "name": "variable", "type": "InformationItem", "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "KnowledgeSource",
+      "superClass": [ "DRGElement" ],
+      "properties": [
+        { "name": "authorityRequirement", "type": "AuthorityRequirement", "isAttr": true, "isMany": true },
+        { "name": "type", "type": "String", "isAttr": true },
+        { "name": "owner", "type": "DMNElementReference", "isAttr": true },
+        { "name": "locationURI", "type": "String", "isAttr": true }
+      ]
+    },
+    {
+      "name": "InformationRequirement",
+      "properties": [
+        { "name": "requiredDecision", "type": "DMNElementReference", "xml": { "serialize": "property" } },
+        { "name": "requiredInput", "type": "DMNElementReference", "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "KnowledgeRequirement",
+      "properties": [
+        { "name": "requiredKnowledge", "type": "DMNElementReference", "isUnique": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "AuthorityRequirement",
+      "properties": [
+        { "name": "requiredDecision", "type": "DMNElementReference", "xml": { "serialize": "property" } },
+        { "name": "requiredInput", "type": "DMNElementReference", "xml": { "serialize": "property" } },
+        { "name": "requiredAuthority", "type": "DMNElementReference", "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "Expression",
+      "isAbstract": true,
+      "superClass": [ "DMNElement" ],
+      "properties": [
+        { "name": "typeRef", "type": "String", "isAttr": true }
       ]
     },
     {
@@ -49,13 +134,6 @@
       ]
     },
     {
-      "name": "Expression",
-      "superClass": [ "DMNElement" ],
-      "properties": [
-        { "name": "typeRef", "type": "String", "isAttr": true }
-      ]
-    },
-    {
       "name": "LiteralExpression",
       "superClass": [ "Expression" ],
       "properties": [
@@ -64,17 +142,10 @@
       ]
     },
     {
-      "name": "DRGElement",
+      "name": "InformationItem",
       "superClass": [ "NamedElement" ],
-      "properties": []
-    },
-    {
-      "name": "Decision",
-      "superClass": [ "DRGElement" ],
       "properties": [
-        { "name": "question", "type": "String" },
-        { "name": "allowedAnswers", "type": "String" },
-        { "name": "decisionTable", "type": "DecisionTable", "xml": { "serialize": "property" } }
+        { "name": "typeRef", "type": "String", "isAttr": true }
       ]
     },
     {
@@ -88,6 +159,39 @@
         { "name": "aggregation", "type": "BuiltinAggregator", "isAttr": true },
         { "name": "preferredOrientation", "type": "DecisionTableOrientation", "isAttr": true, "default": "Rule-as-Row" },
         { "name": "outputLabel", "type": "String", "isAttr": true }
+      ]
+    },
+    {
+      "name": "DecisionRule",
+      "superClass": [ "DMNElement" ],
+      "properties": [
+        { "name": "inputEntry", "type": "UnaryTests", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "outputEntry", "type": "LiteralExpression", "isMany": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "Artifact",
+      "isAbstract": true,
+      "superClass": [ "DMNElement" ],
+      "properties": [
+        { "name": "extensionElements", "type": "biodi:ExtensionElements", "isMany": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "TextAnnotation",
+      "superClass": [ "Artifact" ],
+      "properties": [
+        { "name": "text", "type": "String", "xml": { "serialize": "property" } },
+        { "name": "textFormat", "type": "String", "isAttr": true }
+      ]
+    },
+    {
+      "name": "Association",
+      "superClass": [ "Artifact" ],
+      "properties": [
+        { "name": "sourceRef", "type": "DMNElementReference", "isReference": true ,"xml": { "serialize": "property" } },
+        { "name": "targetRef", "type": "DMNElementReference", "isReference": true ,"xml": { "serialize": "property" } },
+        { "name": "associationDirection", "type": "AssociationDirection", "isAttr": true, "default": "None" }
       ]
     },
     {
@@ -117,15 +221,29 @@
       ]
     },
     {
-      "name": "DecisionRule",
-      "superClass": [ "DMNElement" ],
+      "name": "FunctionDefinition",
+      "superClass": [ "Expression" ],
       "properties": [
-        { "name": "inputEntry", "type": "UnaryTests", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "outputEntry", "type": "LiteralExpression", "isMany": true, "xml": { "serialize": "property" } }
+        { "name": "formalParameter", "type": "InformationItem", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "expression", "type": "String", "isReference": true, "xml": { "serialize": "property" } }
       ]
     }
   ],
   "emumerations": [
+    {
+      "name": "AssociationDirection",
+      "literalValues": [
+        {
+          "name": "None"
+        },
+        {
+          "name": "One"
+        },
+        {
+          "name": "Both"
+        }
+      ]
+    },
     {
       "name": "HitPolicy",
       "literalValues": [

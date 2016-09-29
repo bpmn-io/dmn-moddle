@@ -29,7 +29,7 @@
           <text>"bronze"</text>
         </inputEntry>
         <inputEntry id="inputEntry2">
-          <text></text>
+          <text>-</text>
         </inputEntry>
         <outputEntry id="outputEntry1">
           <text>"notok"</text>
@@ -71,7 +71,7 @@
           <text>"gold"</text>
         </inputEntry>
         <inputEntry id="inputEntry8">
-          <text></text>
+          <text>-</text>
         </inputEntry>
         <outputEntry id="outputEntry7">
           <text>"ok"</text>
