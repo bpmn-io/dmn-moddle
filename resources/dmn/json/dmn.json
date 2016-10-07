@@ -44,7 +44,8 @@
         { "name": "drgElement", "type": "DRGElement", "isReference": true, "isMany": true },
         { "name": "artifact", "type": "Artifact", "isReference": true, "isMany": true },
         { "name": "inputData", "type": "InputData", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "knowledgeSource", "type": "KnowledgeSource", "isMany": true, "xml": { "serialize": "property" } }
+        { "name": "knowledgeSource", "type": "KnowledgeSource", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "businessKnowledgeModel", "type": "BusinessKnowledgeModel", "isMany": true, "xml": { "serialize": "property" } }
       ]
     },
     {
