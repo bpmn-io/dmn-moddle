@@ -1,6 +1,6 @@
 {
-  "name": "bpmn.io di",
-  "uri": "http://bpmn.io/ns/di",
+  "name": "bpmn.io DI for DMN",
+  "uri": "http://bpmn.io/schema/dmn/biodi/1.0",
   "prefix": "biodi",
   "xml": {
     "tagAlias": "lowerCase"
