@@ -49,6 +49,14 @@
       ]
     },
     {
+      "name": "Import",
+      "properties": [
+        { "name": "namespace", "type": "String", "isAttr": true },
+        { "name": "locationURI", "type": "String", "isAttr": true },
+        { "name": "importType", "type": "String", "isAttr": true }
+      ]
+    },
+    {
       "name": "DRGElement",
       "isAbstract": true,
       "superClass": [ "NamedElement" ],
@@ -62,10 +70,12 @@
       "properties": [
         { "name": "question", "type": "String" },
         { "name": "allowedAnswers", "type": "String" },
+        { "name": "variable", "type": "InformationItem" },
         { "name": "informationRequirement", "type": "InformationRequirement", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "knowledgeRequirement", "type": "KnowledgeRequirement", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "authorityRequirement", "type": "AuthorityRequirement", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "decisionTable", "type": "DecisionTable", "xml": { "serialize": "property" } }
+        { "name": "decisionTable", "type": "DecisionTable", "xml": { "serialize": "property" } },
+        { "name": "literalExpression", "type": "LiteralExpression", "xml": { "serialize": "property" } }
       ]
     },
     {
@@ -139,6 +149,7 @@
       "superClass": [ "Expression" ],
       "properties": [
         { "name": "expressionLanguage", "type": "String", "isAttr": true },
+        { "name": "importedValues", "type": "ImportedValues" },
         { "name": "text", "type": "String" }
       ]
     },
@@ -168,6 +179,14 @@
       "properties": [
         { "name": "inputEntry", "type": "UnaryTests", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "outputEntry", "type": "LiteralExpression", "isMany": true, "xml": { "serialize": "property" } }
+      ]
+    },
+    {
+      "name": "ImportedValues",
+      "superClass": [ "Import" ],
+      "properties": [
+        { "name": "importedElement", "type": "String", "isMany": true, "xml": { "serialize": "property" } },
+        { "name": "expressionLanguage", "type": "String", "isAttr": true }
       ]
     },
     {
