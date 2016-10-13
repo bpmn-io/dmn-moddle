@@ -19,10 +19,7 @@ describe('dmn-moddle - roundtrip', function() {
   describe('should serialize valid DMN xml after read', function() {
     this.timeout(15000);
 
-    /*
-     * TODO: Try to teach moddle-xml not to forget empty text elements
-     */
-    it.skip('example decision', function(done) {
+    it('example decision', function(done) {
 
       // given
       fromFile('test/fixtures/dmn/example.dmn', function(err, result) {
