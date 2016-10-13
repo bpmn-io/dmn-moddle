@@ -12,7 +12,8 @@
       "properties": [
         { "name": "description", "type": "String" },
         { "name": "id", "type": "String", "isAttr": true, "isId": true },
-        { "name": "label", "type": "String", "isAttr": true }
+        { "name": "label", "type": "String", "isAttr": true },
+        { "name": "extensionElements", "type": "ExtensionElements" }
       ]
     },
     {
@@ -20,13 +21,23 @@
       "isAbstract": true,
       "superClass": [ "DMNElement" ],
       "properties": [
-        { "name": "name", "type": "String", "isAttr": true}
+        { "name": "name", "type": "String", "isAttr": true }
       ]
     },
     {
       "name": "DMNElementReference",
       "properties": [
         { "name": "href", "type": "String", "isAttr": true }
+      ]
+    },
+    {
+      "name": "ExtensionElements",
+      "properties": [
+        {
+          "name": "values",
+          "type": "Element",
+          "isMany": true
+        }
       ]
     },
     {
@@ -41,11 +52,8 @@
 
         { "name": "itemDefinition", "type": "ItemDefinition", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "decision", "type": "Decision", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "drgElement", "type": "DRGElement", "isReference": true, "isMany": true },
-        { "name": "artifact", "type": "Artifact", "isReference": true, "isMany": true },
-        { "name": "inputData", "type": "InputData", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "knowledgeSource", "type": "KnowledgeSource", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "businessKnowledgeModel", "type": "BusinessKnowledgeModel", "isMany": true, "xml": { "serialize": "property" } }
+        { "name": "drgElements", "type": "DRGElement", "isMany": true },
+        { "name": "artifacts", "type": "Artifact", "isMany": true }
       ]
     },
     {
@@ -60,9 +68,7 @@
       "name": "DRGElement",
       "isAbstract": true,
       "superClass": [ "NamedElement" ],
-      "properties": [
-        { "name": "extensionElements", "type": "biodi:ExtensionElements", "isMany": true, "xml": { "serialize": "property" } }
-      ]
+      "properties": []
     },
     {
       "name": "Decision",
@@ -99,7 +105,7 @@
       "name": "KnowledgeSource",
       "superClass": [ "DRGElement" ],
       "properties": [
-        { "name": "authorityRequirement", "type": "AuthorityRequirement", "isAttr": true, "isMany": true },
+        { "name": "authorityRequirement", "type": "AuthorityRequirement", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "type", "type": "String", "isAttr": true },
         { "name": "owner", "type": "DMNElementReference", "isAttr": true },
         { "name": "locationURI", "type": "String", "isAttr": true }
@@ -193,9 +199,7 @@
       "name": "Artifact",
       "isAbstract": true,
       "superClass": [ "DMNElement" ],
-      "properties": [
-        { "name": "extensionElements", "type": "biodi:ExtensionElements", "isMany": true, "xml": { "serialize": "property" } }
-      ]
+      "properties": []
     },
     {
       "name": "TextAnnotation",
@@ -209,8 +213,8 @@
       "name": "Association",
       "superClass": [ "Artifact" ],
       "properties": [
-        { "name": "sourceRef", "type": "DMNElementReference", "isReference": true ,"xml": { "serialize": "property" } },
-        { "name": "targetRef", "type": "DMNElementReference", "isReference": true ,"xml": { "serialize": "property" } },
+        { "name": "sourceRef", "type": "DMNElementReference", "xml": { "serialize": "property" } },
+        { "name": "targetRef", "type": "DMNElementReference" , "xml": { "serialize": "property" } },
         { "name": "associationDirection", "type": "AssociationDirection", "isAttr": true, "default": "None" }
       ]
     },

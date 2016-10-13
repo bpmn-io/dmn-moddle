@@ -79,6 +79,111 @@ describe('dmn-moddle - read', function() {
 
     });
 
+
+    describe('di', function() {
+
+      it('simple', function(done) {
+
+        // when
+        fromFile('test/fixtures/dmn/simple-di.dmn', 'dmn:Definitions', function(err, result) {
+
+          var expected = [
+            {
+              $type: 'dmn:BusinessKnowledgeModel',
+              name: 'El menú',
+              id: 'elMenu',
+              extensionElements: {
+                $type: 'dmn:ExtensionElements',
+                values: [
+                  {
+                    $type: 'biodi:Bounds',
+                    x: 450,
+                    y: 250,
+                    width: 125,
+                    height: 45
+                  },
+                  {
+                    $type:'biodi:Edge',
+                    source: 'dish-decision',
+                    waypoints: [
+                      {
+                        $type: 'biodi:Waypoint',
+                        x: 450,
+                        y: 250
+                      },
+                      {
+                        $type: 'biodi:Waypoint',
+                        x: 500,
+                        y: 10
+                      }
+                    ]
+                  }
+                ]
+              },
+              authorityRequirement: [
+                {
+                  $type: 'dmn:AuthorityRequirement',
+                  requiredAuthority: {
+                    $type: 'dmn:DMNElementReference',
+                    href: '#dish-decision'
+                  }
+                }
+              ]
+            }
+          ];
+
+
+          // then
+          expect(err).to.be.undefined;
+          expect(result.drgElements).to.jsonEqual(expected);
+
+          done(err);
+        });
+
+      });
+
+      it('input data', function(done) {
+
+        // when
+        fromFile('test/fixtures/dmn/input-data.dmn', 'dmn:Definitions', function(err, result) {
+
+          var expected = [
+            {
+              $type: 'dmn:InputData',
+              name: 'Weather in Celsius',
+              id: 'temperature_id',
+              extensionElements: {
+                $type: 'dmn:ExtensionElements',
+                values: [
+                  {
+                    $type: 'biodi:Bounds',
+                    x: 5,
+                    y: 270,
+                    width: 125,
+                    height: 45
+                  }
+                ]
+              },
+              variable: {
+                $type: 'dmn:InformationItem',
+                typeRef: 'integer',
+                name: 'Weather in Celsius',
+                id: 'temperature_ii'
+              }
+            }
+          ];
+
+          // then
+          expect(err).to.be.undefined;
+          expect(result.drgElements).to.jsonEqual(expected);
+
+          done(err);
+        });
+
+      });
+
+    });
+
   });
 
 });

@@ -7,35 +7,68 @@
 
   <inputData name="Type of day" id="dayType_id">
     <extensionElements>
-      <biodi:bounds x="240" y="270" width="200" height="60" />
+      <biodi:bounds x="240" y="270" width="125" height="45" />
     </extensionElements>
     <variable typeRef="string" name="Type of day" id="dayType_ii"/>
   </inputData>
   <inputData name="Weather in Celsius" id="temperature_id">
     <extensionElements>
-      <biodi:bounds x="5" y="270" width="170" height="90" />
+      <biodi:bounds x="5" y="270" width="125" height="45" />
     </extensionElements>
     <variable typeRef="integer" name="Weather in Celsius" id="temperature_ii"/>
   </inputData>
   <knowledgeSource name="Host" id="host_ks">
     <extensionElements>
-      <biodi:bounds x="495" y="10" width="120" height="75" />
+      <biodi:bounds x="495" y="10" width="100" height="63" />
     </extensionElements>
   </knowledgeSource>
+  <knowledgeSource name="Guest Type" id="guest_ks">
+    <extensionElements>
+      <biodi:bounds x="495" y="150" width="100" height="63" />
+      <biodi:edge source="guestCount">
+        <biodi:waypoint x="440" y="175" />
+        <biodi:waypoint x="495" y="175" />
+      </biodi:edge>
+    </extensionElements>
+    <authorityRequirement>
+      <requiredDecision href="#guestCount"/>
+    </authorityRequirement>
+  </knowledgeSource>
+  <businessKnowledgeModel name="El menú" id="elMenu">
+    <extensionElements>
+      <biodi:bounds x="450" y="250" width="135" height="46" />
+    </extensionElements>
+  </businessKnowledgeModel>
+  <textAnnotation id="TextAnnotation_1t4zaz9">
+    <extensionElements>
+      <biodi:bounds x="240" y="400" width="125" height="45" />
+    </extensionElements>
+    <text>foobar</text>
+  </textAnnotation>
+  <association id="Association_1c4jixb">
+    <sourceRef href="#dayType_id" />
+    <targetRef href="#TextAnnotation_1t4zaz9" />
+    <extensionElements>
+      <biodi:edge source="dayType_id">
+        <biodi:waypoint x="275" y="315" />
+        <biodi:waypoint x="240" y="400" />
+      </biodi:edge>
+    </extensionElements>
+  </association>
   <decision id="dish-decision" name="Dish Decision">
     <extensionElements>
       <biodi:bounds x="150" y="10" width="100" height="55" />
-      <!-- need to associate edge with (informationRequirement -> requiredDecision -> href) === (edge -> target) -->
+      <!-- need to associate edge with (informationRequirement -> requiredDecision -> href) === (edge -> source) -->
       <!-- assumption requiredDecision -> href is always unique per decission element (@philipp) -->
-      <biodi:edge target="season">
+      <biodi:edge source="season">
         <biodi:waypoint x="80" y="140" />
-        <biodi:waypoint x="205" y="65" />
+        <biodi:waypoint x="175" y="65" />
       </biodi:edge>
-      <biodi:edge target="guestCount">
+      <biodi:edge source="guestCount">
         <biodi:waypoint x="345" y="140" />
-        <biodi:waypoint x="205" y="65" />
+        <biodi:waypoint x="225" y="65" />
       </biodi:edge>
-      <biodi:edge target="host_ks">
+      <biodi:edge source="host_ks">
         <biodi:waypoint x="495" y="30" />
         <biodi:waypoint x="250" y="30" />
       </biodi:edge>
@@ -50,7 +83,7 @@
       <requiredAuthority href="#host_ks"/>
     </authorityRequirement>
     <decisionTable id="dishDecisionTable">
-    <input id="seasonInput" label="Season">
+      <input id="seasonInput" label="Season">
         <inputExpression id="seasonInputExpression" typeRef="string">
           <text>season</text>
         </inputExpression>
@@ -66,7 +99,7 @@
           <text><![CDATA["Winter"]]></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1r9yorj">
-          <text><![CDATA[<=8]]></text>
+          <text><![CDATA[<= 8]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1mtwzqz">
           <text><![CDATA["Spareribs"]]></text>
@@ -77,7 +110,7 @@
           <text><![CDATA["Winter"]]></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0nhiedb">
-          <text><![CDATA[>8]]></text>
+          <text><![CDATA[> 8]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1h30r12">
           <text><![CDATA["Pasta"]]></text>
@@ -88,7 +121,7 @@
           <text><![CDATA["Summer"]]></text>
         </inputEntry>
         <inputEntry id="UnaryTests_12cib9m">
-          <text><![CDATA[>10]]></text>
+          <text><![CDATA[> 10]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0wgaegy">
           <text><![CDATA["Light salad"]]></text>
@@ -99,7 +132,7 @@
           <text><![CDATA["Summer"]]></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0sesgov">
-          <text><![CDATA[<=10]]></text>
+          <text><![CDATA[<= 10]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1dvc5x3">
           <text><![CDATA["Beans salad"]]></text>
@@ -110,7 +143,7 @@
           <text><![CDATA["Spring"]]></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1uzqner">
-          <text><![CDATA[<10]]></text>
+          <text><![CDATA[< 10]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1pxy4g1">
           <text><![CDATA["Stew"]]></text>
@@ -121,7 +154,7 @@
           <text><![CDATA["Spring"]]></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0wa71sy">
-          <text><![CDATA[>=10]]></text>
+          <text><![CDATA[>= 10]]></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_09ggol9">
           <text><![CDATA["Steak"]]></text>
@@ -132,7 +165,7 @@
   <decision id="season" name="Season decision">
     <extensionElements>
       <biodi:bounds x="10" y="140" width="140" height="55" />
-      <biodi:edge target="temperature_id">
+      <biodi:edge source="temperature_id">
         <biodi:waypoint x="80" y="270" />
         <biodi:waypoint x="80" y="195" />
       </biodi:edge>
@@ -176,11 +209,18 @@
   <decision id="guestCount" name="Guest Count">
     <extensionElements>
       <biodi:bounds x="230" y="140" width="210" height="55" />
-      <biodi:edge target="dayType_id">
+      <biodi:edge source="dayType_id">
         <biodi:waypoint x="340" y="270" />
         <biodi:waypoint x="340" y="195" />
       </biodi:edge>
+      <biodi:edge source="elMenu">
+        <biodi:waypoint x="450" y="275" />
+        <biodi:waypoint x="400" y="195" />
+      </biodi:edge>
     </extensionElements>
+    <knowledgeRequirement>
+      <requiredKnowledge href="#elMenu"/>
+    </knowledgeRequirement>
     <informationRequirement>
       <requiredInput href="#dayType_id"/>
     </informationRequirement>

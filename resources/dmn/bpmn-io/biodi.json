@@ -7,21 +7,17 @@
   },
   "types": [
     {
-      "name": "ExtensionElements",
-      "properties": [
-        { "name": "bounds", "type": "Bounds" },
-        { "name": "edge", "type": "Edge", "isMany": true }
-      ]
-    },
-    {
       "name": "Edge",
+      "superClass": [
+        "Element"
+      ],
       "properties": [
-        { "name": "target",
-          "type": "Target",
+        { "name": "source",
+          "type": "String",
           "isAttr": true
         },
-        { "name": "waypoint",
-          "type": "dc:Point",
+        { "name": "waypoints",
+          "type": "Waypoint",
           "isMany": true,
           "xml": { "serialize": "property" }
         }
@@ -30,13 +26,14 @@
     {
       "name": "Bounds",
       "superClass": [
-        "dc:Bounds"
+        "dc:Bounds",
+        "Element"
       ]
     },
     {
-      "name": "Target",
+      "name": "Waypoint",
       "superClass": [
-        "dmn:DRGElement"
+        "dc:Point"
       ]
     }
   ]
