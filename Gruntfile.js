@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       }
     },
     mochaTest: {
-      test: {
+      single: {
         options: {
           reporter: 'spec',
           require: [
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 
   // tasks
 
-  grunt.registerTask('test', [ 'mochaTest' ]);
+  grunt.registerTask('test', [ 'mochaTest:single' ]);
 
   grunt.registerTask('auto-test', [ 'mochaTest:watch', 'watch:test' ]);
 
