@@ -36,7 +36,7 @@ describe('dmn-moddle - read', function() {
 
           // then
           expect(err).to.be.undefined;
-          expect(result.decision[0]).to.jsonEqual(expected);
+          expect(result.drgElements[0]).to.jsonEqual(expected);
 
           done(err);
         });
@@ -71,7 +71,7 @@ describe('dmn-moddle - read', function() {
 
           // then
           expect(err).to.be.undefined;
-          expect(result.decision[0]).to.jsonEqual(expected);
+          expect(result.drgElements[0]).to.jsonEqual(expected);
 
           done(err);
         });
@@ -129,9 +129,25 @@ describe('dmn-moddle - read', function() {
                   }
                 }
               ]
+            },
+            {
+              $type: 'dmn:Decision',
+              id: 'dish-decision',
+              name: 'Dish Decision',
+              extensionElements: {
+                $type: 'dmn:ExtensionElements',
+                values: [
+                  {
+                    $type: 'biodi:Bounds',
+                    x: 150,
+                    y: 10,
+                    width: 100,
+                    height: 55
+                  }
+                ]
+              }
             }
           ];
-
 
           // then
           expect(err).to.be.undefined;

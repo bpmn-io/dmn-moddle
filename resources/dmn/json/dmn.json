@@ -47,11 +47,9 @@
         { "name": "namespace", "type": "String", "isAttr": true },
         { "name": "typeLanguage", "type": "String", "isAttr": true, "default": "http://www.omg.org/spec/FEEL/20140401" },
         { "name": "expressionLanguage", "type": "String", "isAttr": true, "default": "http://www.omg.org/spec/FEEL/20140401" },
-        { "name": "exporter", "type": "String" },
-        { "name": "exporterVersion", "type": "String" },
-
+        { "name": "exporter", "type": "String", "isAttr": true },
+        { "name": "exporterVersion", "type": "String", "isAttr": true },
         { "name": "itemDefinition", "type": "ItemDefinition", "isMany": true, "xml": { "serialize": "property" } },
-        { "name": "decision", "type": "Decision", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "drgElements", "type": "DRGElement", "isMany": true },
         { "name": "artifacts", "type": "Artifact", "isMany": true }
       ]
@@ -67,8 +65,7 @@
     {
       "name": "DRGElement",
       "isAbstract": true,
-      "superClass": [ "NamedElement" ],
-      "properties": []
+      "superClass": [ "NamedElement" ]
     },
     {
       "name": "Decision",
@@ -198,8 +195,7 @@
     {
       "name": "Artifact",
       "isAbstract": true,
-      "superClass": [ "DMNElement" ],
-      "properties": []
+      "superClass": [ "DMNElement" ]
     },
     {
       "name": "TextAnnotation",
