@@ -73,7 +73,7 @@
       "properties": [
         { "name": "question", "type": "String" },
         { "name": "allowedAnswers", "type": "String" },
-        { "name": "variable", "type": "InformationItem" },
+        { "name": "variable", "type": "InformationItem", "xml": { "serialize": "property" }  },
         { "name": "informationRequirement", "type": "InformationRequirement", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "knowledgeRequirement", "type": "KnowledgeRequirement", "isMany": true, "xml": { "serialize": "property" } },
         { "name": "authorityRequirement", "type": "AuthorityRequirement", "isMany": true, "xml": { "serialize": "property" } },

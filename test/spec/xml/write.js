@@ -46,8 +46,47 @@ describe('dmn-moddle - write', function() {
 
           done(err);
         });
+
       });
 
+
+      it('Literal Expression (empty)', function(done) {
+
+        // given
+        var variable = moddle.create('dmn:InformationItem', {
+              typeRef: 'integer',
+              id: 'temperature_ii',
+              name: 'Weather in Celsius'
+            }),
+            literalExpression = moddle.create('dmn:LiteralExpression', {
+              id: 'LiteralExpression_0y0an4b'
+            }),
+            decision = moddle.create('dmn:Decision', {
+              name: 'Weather',
+              id: 'weather_id',
+              variable: variable,
+              literalExpression: literalExpression
+            });
+
+        var expectedXML = [
+          '<dmn:decision xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="weather_id" name="Weather">',
+          '<dmn:variable id="temperature_ii" name="Weather in Celsius" typeRef="integer" />',
+          '<dmn:literalExpression id="LiteralExpression_0y0an4b" />',
+          '</dmn:decision>'
+        ].join('');
+
+        // when
+        write(decision, function(err, result) {
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
     });
 
     describe('camunda', function() {
