@@ -144,7 +144,7 @@
         { "name": "typeLanguage", "type": "String", "isAttr": true },
         { "name": "isCollection", "type": "Boolean", "isAttr": true, "default": false },
         { "name": "typeRef", "type": "String" },
-        { "name": "allowedValue", "type": "LiteralExpression", "isMany": true, "xml": { "serialize": "property" } }
+        { "name": "allowedValues", "type": "UnaryTests", "isMany": true, "xml": { "serialize": "property" } }
       ]
     },
     {
