@@ -141,8 +141,8 @@ describe('dmn-moddle - read', function() {
                     $type: 'biodi:Bounds',
                     x: 150,
                     y: 10,
-                    width: 100,
-                    height: 55
+                    width: 180,
+                    height: 80
                   }
                 ]
               }
