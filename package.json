@@ -1,6 +1,6 @@
 {
   "name": "dmn-moddle",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A moddle wrapper for DMN 1.1",
   "scripts": {
     "all": "grunt",
