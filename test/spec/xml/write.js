@@ -143,7 +143,7 @@ describe('dmn-moddle - write', function() {
             });
 
         var expectedXML = [
-          '<dmn:inputData xmlns:dmn=\"http://www.omg.org/spec/DMN/20151101/dmn.xsd\"' +
+          '<dmn:inputData xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd"' +
           ' xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="temperature_id" name="Weather in Celsius">',
           '<dmn:extensionElements>',
           '<biodi:bounds x="450" y="270" width="125" height="45" />',
