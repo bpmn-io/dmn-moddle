@@ -1,6 +1,6 @@
 {
   "name": "dmn-moddle",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "A moddle wrapper for DMN 1.1",
   "scripts": {
     "all": "run-s lint test",
