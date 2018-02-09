@@ -31,8 +31,8 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "cmof-parser": "^0.1.0",
-    "eslint": "^4.11.0",
-    "eslint-plugin-mocha": "^3.0.0",
+    "eslint": "^4.17.0",
+    "eslint-plugin-mocha": "^4.11.0",
     "jsondiffpatch": "^0.1.4",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.2",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "lodash": "^3.0.0",
-    "moddle": "^1.2.1",
-    "moddle-xml": "^2.1.1"
+    "moddle": "^2.0.0",
+    "moddle-xml": "^4.1.2"
   }
 }
