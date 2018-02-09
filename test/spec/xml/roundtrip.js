@@ -24,10 +24,6 @@ describe('dmn-moddle - roundtrip', function() {
       // given
       fromFile('test/fixtures/dmn/example.dmn', function(err, result) {
 
-        if (err) {
-          return done(err);
-        }
-
         // when
         toXML(result, { format: true }, function(err, xml) {
 
@@ -43,10 +39,6 @@ describe('dmn-moddle - roundtrip', function() {
 
       // given
       fromFile('test/fixtures/dmn/example-di.dmn', function(err, result) {
-
-        if (err) {
-          return done(err);
-        }
 
         // when
         toXML(result, { format: true }, function(err, xml) {

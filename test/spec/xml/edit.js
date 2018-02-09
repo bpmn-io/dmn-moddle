@@ -18,9 +18,6 @@ describe('dmn-moddle - edit', function() {
       var fileContents = Helper.readFile('test/fixtures/dmn/decision.part.dmn');
 
       moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result) {
-        if (err) {
-          return done(err);
-        }
 
         result.name = 'FOOBAR';
 
