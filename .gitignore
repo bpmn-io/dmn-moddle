@@ -1,7 +1,6 @@
 node_modules/
 tmp/
-docs/api/
-dist/
 .idea
 *.iml
 npm-debug.log
+package-lock.json
