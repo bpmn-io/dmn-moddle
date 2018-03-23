@@ -6,6 +6,10 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 3.0.1
+
+* `FIX`: properly decode `text` entities
+
 ## 3.0.0
 
 * `CHORE`: improve error handling on invalid attributes
