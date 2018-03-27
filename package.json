@@ -41,6 +41,6 @@
   "dependencies": {
     "min-dash": "^2.2.0",
     "moddle": "^3.0.0",
-    "moddle-xml": "^5.0.1"
+    "moddle-xml": "^6.0.0"
   }
 }
