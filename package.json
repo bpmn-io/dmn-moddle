@@ -40,8 +40,8 @@
     "xsd-schema-validator": "^0.6.0"
   },
   "dependencies": {
-    "min-dash": "^2.2.0",
-    "moddle": "^3.0.0",
-    "moddle-xml": "^6.0.0"
+    "min-dash": "^3.0.0",
+    "moddle": "^4.1.0",
+    "moddle-xml": "^7.1.0"
   }
 }
