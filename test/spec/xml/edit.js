@@ -1,21 +1,25 @@
-'use strict';
+import expect from '../../expect';
 
-var XMLHelper = require('../../xml-helper'),
-    Helper = require('../../helper');
+import {
+  createModdle,
+  readFile
+} from '../../helper';
 
-var toXML = XMLHelper.toXML;
+import {
+  toXML
+} from '../../xml-helper';
 
 
 describe('dmn-moddle - edit', function() {
 
-  var moddle = Helper.createModdle();
+  var moddle = createModdle();
 
   describe('save after change', function() {
 
     it('should serialize changed name', function(done) {
 
       // given
-      var fileContents = Helper.readFile('test/fixtures/dmn/decision.part.dmn');
+      var fileContents = readFile('test/fixtures/dmn/decision.part.dmn');
 
       moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result) {
 

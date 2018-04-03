@@ -1,23 +1,25 @@
-'use strict';
+import expect from './expect';
 
-var SchemaValidator = require('xsd-schema-validator');
+import SchemaValidator from 'xsd-schema-validator';
 
 var DMN_XSD = 'test/fixtures/xsd/dmn.xsd';
 
-var Helper = require('./helper');
+import {
+  readFile
+} from './helper';
 
 
-module.exports.fromFile = function(moddle, file, done) {
-  var fileContents = Helper.readFile(file);
+export function fromFile(moddle, file, done) {
+  var fileContents = readFile(file);
 
   moddle.fromXML(fileContents, 'dmn:Definitions', done);
-};
+}
 
-module.exports.toXML = function(element, opts, done) {
+export function toXML(element, opts, done) {
   element.$model.toXML(element, opts, done);
-};
+}
 
-module.exports.validate = function(err, xml, done) {
+export function validate(err, xml, done) {
 
   if (err) {
     return done(err);
@@ -36,4 +38,4 @@ module.exports.validate = function(err, xml, done) {
     expect(result.valid).to.be.true;
     done();
   });
-};
+}

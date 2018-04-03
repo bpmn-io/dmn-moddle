@@ -1,14 +1,18 @@
-'use strict';
+import expect from '../../expect';
 
-var assign = require('min-dash').assign,
-    isFunction = require('min-dash').isFunction;
+import {
+  assign,
+  isFunction
+} from 'min-dash';
 
-var Helper = require('../../helper');
+import {
+  createModdle
+} from '../../helper';
 
 
 describe('dmn-moddle - write', function() {
 
-  var moddle = Helper.createModdle();
+  var moddle = createModdle();
 
 
   function write(element, options, callback) {
@@ -22,7 +26,6 @@ describe('dmn-moddle - write', function() {
 
     moddle.toXML(element, options, callback);
   }
-
 
 
   describe('should export types', function() {
@@ -87,6 +90,7 @@ describe('dmn-moddle - write', function() {
         });
       });
     });
+
 
     describe('camunda', function() {
 

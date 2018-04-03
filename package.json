@@ -6,7 +6,7 @@
     "all": "run-s lint test",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r ./test/expect --reporter=spec --recursive test"
+    "test": "mocha -r esm --reporter=spec --recursive test"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "cmof-parser": "^0.2.0",
     "eslint": "^4.19.0",
     "eslint-plugin-bpmn-io": "^0.5.2",
+    "esm": "^3.0.15",
     "jsondiffpatch": "^0.1.43",
     "mocha": "^5.0.4",
     "npm-run-all": "^4.1.2",

@@ -1,18 +1,20 @@
-'use strict';
+import {
+  createModdle
+} from '../../helper';
 
-var Helper = require('../../helper'),
-    XMLHelper = require('../../xml-helper');
-
-var toXML = XMLHelper.toXML,
-    validate = XMLHelper.validate;
+import {
+  fromFile as fromXMLFile,
+  toXML,
+  validate
+} from '../../xml-helper';
 
 
 describe('dmn-moddle - roundtrip', function() {
 
-  var moddle = Helper.createModdle();
+  var moddle = createModdle();
 
   function fromFile(file, done) {
-    XMLHelper.fromFile(moddle, file, done);
+    fromXMLFile(moddle, file, done);
   }
 
 
