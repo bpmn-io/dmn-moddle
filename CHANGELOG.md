@@ -6,6 +6,16 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.0.0
+
+### Breaking Changes
+
+* `FEAT`: migrate to ES modules. Use `esm` or a ES module aware transpiler to consume this library.
+
+### Other Improvements
+
+* `CHORE`: bump dependency versions
+
 ## 4.0.0
 
 * `FEAT`: encode entities in body properties (rather than using CDATA escaping)
