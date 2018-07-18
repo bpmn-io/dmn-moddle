@@ -47,41 +47,6 @@ describe('dmn-moddle - read', function() {
 
     });
 
-    describe('camunda', function() {
-
-      it('Extension', function(done) {
-
-        // when
-        fromFile('test/fixtures/dmn/camunda.dmn', 'dmn:Definitions', function(err, result) {
-
-          var expected = {
-            $type: 'dmn:Decision',
-            id: 'decision',
-            name: 'Dish',
-            decisionTable: {
-              $type: 'dmn:DecisionTable',
-              id: 'decisionTable',
-              input: [
-                {
-                  $type: 'dmn:InputClause',
-                  id: 'input1',
-                  label: 'Season',
-                  inputVariable: 'currentSeason'
-                }
-              ]
-            }
-          };
-
-          // then
-          expect(err).to.be.undefined;
-          expect(result.drgElements[0]).to.jsonEqual(expected);
-
-          done(err);
-        });
-      });
-
-    });
-
 
     describe('di', function() {
 

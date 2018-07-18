@@ -92,33 +92,6 @@ describe('dmn-moddle - write', function() {
     });
 
 
-    describe('camunda', function() {
-
-      it('inputVariable', function(done) {
-
-        // given
-        var definitions = moddle.create('dmn:InputClause', {
-          inputVariable: 'foobar'
-        });
-
-        var expectedXML = [
-          '<dmn:inputClause xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd"',
-          'xmlns:camunda="http://camunda.org/schema/1.0/dmn"',
-          'camunda:inputVariable="foobar" />'
-        ].join(' ');
-
-        // when
-        write(definitions, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
-      });
-
-    });
-
-
     describe('di', function() {
 
       it('input data', function(done) {
