@@ -6,6 +6,12 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.0
+
+### Breaking Changes
+
+* `FEAT`: dropped `camunda` extension definition, it moved to a [seperate library](https://github.com/camunda/camunda-dmn-moddle)
+
 ## 5.0.0
 
 ### Breaking Changes
