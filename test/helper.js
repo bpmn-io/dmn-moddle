@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import SimpleDmnModdle from '../';
+import SimpleDmnModdle from '../lib';
 
 export function ensureDirExists(dir) {
 
