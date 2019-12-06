@@ -3,15 +3,23 @@
   "version": "6.0.0",
   "description": "A moddle wrapper for DMN 1.1",
   "scripts": {
-    "all": "run-s lint test",
+    "all": "run-s lint test distro",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r esm --reporter=spec --recursive test"
+    "test": "mocha -r esm --reporter=spec --recursive test/spec",
+    "distro": "run-s build test:build",
+    "build": "rollup -c",
+    "test:build": "mocha --reporter=spec --recursive test/distro",
+    "prepublishOnly": "run-s distro"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/dmn-moddle"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "umd:main": "dist/dmn-moddle.umd.js",
+  "source": "lib/index.js",
   "keywords": [
     "dmn",
     "moddle",
