@@ -4,4 +4,3 @@ tmp/
 .idea
 *.iml
 npm-debug.log
-package-lock.json
