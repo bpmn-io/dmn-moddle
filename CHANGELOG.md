@@ -6,6 +6,15 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.0.0
+
+* `FEAT`: add pre-built distribution
+* `CHORE`: update to moddle@5.0.1, moddle-xml@8.0.1
+
+### Breaking Changes
+
+* `FEAT`: dropped `lib/` from npm package; import from the root now
+
 ## 6.0.0
 
 ### Breaking Changes
