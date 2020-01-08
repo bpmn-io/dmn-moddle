@@ -7,27 +7,31 @@
   },
   "types": [
     {
+      "name": "Bounds",
+      "superClass": [
+        "dc:Bounds",
+        "Element"
+      ]
+    },
+    {
       "name": "Edge",
       "superClass": [
         "Element"
       ],
       "properties": [
-        { "name": "source",
+        {
+          "name": "source",
           "type": "String",
           "isAttr": true
         },
-        { "name": "waypoints",
+        {
+          "name": "waypoints",
           "type": "Waypoint",
           "isMany": true,
-          "xml": { "serialize": "property" }
+          "xml": {
+            "serialize": "property"
+          }
         }
-      ]
-    },
-    {
-      "name": "Bounds",
-      "superClass": [
-        "dc:Bounds",
-        "Element"
       ]
     },
     {

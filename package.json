@@ -10,7 +10,8 @@
     "distro": "run-s build test:build",
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
-    "prepublishOnly": "run-s distro"
+    "prepublishOnly": "run-s distro",
+    "generate-schema": "node tasks/generate-schema"
   },
   "repository": {
     "type": "git",
@@ -50,6 +51,8 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.2",
+    "sax": "^1.2.4",
+    "tiny-stack": "^2.0.1",
     "xsd-schema-validator": "^0.6.0"
   },
   "dependencies": {

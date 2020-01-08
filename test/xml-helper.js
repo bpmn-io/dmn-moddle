@@ -2,7 +2,7 @@ import expect from './expect';
 
 import SchemaValidator from 'xsd-schema-validator';
 
-var DMN_XSD = 'test/fixtures/xsd/dmn.xsd';
+var DMN_XSD = 'resources/dmn/xsd/DMN13.xsd';
 
 import {
   readFile

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions id="dish" name="Dish"
   namespace="http://camunda.org/schema/1.0/dmn"
-  xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd"
+  xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
   xmlns:camunda="http://camunda.org/schema/1.0/dmn"
   xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0">
 
   <businessKnowledgeModel name="El menú" id="elMenu">
     <extensionElements>
-      <biodi:bounds x="450" y="250" width="125" height="45" />
+      <biodi:bounds height="45" width="125" x="450" y="250" />
       <biodi:edge source="dish-decision">
         <biodi:waypoint x="450" y="250" />
         <biodi:waypoint x="500" y="10" />
@@ -20,7 +20,7 @@
 
   <decision id="dish-decision" name="Dish Decision">
     <extensionElements>
-      <biodi:bounds x="150" y="10" width="180" height="80" />
+      <biodi:bounds height="80" width="180" x="150" y="10" />
     </extensionElements>
   </decision>
 </definitions>

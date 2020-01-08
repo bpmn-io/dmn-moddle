@@ -1,0 +1,63 @@
+{
+  "prefix": "di",
+  "uri": "http://www.omg.org/spec/DMN/20180521/DI/",
+  "types": [
+    {
+      "name": "DiagramElement",
+      "isAbstract": true
+    },
+    {
+      "name": "Diagram",
+      "superClass": [
+        "DiagramElement"
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "documentation",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "resolution",
+          "isAttr": true,
+          "type": "Real"
+        }
+      ]
+    },
+    {
+      "name": "Shape",
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "bounds",
+          "type": "Bounds"
+        }
+      ]
+    },
+    {
+      "name": "Edge",
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "wayPoints",
+          "type": "Point",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Style",
+      "isAbstract": true
+    }
+  ],
+  "associations": [],
+  "enumerations": [],
+  "xml": {
+    "tagAlias": "lowerCase"
+  }
+}

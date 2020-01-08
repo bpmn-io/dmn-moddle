@@ -38,7 +38,7 @@ describe('dmn-moddle - write', function() {
         var definitions = moddle.create('dmn:Definitions');
 
         var expectedXML =
-        '<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd" />';
+        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" />';
 
         // when
         write(definitions, function(err, result) {
@@ -71,7 +71,7 @@ describe('dmn-moddle - write', function() {
             });
 
         var expectedXML = [
-          '<dmn:decision xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="weather_id" name="Weather">',
+          '<dmn:decision xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" id="weather_id" name="Weather">',
           '<dmn:variable id="temperature_ii" name="Weather in Celsius" typeRef="integer" />',
           '<dmn:literalExpression id="LiteralExpression_0y0an4b" />',
           '</dmn:decision>'
@@ -98,10 +98,10 @@ describe('dmn-moddle - write', function() {
 
         // given
         var bounds = moddle.create('biodi:Bounds', {
-              x: 450,
-              y: 270,
+              height: 45,
               width: 125,
-              height: 45
+              x: 450,
+              y: 270
             }),
             variable = moddle.create('dmn:InformationItem', {
               typeRef: 'integer',
@@ -119,10 +119,10 @@ describe('dmn-moddle - write', function() {
             });
 
         var expectedXML = [
-          '<dmn:inputData xmlns:dmn="http://www.omg.org/spec/DMN/20151101/dmn.xsd"' +
+          '<dmn:inputData xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/"' +
           ' xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="temperature_id" name="Weather in Celsius">',
           '<dmn:extensionElements>',
-          '<biodi:bounds x="450" y="270" width="125" height="45" />',
+          '<biodi:bounds height="45" width="125" x="450" y="270" />',
           '</dmn:extensionElements>',
           '<dmn:variable id="temperature_ii" name="Weather in Celsius" typeRef="integer" />',
           '</dmn:inputData>'

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions id="dish" name="Dish"
   namespace="http://camunda.org/schema/1.0/dmn"
-  xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd"
+  xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
   xmlns:camunda="http://camunda.org/schema/1.0/dmn"
   xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0">
 
   <inputData name="Weather in Celsius" id="temperature_id">
     <extensionElements>
-      <biodi:bounds x="5" y="270" width="125" height="45" />
+      <biodi:bounds height="45" width="125" x="5" y="270" />
     </extensionElements>
     <variable typeRef="integer" name="Weather in Celsius" id="temperature_ii"/>
   </inputData>
