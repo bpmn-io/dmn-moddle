@@ -1,0 +1,1717 @@
+{
+  "prefix": "dmn",
+  "uri": "https://www.omg.org/spec/DMN/20191111/MODEL/",
+  "types": [
+    {
+      "name": "AuthorityRequirement",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "requiredAuthority",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "requiredDecision",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "requiredInput",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "bkm",
+          "type": "BusinessKnowledgeModel",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "decision",
+          "type": "Decision",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "knowledgeSource",
+          "type": "KnowledgeSource",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "ItemDefinition",
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "typeRef",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "allowedValues",
+          "type": "UnaryTests",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "typeLanguage",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "definitions",
+          "type": "Definitions",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "itemComponent",
+          "type": "ItemDefinition",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "containingDefinition",
+          "type": "ItemDefinition",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "isCollection",
+          "isAttr": true,
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "Definitions",
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "import",
+          "type": "Import",
+          "isMany": true
+        },
+        {
+          "name": "itemDefinition",
+          "type": "ItemDefinition",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "drgElement",
+          "type": "DRGElement",
+          "isMany": true
+        },
+        {
+          "name": "artifact",
+          "type": "Artifact",
+          "isMany": true
+        },
+        {
+          "name": "group",
+          "type": "Group",
+          "isMany": true
+        },
+        {
+          "name": "textAnnotation",
+          "type": "TextAnnotation",
+          "isMany": true
+        },
+        {
+          "name": "association",
+          "type": "Association",
+          "isMany": true
+        },
+        {
+          "name": "elementCollection",
+          "type": "ElementCollection",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "businessContextElement",
+          "type": "BusinessContextElement",
+          "isMany": true
+        },
+        {
+          "name": "performanceIndicator",
+          "type": "PerformanceIndicator",
+          "isMany": true
+        },
+        {
+          "name": "organizationUnit",
+          "type": "OrganizationUnit",
+          "isMany": true
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "expressionLanguage",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "typeLanguage",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "exporter",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "exporterVersion",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "dmnDI",
+          "type": "dmndi:DMNDI"
+        }
+      ]
+    },
+    {
+      "name": "KnowledgeSource",
+      "superClass": [
+        "DRGElement"
+      ],
+      "properties": [
+        {
+          "name": "authorityRequirement",
+          "type": "AuthorityRequirement",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "owner",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "locationURI",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "DecisionRule",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "inputEntry",
+          "type": "UnaryTests",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "outputEntry",
+          "type": "LiteralExpression",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "annotationEntry",
+          "type": "RuleAnnotation",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "Expression",
+      "isAbstract": true,
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "binding",
+          "type": "Binding",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "decision",
+          "type": "Decision",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "list",
+          "type": "List",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "contextEntry",
+          "type": "ContextEntry",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "caller",
+          "type": "Invocation",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "typeRef",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "ItemDefinition",
+          "isVirtual": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "InformationItem",
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "decisionOutput",
+          "type": "Decision",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "binding",
+          "type": "Binding",
+          "isReference": true,
+          "isMany": true
+        },
+        {
+          "name": "bkm",
+          "type": "BusinessKnowledgeModel",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "contextEntry",
+          "type": "ContextEntry",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "relation",
+          "type": "Relation",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "inputData",
+          "type": "InputData",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "typeRef",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "valueExpression",
+          "type": "Expression",
+          "isVirtual": true,
+          "isReference": true
+        },
+        {
+          "name": "type",
+          "type": "ItemDefinition",
+          "isVirtual": true,
+          "isReference": true
+        },
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression",
+          "isReference": true
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation",
+          "isReference": true
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable",
+          "isReference": true
+        },
+        {
+          "name": "context",
+          "type": "Context",
+          "isReference": true
+        },
+        {
+          "name": "list",
+          "type": "List",
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "Decision",
+      "superClass": [
+        "DRGElement"
+      ],
+      "properties": [
+        {
+          "name": "question",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "allowedAnswers",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "variable",
+          "type": "InformationItem",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "informationRequirement",
+          "type": "InformationRequirement",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "knowledgeRequirement",
+          "type": "KnowledgeRequirement",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "authorityRequirement",
+          "type": "AuthorityRequirement",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "supportedObjective",
+          "isMany": true,
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "impactedPerformanceIndicator",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "decisionMaker",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "decisionOwner",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "usingProcess",
+          "isMany": true,
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "usingTask",
+          "isMany": true,
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression"
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation"
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable"
+        },
+        {
+          "name": "context",
+          "type": "Context"
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition"
+        },
+        {
+          "name": "relation",
+          "type": "Relation"
+        },
+        {
+          "name": "list",
+          "type": "List"
+        },
+        {
+          "name": "decisionLogic",
+          "type": "Expression"
+        },
+        {
+          "name": "requiresInformation",
+          "type": "InformationRequirement",
+          "isReference": true,
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Invocation",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression"
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation"
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable"
+        },
+        {
+          "name": "context",
+          "type": "Context"
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition"
+        },
+        {
+          "name": "relation",
+          "type": "Relation"
+        },
+        {
+          "name": "list",
+          "type": "List"
+        },
+        {
+          "name": "binding",
+          "type": "Binding",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "calledFunction",
+          "type": "Expression"
+        }
+      ]
+    },
+    {
+      "name": "OrganisationalUnit",
+      "superClass": [
+        "BusinessContextElement"
+      ],
+      "properties": [
+        {
+          "name": "decisionMade",
+          "type": "Decision",
+          "isReference": true,
+          "isMany": true
+        },
+        {
+          "name": "decisionOwned",
+          "type": "Decision",
+          "isReference": true,
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Import",
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "importType",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "locationURI",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "definitions",
+          "type": "Definitions",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "InformationRequirement",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "requiredDecision",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "requiredInput",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "decision",
+          "type": "Decision",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "ElementCollection",
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "drgElement",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "definitions",
+          "type": "Definitions",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "DRGElement",
+      "isAbstract": true,
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "definitions",
+          "type": "Definitions",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "InputData",
+      "superClass": [
+        "DRGElement"
+      ],
+      "properties": [
+        {
+          "name": "variable",
+          "type": "InformationItem",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "requiresInformation",
+          "type": "InformationRequirement",
+          "isReference": true,
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "DMNElement",
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "description",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "extensionElements",
+          "type": "ExtensionElements",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "isAttr": true,
+          "isId": true
+        },
+        {
+          "name": "extensionAttribute",
+          "type": "ExtensionAttribute",
+          "isMany": true
+        },
+        {
+          "name": "label",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "InputClause",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "inputExpression",
+          "type": "LiteralExpression",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "inputValues",
+          "type": "UnaryTests",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "DecisionTable",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "input",
+          "type": "InputClause",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "output",
+          "type": "OutputClause",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "annotation",
+          "type": "RuleAnnotationClause",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "rule",
+          "type": "DecisionRule",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "hitPolicy",
+          "type": "HitPolicy",
+          "isAttr": true,
+          "default": "UNIQUE"
+        },
+        {
+          "name": "aggregation",
+          "type": "BuiltinAggregator",
+          "isAttr": true
+        },
+        {
+          "name": "preferredOrientation",
+          "type": "DecisionTableOrientation",
+          "isAttr": true
+        },
+        {
+          "name": "outputLabel",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "LiteralExpression",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "expressionLanguage",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "text",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "ruleOutput",
+          "type": "DecisionRule",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "output",
+          "type": "OutputClause",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "expressionInput",
+          "type": "InputClause",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "importedValues",
+          "type": "ImportedValues",
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Binding",
+      "properties": [
+        {
+          "name": "parameter",
+          "type": "InformationItem",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression"
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable"
+        },
+        {
+          "name": "context",
+          "type": "Context"
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition"
+        },
+        {
+          "name": "relation",
+          "type": "Relation"
+        },
+        {
+          "name": "list",
+          "type": "List"
+        },
+        {
+          "name": "bindingFormula",
+          "type": "Expression"
+        }
+      ]
+    },
+    {
+      "name": "KnowledgeRequirement",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "requiredKnowledge",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "bkm",
+          "type": "BusinessKnowledgeModel",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "decision",
+          "type": "Decision",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "BusinessKnowledgeModel",
+      "superClass": [
+        "Invocable"
+      ],
+      "properties": [
+        {
+          "name": "encapsulatedLogic",
+          "type": "FunctionDefinition",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "knowledgeRequirement",
+          "type": "KnowledgeRequirement",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "authorityRequirement",
+          "type": "AuthorityRequirement",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "parameter",
+          "type": "InformationItem",
+          "isMany": true
+        },
+        {
+          "name": "encapsulatedDecisions",
+          "type": "ElementCollection",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "BusinessContextElement",
+      "isAbstract": true,
+      "superClass": [
+        "NamedElement"
+      ],
+      "properties": [
+        {
+          "name": "URI",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "definitions",
+          "type": "Definitions",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "PerformanceIndicator",
+      "superClass": [
+        "BusinessContextElement"
+      ],
+      "properties": [
+        {
+          "name": "impactingDecision",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "FunctionDefinition",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "formalParameter",
+          "type": "InformationItem",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression"
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation"
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable"
+        },
+        {
+          "name": "context",
+          "type": "Context"
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition"
+        },
+        {
+          "name": "relation",
+          "type": "Relation"
+        },
+        {
+          "name": "list",
+          "type": "List"
+        },
+        {
+          "name": "body",
+          "type": "Expression"
+        },
+        {
+          "name": "bkm",
+          "type": "BusinessKnowledgeModel",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "kind",
+          "type": "FunctionKind",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "contextEnrty",
+          "type": "ContextEntry",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "ContextEntry",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "variable",
+          "type": "InformationItem",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "context",
+          "type": "Context",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression"
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation"
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable"
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition"
+        },
+        {
+          "name": "relation",
+          "type": "Relation"
+        },
+        {
+          "name": "list",
+          "type": "List"
+        },
+        {
+          "name": "value",
+          "type": "Expression"
+        }
+      ]
+    },
+    {
+      "name": "List",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "relation",
+          "type": "Relation",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "literalExpression",
+          "type": "LiteralExpression",
+          "isMany": true
+        },
+        {
+          "name": "invocation",
+          "type": "Invocation",
+          "isMany": true
+        },
+        {
+          "name": "decisionTable",
+          "type": "DecisionTable",
+          "isMany": true
+        },
+        {
+          "name": "context",
+          "type": "Context",
+          "isMany": true
+        },
+        {
+          "name": "functionDefinition",
+          "type": "FunctionDefinition",
+          "isMany": true
+        },
+        {
+          "name": "list",
+          "type": "List",
+          "isMany": true
+        },
+        {
+          "name": "element",
+          "type": "Expression",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "Relation",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "column",
+          "type": "InformationItem",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "row",
+          "type": "List",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "OutputClause",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "outputValues",
+          "type": "UnaryTests",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "defaultOutputEntry",
+          "type": "LiteralExpression",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "outputDefinition",
+          "type": "ItemDefinition",
+          "isVirtual": true,
+          "isReference": true
+        },
+        {
+          "name": "typeRef",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "UnaryTests",
+      "superClass": [
+        "Expression"
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "expressionLanguage",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "ruleInput",
+          "type": "DecisionRule",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "allowedInItemDefinition",
+          "type": "ItemDefinition",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "input",
+          "type": "InputClause",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "output",
+          "type": "OutputClause",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "NamedElement",
+      "isAbstract": true,
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "ImportedValues",
+      "superClass": [
+        "Import"
+      ],
+      "properties": [
+        {
+          "name": "importedElement",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "expressionLanguage",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "DecisionService",
+      "superClass": [
+        "Invocable"
+      ],
+      "properties": [
+        {
+          "name": "outputDecision",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "encapsulatedDecision",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "inputDecision",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "inputData",
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ExtensionElements",
+      "properties": [
+        {
+          "name": "element",
+          "type": "DMNElement",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "values",
+          "type": "Element",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "ExtensionAttribute",
+      "properties": [
+        {
+          "name": "element",
+          "type": "DMNElement",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "value",
+          "type": "Element"
+        },
+        {
+          "name": "valueRef",
+          "type": "Element",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Element",
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "extensionAttribute",
+          "type": "ExtensionAttribute",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "elements",
+          "type": "ExtensionElements",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "Artifact",
+      "isAbstract": true,
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "definitions",
+          "type": "Definitions",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "Association",
+      "superClass": [
+        "Artifact"
+      ],
+      "properties": [
+        {
+          "name": "sourceRef",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "targetRef",
+          "type": "DMNElementReference",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "associationDirection",
+          "type": "AssociationDirection",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "TextAnnotation",
+      "superClass": [
+        "Artifact"
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "textFormat",
+          "isAttr": true,
+          "type": "String",
+          "default": "\"text/plain\""
+        }
+      ]
+    },
+    {
+      "name": "RuleAnnotationClause",
+      "properties": [
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "RuleAnnotation",
+      "properties": [
+        {
+          "name": "text",
+          "type": "String",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "ruleAnnotation",
+          "type": "DecisionRule",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "Invocable",
+      "isAbstract": true,
+      "superClass": [
+        "DRGElement"
+      ],
+      "properties": [
+        {
+          "name": "variable",
+          "type": "InformationItem",
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group",
+      "superClass": [
+        "Artifact"
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "FunctionItem",
+      "superClass": [
+        "DMNElement"
+      ],
+      "properties": [
+        {
+          "name": "outputTypeRef",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "outputType",
+          "type": "ItemDefinition",
+          "isVirtual": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "DMNElementReference",
+      "properties": [
+        {
+          "isAttr": true,
+          "name": "href",
+          "type": "String"
+        }
+      ]
+    }
+  ],
+  "enumerations": [
+    {
+      "name": "HitPolicy",
+      "literalValues": [
+        {
+          "name": "UNIQUE"
+        },
+        {
+          "name": "FIRST"
+        },
+        {
+          "name": "PRIORITY"
+        },
+        {
+          "name": "ANY"
+        },
+        {
+          "name": "COLLECT"
+        },
+        {
+          "name": "RULE ORDER"
+        },
+        {
+          "name": "OUTPUT ORDER"
+        }
+      ]
+    },
+    {
+      "name": "BuiltinAggregator",
+      "literalValues": [
+        {
+          "name": "SUM"
+        },
+        {
+          "name": "COUNT"
+        },
+        {
+          "name": "MIN"
+        },
+        {
+          "name": "MAX"
+        }
+      ]
+    },
+    {
+      "name": "DecisionTableOrientation",
+      "literalValues": [
+        {
+          "name": "Rule-as-Row"
+        },
+        {
+          "name": "Rule-as-Column"
+        },
+        {
+          "name": "CrossTable"
+        }
+      ]
+    },
+    {
+      "name": "AssociationDirection",
+      "literalValues": [
+        {
+          "name": "None"
+        },
+        {
+          "name": "One"
+        },
+        {
+          "name": "Both"
+        }
+      ]
+    },
+    {
+      "name": "FunctionKind",
+      "literalValues": [
+        {
+          "name": "FEEL"
+        },
+        {
+          "name": "Java"
+        },
+        {
+          "name": "PMML"
+        }
+      ]
+    }
+  ],
+  "associations": [],
+  "xml": {
+    "tagAlias": "lowerCase"
+  }
+}

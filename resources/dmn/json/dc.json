@@ -1,0 +1,98 @@
+{
+  "prefix": "dc",
+  "uri": "http://www.omg.org/spec/DMN/20180521/DC/",
+  "types": [
+    {
+      "name": "Dimension",
+      "properties": [
+        {
+          "name": "width",
+          "isAttr": true,
+          "type": "Real"
+        },
+        {
+          "name": "height",
+          "isAttr": true,
+          "type": "Real"
+        }
+      ]
+    },
+    {
+      "name": "Bounds",
+      "properties": [
+        {
+          "name": "height",
+          "isAttr": true,
+          "type": "Real"
+        },
+        {
+          "name": "width",
+          "isAttr": true,
+          "type": "Real"
+        },
+        {
+          "name": "x",
+          "isAttr": true,
+          "type": "Real"
+        },
+        {
+          "name": "y",
+          "isAttr": true,
+          "type": "Real"
+        }
+      ]
+    },
+    {
+      "name": "Point",
+      "properties": [
+        {
+          "name": "x",
+          "isAttr": true,
+          "type": "Real"
+        },
+        {
+          "name": "y",
+          "isAttr": true,
+          "type": "Real"
+        }
+      ]
+    },
+    {
+      "name": "Color",
+      "properties": [
+        {
+          "name": "red",
+          "type": "eee_1045467100323_917313_65"
+        },
+        {
+          "name": "green",
+          "type": "eee_1045467100323_917313_65"
+        },
+        {
+          "name": "blue",
+          "type": "eee_1045467100323_917313_65"
+        }
+      ]
+    }
+  ],
+  "associations": [],
+  "enumerations": [
+    {
+      "name": "dc:AlignmentKind",
+      "literalValues": [
+        {
+          "name": "start"
+        },
+        {
+          "name": "center"
+        },
+        {
+          "name": "end"
+        }
+      ]
+    }
+  ],
+  "xml": {
+    "tagAlias": "lowerCase"
+  }
+}

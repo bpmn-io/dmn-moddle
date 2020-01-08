@@ -39,7 +39,7 @@ describe('dmn-moddle - read', function() {
 
           // then
           expect(err).to.be.undefined;
-          expect(result.drgElements[0]).to.jsonEqual(expected);
+          expect(result.drgElement[0]).to.jsonEqual(expected);
 
           done(err);
         });
@@ -65,10 +65,10 @@ describe('dmn-moddle - read', function() {
                 values: [
                   {
                     $type: 'biodi:Bounds',
-                    x: 450,
-                    y: 250,
+                    height: 45,
                     width: 125,
-                    height: 45
+                    x: 450,
+                    y: 250
                   },
                   {
                     $type:'biodi:Edge',
@@ -107,10 +107,10 @@ describe('dmn-moddle - read', function() {
                 values: [
                   {
                     $type: 'biodi:Bounds',
-                    x: 150,
-                    y: 10,
+                    height: 80,
                     width: 180,
-                    height: 80
+                    x: 150,
+                    y: 10
                   }
                 ]
               }
@@ -119,7 +119,7 @@ describe('dmn-moddle - read', function() {
 
           // then
           expect(err).to.be.undefined;
-          expect(result.drgElements).to.jsonEqual(expected);
+          expect(result.drgElement).to.jsonEqual(expected);
 
           done(err);
         });
@@ -141,10 +141,10 @@ describe('dmn-moddle - read', function() {
                 values: [
                   {
                     $type: 'biodi:Bounds',
-                    x: 5,
-                    y: 270,
+                    height: 45,
                     width: 125,
-                    height: 45
+                    x: 5,
+                    y: 270
                   }
                 ]
               },
@@ -159,7 +159,7 @@ describe('dmn-moddle - read', function() {
 
           // then
           expect(err).to.be.undefined;
-          expect(result.drgElements).to.jsonEqual(expected);
+          expect(result.drgElement).to.jsonEqual(expected);
 
           done(err);
         });

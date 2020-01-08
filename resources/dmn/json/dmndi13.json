@@ -1,0 +1,218 @@
+{
+  "prefix": "dmndi",
+  "uri": "https://www.omg.org/spec/DMN/20191111/DMNDI/",
+  "types": [
+    {
+      "name": "DMNDI",
+      "properties": [
+        {
+          "name": "diagrams",
+          "type": "DMNDiagram",
+          "isMany": true
+        },
+        {
+          "name": "styles",
+          "type": "DMNStyle",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "DMNStyle",
+      "superClass": [
+        "di:Style"
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "fillColor",
+          "type": "dc:Color",
+          "isAttr": true
+        },
+        {
+          "name": "strokeColor",
+          "type": "dc:Color",
+          "isAttr": true
+        },
+        {
+          "name": "fontColor",
+          "type": "dc:Color",
+          "isAttr": true
+        },
+        {
+          "name": "fontSize",
+          "isAttr": true,
+          "type": "Real"
+        },
+        {
+          "name": "fontFamily",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "fontItalic",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "fontBold",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "fontUnderline",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "fontStrikeThrough",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "labelHorizontalAlignment",
+          "type": "dc:AlignmentKind",
+          "isAttr": true
+        },
+        {
+          "name": "labelVerticalAlignment",
+          "type": "dc:AlignmentKind",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "DMNDiagram",
+      "superClass": [
+        "di:Diagram"
+      ],
+      "properties": [
+        {
+          "name": "dmnElementRef",
+          "type": "DMN:DMNElement",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "size",
+          "type": "dc:Dimension"
+        },
+        {
+          "name": "localStyle",
+          "type": "DMNStyle",
+          "isVirtual": true
+        },
+        {
+          "name": "sharedStyle",
+          "type": "DMNStyle",
+          "isVirtual": true,
+          "isReference": true
+        },
+        {
+          "name": "diagramElements",
+          "type": "DMNDiagramElement",
+          "isMany": true
+        }
+      ]
+    },
+    {
+      "name": "DMNDiagramElement",
+      "isAbstract": true,
+      "superClass": [
+        "di:DiagramElement"
+      ],
+      "properties": [
+        {
+          "name": "dmnElementRef",
+          "type": "DMN:DMNElement",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "sharedStyle",
+          "type": "DMNStyle",
+          "isVirtual": true,
+          "isReference": true
+        },
+        {
+          "name": "localStyle",
+          "type": "DMNStyle",
+          "isVirtual": true
+        },
+        {
+          "name": "label",
+          "type": "DMNLabel"
+        }
+      ]
+    },
+    {
+      "name": "DMNLabel",
+      "superClass": [
+        "di:Shape"
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "isAttr": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "DMNShape",
+      "superClass": [
+        "di:Shape",
+        "DMNDiagramElement"
+      ],
+      "properties": [
+        {
+          "name": "isListedInputData",
+          "isAttr": true,
+          "type": "Boolean"
+        },
+        {
+          "name": "decisionServiceDividerLine",
+          "type": "DMNDecisionServiceDividerLine"
+        },
+        {
+          "name": "isCollapsed",
+          "isAttr": true,
+          "type": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "DMNEdge",
+      "superClass": [
+        "DMNDiagramElement",
+        "di:Edge"
+      ],
+      "properties": [
+        {
+          "name": "sourceElement",
+          "type": "DMNDiagramElement",
+          "isAttr": true,
+          "isReference": true
+        },
+        {
+          "name": "targetElement",
+          "type": "DMNDiagramElement",
+          "isAttr": true,
+          "isReference": true
+        }
+      ]
+    },
+    {
+      "name": "DMNDecisionServiceDividerLine",
+      "superClass": [
+        "di:Edge"
+      ]
+    }
+  ],
+  "associations": [],
+  "enumerations": []
+}
