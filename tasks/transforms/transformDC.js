@@ -14,10 +14,6 @@ module.exports = async function(results) {
 
   const prefix = model.prefix = 'dc';
 
-  model.xml = {
-    tagAlias: 'lowerCase'
-  };
-
   // remove properties without name
   model.types.forEach(type => {
     if (type.properties) {
