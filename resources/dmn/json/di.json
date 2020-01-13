@@ -51,7 +51,7 @@
       "properties": [
         {
           "name": "bounds",
-          "type": "Bounds"
+          "type": "dc:Bounds"
         }
       ]
     },
@@ -61,7 +61,7 @@
       "properties": [
         {
           "name": "wayPoints",
-          "type": "Point",
+          "type": "dc:Point",
           "isMany": true
         }
       ]

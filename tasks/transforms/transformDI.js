@@ -12,7 +12,7 @@ module.exports = async function(results) {
 
   let model = elementsByType[ 'uml:Package' ][ 0 ];
 
-  model.prefix = 'di';
+  const prefix = model.prefix = 'di';
 
   model.xml = {
     tagAlias: 'lowerCase'
@@ -32,6 +32,8 @@ module.exports = async function(results) {
   const style = model.types.find(({ name }) => {
     return name === 'dc:Style';
   });
+
+  style.name = 'di:Style';
 
   // add di:Style#id (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/10)
   if (!style.properties) {
@@ -75,13 +77,11 @@ module.exports = async function(results) {
     return name && name.includes('di:');
   });
 
-  model.types.push(style);
-
   model.enumerations = model.enumerations.filter(({ name }) => {
     return name && name.includes('di:');
   });
 
-  model = removePrefixes(model);
+  model = removePrefixes(model, prefix);
 
   model = removeWhitespace(model);
 
