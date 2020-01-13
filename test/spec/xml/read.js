@@ -8,165 +8,52 @@ import {
 
 describe('dmn-moddle - read', function() {
 
-  var moddle = createModdle();
+  const moddle = createModdle();
 
-  function read(xml, root, opts, callback) {
-    return moddle.fromXML(xml, root, opts, callback);
+  function read(xml, root, options, callback) {
+    return moddle.fromXML(xml, root, options, callback);
   }
 
-  function fromFile(file, root, opts, callback) {
-    var contents = readFile(file);
+  function fromFile(file, root, options, callback) {
+    const contents = readFile(file);
 
-    return read(contents, root, opts, callback);
+    return read(contents, root, options, callback);
   }
 
 
-  describe('should import Decisions', function() {
+  describe('DMN', function() {
 
-    describe('dmn', function() {
+    it('Decision', function(done) {
 
+      // when
+      fromFile('test/fixtures/dmn/decision.part.dmn', 'dmn:Definitions', function(err, result) {
 
-      it('Decision', function(done) {
+        const expected = {
+          $type: 'dmn:Decision',
+          id: 'Decision_1',
+          name: 'Decision'
+        };
 
-        // when
-        fromFile('test/fixtures/dmn/decision.part.dmn', 'dmn:Definitions', function(err, result) {
+        // then
+        expect(err).not.to.exist;
+        expect(result.drgElement[ 0 ]).to.jsonEqual(expected);
 
-          var expected = {
-            $type: 'dmn:Decision',
-            id: 'decision',
-            name: 'decision-name'
-          };
-
-          // then
-          expect(err).to.be.undefined;
-          expect(result.drgElement[0]).to.jsonEqual(expected);
-
-          done(err);
-        });
+        done(err);
       });
-
     });
 
 
-    describe('di', function() {
+    it('InputData');
 
-      it('simple', function(done) {
+  });
 
-        // when
-        fromFile('test/fixtures/dmn/simple-di.dmn', 'dmn:Definitions', function(err, result) {
 
-          var expected = [
-            {
-              $type: 'dmn:BusinessKnowledgeModel',
-              name: 'El menú',
-              id: 'elMenu',
-              extensionElements: {
-                $type: 'dmn:ExtensionElements',
-                values: [
-                  {
-                    $type: 'biodi:Bounds',
-                    height: 45,
-                    width: 125,
-                    x: 450,
-                    y: 250
-                  },
-                  {
-                    $type:'biodi:Edge',
-                    source: 'dish-decision',
-                    waypoints: [
-                      {
-                        $type: 'biodi:Waypoint',
-                        x: 450,
-                        y: 250
-                      },
-                      {
-                        $type: 'biodi:Waypoint',
-                        x: 500,
-                        y: 10
-                      }
-                    ]
-                  }
-                ]
-              },
-              authorityRequirement: [
-                {
-                  $type: 'dmn:AuthorityRequirement',
-                  requiredAuthority: {
-                    $type: 'dmn:DMNElementReference',
-                    href: '#dish-decision'
-                  }
-                }
-              ]
-            },
-            {
-              $type: 'dmn:Decision',
-              id: 'dish-decision',
-              name: 'Dish Decision',
-              extensionElements: {
-                $type: 'dmn:ExtensionElements',
-                values: [
-                  {
-                    $type: 'biodi:Bounds',
-                    height: 80,
-                    width: 180,
-                    x: 150,
-                    y: 10
-                  }
-                ]
-              }
-            }
-          ];
+  describe('DI', function() {
 
-          // then
-          expect(err).to.be.undefined;
-          expect(result.drgElement).to.jsonEqual(expected);
+    it('Decision');
 
-          done(err);
-        });
 
-      });
-
-      it('input data', function(done) {
-
-        // when
-        fromFile('test/fixtures/dmn/input-data.dmn', 'dmn:Definitions', function(err, result) {
-
-          var expected = [
-            {
-              $type: 'dmn:InputData',
-              name: 'Weather in Celsius',
-              id: 'temperature_id',
-              extensionElements: {
-                $type: 'dmn:ExtensionElements',
-                values: [
-                  {
-                    $type: 'biodi:Bounds',
-                    height: 45,
-                    width: 125,
-                    x: 5,
-                    y: 270
-                  }
-                ]
-              },
-              variable: {
-                $type: 'dmn:InformationItem',
-                typeRef: 'integer',
-                name: 'Weather in Celsius',
-                id: 'temperature_ii'
-              }
-            }
-          ];
-
-          // then
-          expect(err).to.be.undefined;
-          expect(result.drgElement).to.jsonEqual(expected);
-
-          done(err);
-        });
-
-      });
-
-    });
+    it('InputData');
 
   });
 

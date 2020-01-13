@@ -49,6 +49,37 @@ function findChildren(parent, pattern) {
 module.exports.findChildren = findChildren;
 
 /**
+ * Find type with specified name in schema.
+ *
+ * @param {String} type
+ * @param {Object} schema
+ *
+ * @returns {Object}
+ */
+function findType(type, schema) {
+  return schema.types.find(({ name }) => name === type);
+}
+
+module.exports.findType = findType;
+
+/**
+ * Find property with specified name in schema.
+ *
+ * @param {String} typeProperty
+ * @param {Object} schema
+ *
+ * @returns {Object}
+ */
+function findProperty(typeProperty, schema) {
+  const [ type, property ] = typeProperty.split('#');
+
+  return findType(type, schema).properties.find(({ name }) => name === property);
+}
+
+module.exports.findProperty = findProperty;
+
+
+/**
 * Fix order of properties according to <sequence> indicators specified in XSD.
 *
 * Example:

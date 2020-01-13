@@ -5,29 +5,33 @@ import {
   readFile
 } from '../../helper';
 
-import {
-  toXML
-} from '../../xml-helper';
+import { toXML } from '../../xml-helper';
 
 
 describe('dmn-moddle - edit', function() {
 
-  var moddle = createModdle();
+  const moddle = createModdle();
 
-  describe('save after change', function() {
 
-    it('should serialize changed name', function(done) {
+  describe('DMN', function() {
+
+    it('edit Decision name', function(done) {
 
       // given
-      var fileContents = readFile('test/fixtures/dmn/decision.part.dmn');
+      const expected =
+        '<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="Definitions_1" name="Foo" namespace="http://camunda.org/schema/1.0/dmn">' +
+        '<decision id="Decision_1" name="Decision" />' +
+        '</definitions>';
+
+      const fileContents = readFile('test/fixtures/dmn/decision.part.dmn');
 
       moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result) {
 
-        result.name = 'FOOBAR';
+        result.name = 'Foo';
 
         // when
-        toXML(result, { format: true }, function(err, xml) {
-          expect(xml).to.contain('name="FOOBAR"');
+        toXML(result, { preamble: false }, function(err, xml) {
+          expect(xml).to.equal(expected);
 
           done(err);
         });
