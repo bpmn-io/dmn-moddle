@@ -4,7 +4,23 @@
   "types": [
     {
       "name": "DiagramElement",
-      "isAbstract": true
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "id",
+          "isAttr": true,
+          "isId": true,
+          "type": "String"
+        },
+        {
+          "name": "style",
+          "isReference": true,
+          "type": "Style",
+          "xml": {
+            "serialize": "property"
+          }
+        }
+      ]
     },
     {
       "name": "Diagram",
@@ -52,7 +68,15 @@
     },
     {
       "name": "Style",
-      "isAbstract": true
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "id",
+          "isAttr": true,
+          "isId": true,
+          "type": "String"
+        }
+      ]
     }
   ],
   "associations": [],
