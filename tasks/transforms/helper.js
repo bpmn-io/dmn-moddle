@@ -1,6 +1,9 @@
 'use strict';
 
-const { matchPattern } = require('min-dash');
+const {
+  isArray,
+  matchPattern
+} = require('min-dash');
 
 const sax = require('sax');
 
@@ -310,22 +313,33 @@ module.exports.parseXML = parseXML;
  * Remove prefixes from all type names.
  *
  * @param {Object} model
+ * @param {Array<string>|string} prefixes
  *
  * @returns {Object}
  */
-function removePrefixes(model) {
+function removePrefixes(model, prefixes) {
+  if (prefixes && !isArray(prefixes)) {
+    prefixes = [ prefixes ];
+  }
+
   model.types.forEach(type => {
-    type.name = withoutPrefix(type.name);
+    type.name = withoutPrefixes(type.name, prefixes);
 
     if (type.superClass) {
-      type.superClass = type.superClass.map(withoutPrefix);
+      type.superClass = type.superClass.map(superClass => {
+        return withoutPrefixes(superClass, prefixes);
+      });
     }
 
     if (type.properties) {
       type.properties.forEach(property => {
-        property.type = withoutPrefix(property.type);
+        property.type = withoutPrefixes(property.type, prefixes);
       });
     }
+  });
+
+  model.enumerations.forEach(enumeration => {
+    enumeration.name = withoutPrefixes(enumeration.name, prefixes);
   });
 
   return model;
@@ -357,12 +371,23 @@ function removeWhitespace(model) {
 module.exports.removeWhitespace = removeWhitespace;
 
 /**
- * Return type name without prefix.
+ * Remove specified prefixes from type.
  *
- * @param {string} type
+ * @param {string} prefixType
+ * @param {Array<string>} prefixes
  *
  * @returns {string}
  */
-function withoutPrefix(type) {
-  return type.split(':').pop();
+function withoutPrefixes(prefixType, prefixes) {
+  let [ prefix, type ] = prefixType.split(':');
+
+  if (!type) {
+    return prefix;
+  }
+
+  if (prefixes && prefixes.includes(prefix)) {
+    return type;
+  }
+
+  return prefixType;
 }

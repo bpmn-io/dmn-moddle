@@ -133,6 +133,23 @@ describe('generate schema', function() {
       });
     });
 
+
+    it('should not remove foreign prefixes', function() {
+
+      // then
+      const wayPoints = findProperty('Edge#wayPoints', schema);
+
+      expect(wayPoints).to.exist;
+
+      expect(wayPoints.type).to.equal('dc:Point');
+
+      const bounds = findProperty('Shape#bounds', schema);
+
+      expect(bounds).to.exist;
+
+      expect(bounds.type).to.equal('dc:Bounds');
+    });
+
   });
 
 

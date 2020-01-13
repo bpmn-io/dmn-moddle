@@ -12,7 +12,7 @@ module.exports = async function(results) {
 
   let model = elementsByType[ 'uml:Package' ][ 0 ];
 
-  model.prefix = 'dc';
+  const prefix = model.prefix = 'dc';
 
   model.xml = {
     tagAlias: 'lowerCase'
@@ -42,7 +42,7 @@ module.exports = async function(results) {
     return name !== 'dc:Style';
   });
 
-  model = removePrefixes(model);
+  model = removePrefixes(model, prefix);
 
   model = removeWhitespace(model);
 

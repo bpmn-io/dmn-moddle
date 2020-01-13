@@ -62,15 +62,15 @@
       "properties": [
         {
           "name": "red",
-          "type": "eee_1045467100323_917313_65"
+          "type": "UML_Standard_Profile.mdzip:eee_1045467100323_917313_65"
         },
         {
           "name": "green",
-          "type": "eee_1045467100323_917313_65"
+          "type": "UML_Standard_Profile.mdzip:eee_1045467100323_917313_65"
         },
         {
           "name": "blue",
-          "type": "eee_1045467100323_917313_65"
+          "type": "UML_Standard_Profile.mdzip:eee_1045467100323_917313_65"
         }
       ]
     }
@@ -78,7 +78,7 @@
   "associations": [],
   "enumerations": [
     {
-      "name": "dc:AlignmentKind",
+      "name": "AlignmentKind",
       "literalValues": [
         {
           "name": "start"
