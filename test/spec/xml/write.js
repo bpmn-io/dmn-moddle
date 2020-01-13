@@ -1,149 +1,83 @@
 import expect from '../../expect';
 
-import {
-  assign,
-  isFunction
-} from 'min-dash';
-
-import {
-  createModdle
-} from '../../helper';
+import { createModdle } from '../../helper';
 
 
 describe('dmn-moddle - write', function() {
 
-  var moddle = createModdle();
-
+  const moddle = createModdle();
 
   function write(element, options, callback) {
-    if (isFunction(options)) {
-      callback = options;
-      options = {};
-    }
-
-    // skip preamble for tests
-    options = assign({ preamble: false }, options);
-
     moddle.toXML(element, options, callback);
   }
 
 
-  describe('should export types', function() {
+  describe('dmn', function() {
 
-    describe('dmn', function() {
+    it('Definitions', function(done) {
 
-      it('Definitions (empty)', function(done) {
+      // given
+      const definitions = moddle.create('dmn:Definitions');
 
-        // given
-        var definitions = moddle.create('dmn:Definitions');
+      const expected = '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" />';
 
-        var expectedXML =
-        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" />';
+      // when
+      write(definitions, { preamble: false }, function(err, result) {
 
-        // when
-        write(definitions, function(err, result) {
+        // then
+        expect(result).to.eql(expected);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
-
-      });
-
-
-      it('Literal Expression (empty)', function(done) {
-
-        // given
-        var variable = moddle.create('dmn:InformationItem', {
-              typeRef: 'integer',
-              id: 'temperature_ii',
-              name: 'Weather in Celsius'
-            }),
-            literalExpression = moddle.create('dmn:LiteralExpression', {
-              id: 'LiteralExpression_0y0an4b'
-            }),
-            decision = moddle.create('dmn:Decision', {
-              name: 'Weather',
-              id: 'weather_id',
-              variable: variable,
-              literalExpression: literalExpression
-            });
-
-        var expectedXML = [
-          '<dmn:decision xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" id="weather_id" name="Weather">',
-          '<dmn:variable id="temperature_ii" name="Weather in Celsius" typeRef="integer" />',
-          '<dmn:literalExpression id="LiteralExpression_0y0an4b" />',
-          '</dmn:decision>'
-        ].join('');
-
-        // when
-        write(decision, function(err, result) {
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
-      });
-    });
-
-
-    describe('di', function() {
-
-      it('input data', function(done) {
-
-        // given
-        var bounds = moddle.create('biodi:Bounds', {
-              height: 45,
-              width: 125,
-              x: 450,
-              y: 270
-            }),
-            variable = moddle.create('dmn:InformationItem', {
-              typeRef: 'integer',
-              id: 'temperature_ii',
-              name: 'Weather in Celsius'
-            }),
-            extensionElements = moddle.create('dmn:ExtensionElements', {
-              values: [ bounds ]
-            }),
-            inputData = moddle.create('dmn:InputData', {
-              name: 'Weather in Celsius',
-              id: 'temperature_id',
-              variable: variable,
-              extensionElements: extensionElements
-            });
-
-        var expectedXML = [
-          '<dmn:inputData xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/"' +
-          ' xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="temperature_id" name="Weather in Celsius">',
-          '<dmn:extensionElements>',
-          '<biodi:bounds height="45" width="125" x="450" y="270" />',
-          '</dmn:extensionElements>',
-          '<dmn:variable id="temperature_ii" name="Weather in Celsius" typeRef="integer" />',
-          '</dmn:inputData>'
-        ].join('');
-
-        // when
-        write(inputData, function(err, result) {
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          expect(err).not.exist;
-          expect(result).to.eql(expectedXML);
-
-          done(null);
-        });
-
+        done(err);
       });
 
     });
+
+
+    it('LiteralExpression', function(done) {
+
+      // given
+      const informationItem = moddle.create('dmn:InformationItem', {
+        id: 'InformationItem_1',
+        name: 'Bar',
+        typeRef: 'integer'
+      });
+
+      const literalExpression = moddle.create('dmn:LiteralExpression', {
+        id: 'LiteralExpression_1'
+      });
+
+      const decision = moddle.create('dmn:Decision', {
+        id: 'Decision_1',
+        literalExpression: literalExpression,
+        name: 'Foo',
+        variable: informationItem
+      });
+
+      const expected =
+        '<dmn:decision xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" id="Decision_1" name="Foo">' +
+        '<dmn:variable id="InformationItem_1" name="Bar" typeRef="integer" />' +
+        '<dmn:literalExpression id="LiteralExpression_1" />' +
+        '</dmn:decision>';
+
+      // when
+      write(decision, { preamble: false }, function(err, result) {
+
+        // then
+        expect(result).to.eql(expected);
+
+        done(err);
+      });
+    });
+
+  });
+
+
+  describe('di', function() {
+
+    it('Decision');
+
+
+    it('InputData');
 
   });
 

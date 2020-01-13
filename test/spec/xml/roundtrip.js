@@ -3,7 +3,7 @@ import {
 } from '../../helper';
 
 import {
-  fromFile as fromXMLFile,
+  fromFile,
   toXML,
   validate
 } from '../../xml-helper';
@@ -11,20 +11,17 @@ import {
 
 describe('dmn-moddle - roundtrip', function() {
 
-  var moddle = createModdle();
+  this.timeout(30000);
 
-  function fromFile(file, done) {
-    fromXMLFile(moddle, file, done);
-  }
+  const moddle = createModdle();
 
 
-  describe('should serialize valid DMN xml after read', function() {
-    this.timeout(15000);
+  describe('DMN', function() {
 
-    it('example decision', function(done) {
+    it('Decision', function(done) {
 
       // given
-      fromFile('test/fixtures/dmn/example.dmn', function(err, result) {
+      fromFile(moddle, 'test/fixtures/dmn/example.dmn', function(err, result) {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
@@ -37,19 +34,17 @@ describe('dmn-moddle - roundtrip', function() {
     });
 
 
-    it('di', function(done) {
+    it('InputData');
 
-      // given
-      fromFile('test/fixtures/dmn/example-di.dmn', function(err, result) {
+  });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
 
-          validate(err, xml, done);
-        });
+  describe('DI', function() {
 
-      });
-    });
+    it('Decision');
+
+
+    it('InputData');
 
   });
 
