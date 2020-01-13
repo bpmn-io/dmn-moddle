@@ -33,6 +33,43 @@ module.exports = async function(results) {
     return name === 'dc:Style';
   });
 
+  // add di:Style#id (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/10)
+  if (!style.properties) {
+    style.properties = [];
+  }
+
+  style.properties.push({
+    name: 'id',
+    isAttr: true,
+    isId: true,
+    type: 'String'
+  });
+
+  // add di:DiagramElement#id and di:DiagramElement#style
+  // (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/9)
+  // sharedStyle is not added because it is already redefined in DMNDI
+  const diagramElement = model.types.find(({ name }) => {
+    return name === 'di:DiagramElement';
+  });
+
+  if (!diagramElement.properties) {
+    diagramElement.properties = [];
+  }
+
+  diagramElement.properties.push({
+    name: 'id',
+    isAttr: true,
+    isId: true,
+    type: 'String'
+  }, {
+    name: 'style',
+    isReference: true,
+    type: 'Style',
+    xml: {
+      serialize: 'property'
+    }
+  });
+
   // filter DI
   model.types = model.types.filter(({ name }) => {
     return name && name.includes('di:');

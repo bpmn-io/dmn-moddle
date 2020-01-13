@@ -88,6 +88,51 @@ describe('generate schema', function() {
       expect(schema).to.exist;
     });
 
+
+    it('should add di:Style#id', function() {
+
+      // then
+      const style = findProperty('Style#id', schema);
+
+      expect(style).to.exist;
+
+      expect(style).to.eql({
+        name: 'id',
+        isAttr: true,
+        isId: true,
+        type: 'String'
+      });
+    });
+
+
+    it('add di:DiagramElement#id and di:DiagramElement#style', function() {
+
+      // then
+      const id = findProperty('DiagramElement#id', schema);
+
+      expect(id).to.exist;
+
+      expect(id).to.eql({
+        name: 'id',
+        isAttr: true,
+        isId: true,
+        type: 'String'
+      });
+
+      const style = findProperty('DiagramElement#style', schema);
+
+      expect(style).to.exist;
+
+      expect(style).to.eql({
+        name: 'style',
+        isReference: true,
+        type: 'Style',
+        xml: {
+          serialize: 'property'
+        }
+      });
+    });
+
   });
 
 
