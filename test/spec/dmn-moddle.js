@@ -1,21 +1,23 @@
 import expect from '../expect';
 
-import {
-  createModdle
-} from '../helper';
+import DmnModdle from '../../lib';
 
 
 describe('dmn-moddle', function() {
 
-  var moddle = createModdle();
+  let moddle;
+
+  beforeEach(function() {
+    moddle = new DmnModdle();
+  });
 
 
-  describe('parsing', function() {
+  describe('#getType', function() {
 
-    it('should publish type', function() {
+    it('should get type of Decision', function() {
 
       // when
-      var type = moddle.getType('dmn:Decision');
+      const type = moddle.getType('dmn:Decision');
 
       // then
       expect(type).to.exist;
@@ -25,35 +27,47 @@ describe('dmn-moddle', function() {
   });
 
 
-  describe('creation', function() {
+  describe('#create', function() {
 
     it('should create DMNElement', function() {
-      var sequenceFlow = moddle.create('dmn:DMNElement');
 
-      expect(sequenceFlow.$type).to.eql('dmn:DMNElement');
+      // when
+      const dmnElement = moddle.create('dmn:DMNElement');
+
+      // then
+      expect(dmnElement.$type).to.eql('dmn:DMNElement');
     });
 
 
     it('should create Definitions', function() {
-      var definitions = moddle.create('dmn:Definitions');
 
+      // when
+      const definitions = moddle.create('dmn:Definitions');
+
+      // then
       expect(definitions.$type).to.eql('dmn:Definitions');
     });
 
 
     it('should create Decision', function() {
-      var process = moddle.create('dmn:Decision');
 
-      expect(process.$type).to.eql('dmn:Decision');
-      expect(process.$instanceOf('dmn:DRGElement')).to.be.true;
+      // when
+      var decision = moddle.create('dmn:Decision');
+
+      // then
+      expect(decision.$type).to.eql('dmn:Decision');
+      expect(decision.$instanceOf('dmn:DRGElement')).to.be.true;
     });
 
 
     it('should create DecisionTable', function() {
-      var subProcess = moddle.create('dmn:DecisionTable');
 
-      expect(subProcess.$type).to.eql('dmn:DecisionTable');
-      expect(subProcess.$instanceOf('dmn:Expression')).to.be.true;
+      // when
+      const decisionTable = moddle.create('dmn:DecisionTable');
+
+      // then
+      expect(decisionTable.$type).to.eql('dmn:DecisionTable');
+      expect(decisionTable.$instanceOf('dmn:Expression')).to.be.true;
     });
 
   });

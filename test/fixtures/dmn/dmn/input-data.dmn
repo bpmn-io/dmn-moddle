@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="Definitions_1" name="Definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <inputData id="InputData_1" name="InputData" />
+</definitions>

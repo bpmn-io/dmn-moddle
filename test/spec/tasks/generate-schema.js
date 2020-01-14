@@ -11,10 +11,7 @@ import {
   transformDMNDI
 } from '../../../tasks/transforms';
 
-import {
-  findProperty,
-  findType
-} from '../../../tasks/transforms/helper';
+import { findProperty } from '../../../tasks/transforms/helper';
 
 async function generateSchema(file) {
   const {

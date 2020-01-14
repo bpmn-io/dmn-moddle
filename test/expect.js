@@ -1,11 +1,19 @@
 import chai from 'chai';
 
-import Matchers from './matchers';
+chai.use(function(chai, utils) {
+  utils.addMethod(chai.Assertion.prototype, 'jsonEqual', function(comparison) {
+    const actual = JSON.stringify(this._obj);
+    const expected = JSON.stringify(comparison);
 
-// add matchers
-chai.use(Matchers);
+    this.assert(
+      actual == expected,
+      'expected #{this} to deeply equal #{act}',
+      'expected #{this} not to deeply equal #{act}',
+      comparison,
+      this._obj,
+      true
+    );
+  });
+});
 
-// expose chai expect
-export {
-  expect as default
-} from 'chai';
+export { expect as default } from 'chai';

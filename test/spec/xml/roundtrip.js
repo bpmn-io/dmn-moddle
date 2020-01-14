@@ -1,50 +1,67 @@
-import {
-  createModdle
-} from '../../helper';
+import fs from 'fs';
 
-import {
-  fromFile,
-  toXML,
-  validate
-} from '../../xml-helper';
+import { validateXML } from 'xsd-schema-validator';
+
+import DmnModdle from '../../../lib';
+
+const xsd = 'resources/dmn/xsd/DMN13.xsd';
 
 
 describe('dmn-moddle - roundtrip', function() {
 
   this.timeout(30000);
 
-  const moddle = createModdle();
+  let moddle;
+
+  beforeEach(function() {
+    moddle = new DmnModdle();
+  });
+
+  function validate(fileName) {
+    return async function() {
+      return new Promise((resolve, reject) => {
+        const file = fs.readFileSync(fileName, 'utf8');
+
+        moddle.fromXML(file, 'dmn:Definitions', (err, definitions) => {
+          if (err) {
+            reject(err);
+          }
+
+          moddle.toXML(definitions, { format: true }, (err, xml) => {
+            if (err) {
+              reject(err);
+            }
+
+            validateXML(xml, xsd, (err, result) => {
+              if (err) {
+                return reject(err);
+              }
+
+              resolve(result);
+            });
+          });
+        });
+      });
+    };
+  }
 
 
   describe('DMN', function() {
 
-    it('Decision', function(done) {
-
-      // given
-      fromFile(moddle, 'test/fixtures/dmn/example.dmn', function(err, result) {
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-
-          validate(err, xml, done);
-        });
-
-      });
-
-    });
+    it('Decision', validate('test/fixtures/dmn/dmn/decision.dmn'));
 
 
-    it('InputData');
+    it('InputData', validate('test/fixtures/dmn/dmn/input-data.dmn'));
 
   });
 
 
   describe('DI', function() {
 
-    it('Decision');
+    it('Decision', validate('test/fixtures/dmn/dmndi/decision.dmn'));
 
 
-    it('InputData');
+    it('InputData', validate('test/fixtures/dmn/dmndi/input-data.dmn'));
 
   });
 
