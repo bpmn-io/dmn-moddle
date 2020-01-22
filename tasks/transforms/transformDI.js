@@ -2,6 +2,7 @@ const fs = require('fs');
 
 const {
   findProperty,
+  findType,
   fixSequence,
   parseXML,
   removePrefixes,
@@ -72,6 +73,10 @@ module.exports = async function(results) {
       serialize: 'property'
     }
   });
+
+  // add superclass di:DiagramElement to di:Edge and di:Shape
+  findType('di:Edge', model).superClass = [ 'di:DiagramElement' ];
+  findType('di:Shape', model).superClass = [ 'di:DiagramElement' ];
 
   // rename di:Edge#wayPoints as specified in XSD
   // (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/11)

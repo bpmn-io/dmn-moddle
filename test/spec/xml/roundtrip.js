@@ -63,6 +63,9 @@ describe('dmn-moddle - roundtrip', function() {
 
     it('InputData', validate('test/fixtures/dmn/dmndi/input-data.dmn'));
 
+
+    it('with Label', validate('test/fixtures/dmn/dmndi/label.dmn'));
+
   });
 
 });
