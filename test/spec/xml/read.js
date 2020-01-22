@@ -63,6 +63,26 @@ describe('dmn-moddle - read', function() {
       expect(definitions.get('drgElement')[ 0 ]).to.jsonEqual(expected);
     });
 
+
+    it('InformationRequirement', async function() {
+
+      // given
+      const expected = {
+        $type: 'dmn:InformationRequirement',
+        id: 'InformationRequirement_1',
+        requiredInput: {
+          $type: 'dmn:DMNElementReference',
+          href: '#InputData_1'
+        }
+      };
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmn/information-requirement.dmn');
+
+      // then
+      expect(definitions.get('drgElement')[ 0 ].get('informationRequirement')[ 0 ]).to.jsonEqual(expected);
+    });
+
   });
 
 
@@ -100,7 +120,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('InputData', async function() {
+    it('InputData & DI', async function() {
 
       // given
       const expected = {
@@ -129,6 +149,75 @@ describe('dmn-moddle - read', function() {
 
       // then
       expect(definitions.get('dmnDI')).to.jsonEqual(expected);
+    });
+
+
+    it('with label', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmndi/label.dmn');
+
+      // then
+      expect(definitions.get('dmnDI')).to.jsonEqual({
+        $type: 'dmndi:DMNDI',
+        diagrams: [
+          {
+            $type: 'dmndi:DMNDiagram',
+            diagramElements: [
+              {
+                $type: 'dmndi:DMNShape',
+                id: 'DMNShape_1',
+                bounds: {
+                  $type: 'dc:Bounds',
+                  height: 80,
+                  width: 180,
+                  x: 100,
+                  y: 100
+                },
+                label: {
+                  $type: 'dmndi:DMNLabel',
+                  text: 'Decision_1'
+                }
+              },
+              {
+                $type: 'dmndi:DMNShape',
+                id: 'DMNShape_2',
+                bounds: {
+                  $type: 'dc:Bounds',
+                  height: 45,
+                  width: 125,
+                  x: 127.5,
+                  y: 300
+                },
+                label: {
+                  $type: 'dmndi:DMNLabel',
+                  text: 'InputData_1'
+                }
+              },
+              {
+                $type: 'dmndi:DMNEdge',
+                id: 'DMNEdge_1',
+                waypoint: [
+                  {
+                    $type: 'dc:Point',
+                    x: 180,
+                    y: 190
+                  },
+                  {
+                    $type: 'dc:Point',
+                    x: 180,
+                    y: 300
+                  }
+                ],
+                label: {
+                  $type: 'dmndi:DMNLabel',
+                  text: 'InformationRequirement_1'
+                }
+              }
+            ]
+          }
+        ]
+      });
     });
 
   });

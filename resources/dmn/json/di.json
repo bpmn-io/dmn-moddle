@@ -53,6 +53,9 @@
           "name": "bounds",
           "type": "dc:Bounds"
         }
+      ],
+      "superClass": [
+        "DiagramElement"
       ]
     },
     {
@@ -67,6 +70,9 @@
             "serialize": "property"
           }
         }
+      ],
+      "superClass": [
+        "DiagramElement"
       ]
     },
     {

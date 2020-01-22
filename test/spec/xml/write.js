@@ -83,11 +83,11 @@ describe('dmn-moddle - write', function() {
 
       // given
       const expected =
-        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/">' +
+        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/">' +
           '<dmn:decision id="Decision_1" name="Decision_1" />' +
           '<dmndi:DMNDI>' +
             '<dmndi:DMNDiagram id="DMNDiagram_1">' +
-              '<dmndi:DMNShape di:id="DMNShape_1" dmnElementRef="Decision_1">' +
+              '<dmndi:DMNShape id="DMNShape_1" dmnElementRef="Decision_1">' +
                 '<dc:Bounds height="80" width="180" x="100" y="100" />' +
               '</dmndi:DMNShape>' +
             '</dmndi:DMNDiagram>' +
@@ -151,11 +151,11 @@ describe('dmn-moddle - write', function() {
 
       // given
       const expected =
-        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/">' +
+        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/">' +
           '<dmn:inputData id="InputData_1" name="InputData_1" />' +
           '<dmndi:DMNDI>' +
             '<dmndi:DMNDiagram id="DMNDiagram_1">' +
-              '<dmndi:DMNShape di:id="DMNShape_1" dmnElementRef="InputData_1">' +
+              '<dmndi:DMNShape id="DMNShape_1" dmnElementRef="InputData_1">' +
                 '<dc:Bounds height="45" width="125" x="100" y="100" />' +
               '</dmndi:DMNShape>' +
             '</dmndi:DMNDiagram>' +
