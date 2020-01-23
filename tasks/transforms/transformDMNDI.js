@@ -3,6 +3,7 @@ const fs = require('fs');
 const { matchPattern } = require('min-dash');
 
 const {
+  findProperty,
   fixSequence,
   parseXML,
   removeWhitespace
@@ -30,6 +31,22 @@ module.exports = async function(results) {
 
   // reverse order of DMNEdge superclasses
   model.types.find(matchPattern({ name: 'DMNEdge' })).superClass.reverse();
+
+  // fix DMNLabel
+  const text = findProperty('DMNLabel#text', model);
+
+  delete text.isAttr;
+
+  text.type = 'Text';
+
+  model.types.push({
+    name: 'Text',
+    properties: [{
+      name: 'text',
+      isBody: true,
+      type: 'String'
+    }]
+  });
 
   model = removeWhitespace(model);
 

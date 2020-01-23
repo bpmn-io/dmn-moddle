@@ -176,7 +176,10 @@ describe('dmn-moddle - read', function() {
                 },
                 label: {
                   $type: 'dmndi:DMNLabel',
-                  text: 'Decision_1'
+                  text: {
+                    $type: 'dmndi:Text',
+                    text: 'Decision_1'
+                  }
                 }
               },
               {
@@ -191,7 +194,10 @@ describe('dmn-moddle - read', function() {
                 },
                 label: {
                   $type: 'dmndi:DMNLabel',
-                  text: 'InputData_1'
+                  text: {
+                    $type: 'dmndi:Text',
+                    text: 'InputData_1'
+                  }
                 }
               },
               {
@@ -211,7 +217,10 @@ describe('dmn-moddle - read', function() {
                 ],
                 label: {
                   $type: 'dmndi:DMNLabel',
-                  text: 'InformationRequirement_1'
+                  text: {
+                    $type: 'dmndi:Text',
+                    text: 'InformationRequirement_1'
+                  }
                 }
               }
             ]
