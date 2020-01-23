@@ -1,9 +1,8 @@
 const fs = require('fs');
 
-const { matchPattern } = require('min-dash');
-
 const {
   findProperty,
+  findType,
   fixSequence,
   parseXML,
   removeWhitespace
@@ -27,10 +26,10 @@ module.exports = async function(results) {
   });
 
   // fix super class of DMNStyle
-  model.types.find(matchPattern({ name: 'DMNStyle' })).superClass = [ 'di:Style' ];
+  findType('DMNStyle', model).superClass = [ 'di:Style' ];
 
   // reverse order of DMNEdge superclasses
-  model.types.find(matchPattern({ name: 'DMNEdge' })).superClass.reverse();
+  findType('DMNEdge', model).superClass.reverse();
 
   // fix DMNLabel
   const text = findProperty('DMNLabel#text', model);

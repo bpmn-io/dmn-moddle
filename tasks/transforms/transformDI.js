@@ -31,9 +31,7 @@ module.exports = async function(results) {
   model.associations = [];
 
   // move dc:Style from DC to DI (belongs to DI, not DC)
-  const style = model.types.find(({ name }) => {
-    return name === 'dc:Style';
-  });
+  const style = findType('dc:Style', model);
 
   style.name = 'di:Style';
 
@@ -52,9 +50,7 @@ module.exports = async function(results) {
   // add di:DiagramElement#id and di:DiagramElement#style
   // (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/9)
   // sharedStyle is not added because it is already redefined in DMNDI
-  const diagramElement = model.types.find(({ name }) => {
-    return name === 'di:DiagramElement';
-  });
+  const diagramElement = findType('di:DiagramElement', model);
 
   if (!diagramElement.properties) {
     diagramElement.properties = [];
