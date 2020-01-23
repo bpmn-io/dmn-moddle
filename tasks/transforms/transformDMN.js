@@ -7,6 +7,7 @@ const {
 
 const {
   findChildren,
+  findProperty,
   fixSequence,
   parseXML,
   removeWhitespace
@@ -44,13 +45,9 @@ module.exports = async function(results) {
   });
 
   // fix extension elements
-  delete model
-    .types.find(matchPattern({ name: 'DMNElement' }))
-    .properties.find(matchPattern({ name: 'extensionElements' })).isMany;
+  delete findProperty('DMNElement#extensionElements', model).isMany;
 
-  model
-    .types.find(matchPattern({ name: 'ExtensionElements' }))
-    .properties.find(matchPattern({ name: 'extensionElement' })).name = 'values';
+  findProperty('ExtensionElements#extensionElement', model).name = 'values';
 
   model = removeWhitespace(model);
 
