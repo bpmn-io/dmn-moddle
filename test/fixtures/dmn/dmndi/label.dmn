@@ -10,16 +10,22 @@
     <dmndi:DMNDiagram>
       <dmndi:DMNShape id="DMNShape_1" dmnElementRef="Decision_1">
         <dc:Bounds height="80" width="180" x="100" y="100" />
-        <dmndi:DMNLabel text="Decision_1" />
+        <dmndi:DMNLabel>
+          <dmndi:Text>Decision_1</dmndi:Text>
+        </dmndi:DMNLabel>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="DMNShape_2" dmnElementRef="InputData_1">
         <dc:Bounds height="45" width="125" x="127.5" y="300" />
-        <dmndi:DMNLabel text="InputData_1" />
+        <dmndi:DMNLabel>
+          <dmndi:Text>InputData_1</dmndi:Text>
+        </dmndi:DMNLabel>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="DMNEdge_1" dmnElementRef="InformationRequirement_1">
 				<di:waypoint x="180" y="190"/>
 				<di:waypoint x="180" y="300"/>
-				<dmndi:DMNLabel text="InformationRequirement_1" />
+				<dmndi:DMNLabel>
+          <dmndi:Text>InformationRequirement_1</dmndi:Text>
+        </dmndi:DMNLabel>
 			</dmndi:DMNEdge>
     </dmndi:DMNDiagram>
     <dmndi:DMNStyle id="SharedStyle_1" fontFamily="arial,helvetica,sans-serif" fontSize="14" fontBold="false" fontItalic="false" fontUnderline="false" fontStrikeThrough="false" />
