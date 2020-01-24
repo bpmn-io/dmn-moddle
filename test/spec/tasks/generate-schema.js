@@ -159,6 +159,22 @@ describe('generate schema', function() {
       expect(waypoint).to.exist;
     });
 
+
+    it('should add di:DiagramElement#sharedStyle', function() {
+
+      // then
+      const sharedStyle = findProperty('DiagramElement#sharedStyle', schema);
+
+      expect(sharedStyle).to.exist;
+
+      expect(sharedStyle).to.eql({
+        name: 'sharedStyle',
+        isReference: true,
+        isVirtual: true,
+        type: 'Style'
+      });
+    });
+
   });
 
 
@@ -229,6 +245,20 @@ describe('generate schema', function() {
       const dmnEdge = findType('DMNEdge', schema);
 
       expect(dmnEdge.superClass).to.eql([ 'di:Edge', 'DMNDiagramElement' ]);
+    });
+
+
+    it('should redefine di:DiagramElement#sharedStyle', function() {
+
+      [ 'DMNDiagram', 'DMNDiagramElement' ].forEach(type => {
+
+        // then
+        const sharedStyle = findProperty(`${ type }#sharedStyle`, schema);
+
+        expect(sharedStyle.redefines).to.exist;
+
+        expect(sharedStyle.redefines).to.equal('di:DiagramElement#sharedStyle');
+      });
     });
 
   });

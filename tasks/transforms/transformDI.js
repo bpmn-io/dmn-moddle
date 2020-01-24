@@ -68,6 +68,11 @@ module.exports = async function(results) {
     xml: {
       serialize: 'property'
     }
+  }, {
+    name: 'sharedStyle',
+    isReference: true,
+    isVirtual: true,
+    type: 'Style'
   });
 
   // add superclass di:DiagramElement to di:Edge and di:Shape

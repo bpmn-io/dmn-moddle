@@ -111,7 +111,8 @@
           "name": "sharedStyle",
           "type": "DMNStyle",
           "isVirtual": true,
-          "isReference": true
+          "isReference": true,
+          "redefines": "di:DiagramElement#sharedStyle"
         },
         {
           "name": "diagramElements",
@@ -137,7 +138,8 @@
           "name": "sharedStyle",
           "type": "DMNStyle",
           "isVirtual": true,
-          "isReference": true
+          "isReference": true,
+          "redefines": "di:DiagramElement#sharedStyle"
         },
         {
           "name": "localStyle",
