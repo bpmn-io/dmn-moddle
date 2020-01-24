@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Defintions_1" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_1" name="Decision_1" />
+  <textAnnotation id="TextAnnotation_1">
+    <text>TextAnnotation_1</text>
+  </textAnnotation>
+  <association id="Association_1">
+    <sourceRef href="#Decision_1" />
+    <targetRef href="#TextAnnotation_1" />
+  </association>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1">
+        <dc:Bounds height="80" width="180" x="0" y="0" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape dmnElementRef="TextAnnotation_1">
+        <dc:Bounds height="80" width="100" x="300" y="0" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge dmnElementRef="Association_1">
+        <di:waypoint x="180" y="40" />
+        <di:waypoint x="300" y="40" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

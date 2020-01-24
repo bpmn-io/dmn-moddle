@@ -131,21 +131,6 @@
           "isMany": true
         },
         {
-          "name": "group",
-          "type": "Group",
-          "isMany": true
-        },
-        {
-          "name": "textAnnotation",
-          "type": "TextAnnotation",
-          "isMany": true
-        },
-        {
-          "name": "association",
-          "type": "Association",
-          "isMany": true
-        },
-        {
           "name": "elementCollection",
           "type": "ElementCollection",
           "isMany": true,

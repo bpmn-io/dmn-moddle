@@ -152,6 +152,41 @@ describe('dmn-moddle - read', function() {
     });
 
 
+    it('TextAnnotation & DI', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmndi/text-annotation.dmn');
+
+      // then
+      const artifact = definitions.get('artifact');
+
+      expect(artifact).to.have.lengthOf(2);
+
+      const textAnnotation = artifact[ 0 ];
+
+      expect(textAnnotation).to.jsonEqual({
+        $type: 'dmn:TextAnnotation',
+        id: 'TextAnnotation_1',
+        text: 'TextAnnotation_1'
+      });
+
+      const association = artifact[ 1 ];
+
+      expect(association).to.jsonEqual({
+        $type: 'dmn:Association',
+        id: 'Association_1',
+        sourceRef: {
+          $type: 'dmn:DMNElementReference',
+          href: '#Decision_1'
+        },
+        targetRef: {
+          $type: 'dmn:DMNElementReference',
+          href: '#TextAnnotation_1'
+        }
+      });
+    });
+
+
     it('with label', async function() {
 
       // when
