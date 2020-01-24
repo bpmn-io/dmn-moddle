@@ -3,7 +3,7 @@
   "version": "7.0.0",
   "description": "A moddle wrapper for DMN 1.1",
   "scripts": {
-    "all": "run-s lint test distro",
+    "all": "run-s generate-schema lint test distro",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
     "test": "mocha -r esm --reporter=spec --recursive test/spec",
