@@ -8,6 +8,7 @@ const {
 const {
   findChildren,
   findProperty,
+  findType,
   fixSequence,
   parseXML,
   removeWhitespace
@@ -62,6 +63,14 @@ module.exports = async function(results) {
   model = fixPropertySerialization(model, xsd);
 
   model = fixSequence(model, xsd);
+
+  // remove Defintions#association, Definitions#group and Defintions#textAnnotation
+  // artifacts will be accessible through Definitions#artifact
+  const definitions = findType('Definitions', model);
+
+  definitions.properties = definitions.properties.filter(({ name }) => {
+    return ![ 'association', 'group', 'textAnnotation'].includes(name);
+  });
 
   // set uri
   model.uri = xsd.elementsByTagName[ 'xsd:schema' ][ 0 ].targetNamespace;
