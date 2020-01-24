@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const {
+  findProperty,
   fixSequence,
   parseXML,
   removePrefixes,
@@ -71,6 +72,16 @@ module.exports = async function(results) {
       serialize: 'property'
     }
   });
+
+  // rename di:Edge#wayPoints as specified in XSD
+  // (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/11)
+  const wayPoints = findProperty('di:Edge#wayPoints', model);
+
+  wayPoints.name = 'waypoint';
+
+  wayPoints.xml = {
+    serialize: 'property'
+  };
 
   // filter DI
   model.types = model.types.filter(({ name }) => {

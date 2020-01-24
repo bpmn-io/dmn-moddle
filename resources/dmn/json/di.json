@@ -60,9 +60,12 @@
       "isAbstract": true,
       "properties": [
         {
-          "name": "wayPoints",
+          "name": "waypoint",
           "type": "dc:Point",
-          "isMany": true
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
         }
       ]
     },
