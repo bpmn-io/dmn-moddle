@@ -6,6 +6,15 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+* `CHORE`: generate schema from XMI ([`f4bb15`](https://github.com/bpmn-io/dmn-moddle/pull/6/commits/f4bb15627fbc434b3342c4a3db7b5ab068d7e908))
+* `CHORE`: run integration tests with DMN TCK ([`64a694`](https://github.com/bpmn-io/dmn-moddle/pull/6/commits/64a694d5e8616136af9a1ba6d147173334b3b9ac))
+* `CHORE`: update to cmof-parser@0.5.0
+
+### Breaking Changes
+
+* `FEAT`: migrate to DMN 1.3
+* `CHORE`: remove biodi package ([`2334ad`](https://github.com/bpmn-io/dmn-moddle/pull/6/commits/2334adaf3e10486e869781f30844c8def9b1b2df))
+
 ## 7.0.0
 
 * `FEAT`: add pre-built distribution
