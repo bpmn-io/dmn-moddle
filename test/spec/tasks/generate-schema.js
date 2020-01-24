@@ -11,7 +11,10 @@ import {
   transformDMNDI
 } from '../../../tasks/transforms';
 
-import { findProperty } from '../../../tasks/transforms/helper';
+import {
+  findProperty,
+  findType
+} from '../../../tasks/transforms/helper';
 
 async function generateSchema(file) {
   const {
@@ -217,6 +220,15 @@ describe('generate schema', function() {
 
       // then
       expect(schema).to.exist;
+    });
+
+
+    it('should reverse order of DMNEdge superclasses', function() {
+
+      // then
+      const dmnEdge = findType('DMNEdge', schema);
+
+      expect(dmnEdge.superClass).to.eql([ 'di:Edge', 'DMNDiagramElement' ]);
     });
 
   });

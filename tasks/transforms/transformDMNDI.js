@@ -28,6 +28,9 @@ module.exports = async function(results) {
   // fix super class of DMNStyle
   model.types.find(matchPattern({ name: 'DMNStyle' })).superClass = [ 'di:Style' ];
 
+  // reverse order of DMNEdge superclasses
+  model.types.find(matchPattern({ name: 'DMNEdge' })).superClass.reverse();
+
   model = removeWhitespace(model);
 
   const file = fs.readFileSync('resources/dmn/xsd/DMNDI13.xsd', 'utf8');
