@@ -6,6 +6,8 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.0
+
 * `FEAT`: read and write DMN 1.3 diagrams
 * `FEAT`: recognize full DMN 1.3
 * `CHORE`: generate schema from XMI ([`f4bb15`](https://github.com/bpmn-io/dmn-moddle/pull/6/commits/f4bb15627fbc434b3342c4a3db7b5ab068d7e908))
