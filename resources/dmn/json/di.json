@@ -19,6 +19,12 @@
           "xml": {
             "serialize": "property"
           }
+        },
+        {
+          "name": "sharedStyle",
+          "isReference": true,
+          "isVirtual": true,
+          "type": "Style"
         }
       ]
     },
