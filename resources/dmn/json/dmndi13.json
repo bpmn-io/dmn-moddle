@@ -189,8 +189,8 @@
     {
       "name": "DMNEdge",
       "superClass": [
-        "DMNDiagramElement",
-        "di:Edge"
+        "di:Edge",
+        "DMNDiagramElement"
       ],
       "properties": [
         {
