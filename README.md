@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bpmn-io/dmn-moddle.svg?branch=master)](https://travis-ci.org/bpmn-io/dmn-moddle)
 
-Read and write DMN files in NodeJS and the browser.
+Read and write DMN 1.3 files in NodeJS and the browser.
 
 __dmn-moddle__ uses the [DMN specification](http://www.omg.org/spec/DMN/1.1/) to validate the input and produce correct DMN XML. The library is built on top of [moddle](https://github.com/bpmn-io/moddle) and [moddle-xml](https://github.com/bpmn-io/moddle-xml).
 
