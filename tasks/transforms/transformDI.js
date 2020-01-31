@@ -14,6 +14,8 @@ module.exports = async function(results) {
 
   let model = elementsByType[ 'uml:Package' ][ 0 ];
 
+  model.name = 'DI';
+
   const prefix = model.prefix = 'di';
 
   model.xml = {

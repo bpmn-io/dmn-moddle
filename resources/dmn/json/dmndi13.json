@@ -1,4 +1,5 @@
 {
+  "name": "DMNDI",
   "prefix": "dmndi",
   "uri": "https://www.omg.org/spec/DMN/20191111/DMNDI/",
   "types": [

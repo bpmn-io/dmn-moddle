@@ -41,7 +41,7 @@
   "devDependencies": {
     "@rollup/plugin-json": "^4.0.0",
     "chai": "^4.2.0",
-    "cmof-parser": "^0.5.0",
+    "cmof-parser": "^0.5.1",
     "eslint": "^6.7.2",
     "eslint-plugin-bpmn-io": "^0.10.0",
     "esm": "^3.2.25",

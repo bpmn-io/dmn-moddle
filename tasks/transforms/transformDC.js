@@ -12,6 +12,8 @@ module.exports = async function(results) {
 
   let model = elementsByType[ 'uml:Package' ][ 0 ];
 
+  model.name = 'DC';
+
   const prefix = model.prefix = 'dc';
 
   // remove properties without name

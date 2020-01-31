@@ -56,6 +56,8 @@ describe('generate schema', function() {
 
       // then
       expect(schema).to.exist;
+
+      expect(schema.name).to.equal('DC');
     });
 
   });
@@ -86,6 +88,8 @@ describe('generate schema', function() {
 
       // then
       expect(schema).to.exist;
+
+      expect(schema.name).to.equal('DI');
     });
 
 
@@ -206,6 +210,8 @@ describe('generate schema', function() {
 
       // then
       expect(schema).to.exist;
+
+      expect(schema.name).to.equal('DMN');
     });
 
   });
@@ -236,6 +242,8 @@ describe('generate schema', function() {
 
       // then
       expect(schema).to.exist;
+
+      expect(schema.name).to.equal('DMNDI');
     });
 
 

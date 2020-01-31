@@ -1,4 +1,5 @@
 {
+  "name": "DC",
   "prefix": "dc",
   "uri": "http://www.omg.org/spec/DMN/20180521/DC/",
   "types": [
