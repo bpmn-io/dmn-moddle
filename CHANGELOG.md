@@ -6,6 +6,10 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.2
+
+* `CHORE`: drop unneeded files from bundle
+
 ## 8.0.1
 
 * `FIX`: add package names ([`2859ed`](https://github.com/bpmn-io/dmn-moddle/commit/2859edc1835217001fe39487eb57bedee4eba76a))
