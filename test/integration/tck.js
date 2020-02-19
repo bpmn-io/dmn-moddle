@@ -9,18 +9,21 @@ import {
 
 import path from 'path';
 
-import { createModdle } from '../helper';
+import DmnModdle from '../..';
 
-import {
-  toXML,
-  validate
-} from '../xml-helper';
+import SchemaValidator from 'xsd-schema-validator';
+
+import { expect } from 'chai';
+
+const DMN_XSD = 'resources/dmn/xsd/DMN13.xsd';
+
 
 const tckDirectory = 'tmp/tck';
 
+
 describe('dmn-moddle - TCK roundtrip', function() {
 
-  const moddle = createModdle();
+  const moddle = new DmnModdle();
 
   this.timeout(30000);
 
@@ -58,15 +61,19 @@ describe('dmn-moddle - TCK roundtrip', function() {
       });
 
       // when
-      moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result) {
+      moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result, context) {
 
         if (err) {
-          done(err);
-
-          return;
+          return done(err);
         }
 
-        toXML(result, { format: true }, function(err, xml) {
+        try {
+          expect(context.warnings).to.be.empty;
+        } catch (err) {
+          return done(err);
+        }
+
+        return toXML(result, { format: true }, function(err, xml) {
 
           // then
           validate(err, xml, done);
@@ -94,4 +101,29 @@ function replaceNamespaces(xml, namespaces) {
   }
 
   return xml;
+}
+
+function toXML(element, opts, done) {
+  element.$model.toXML(element, opts, done);
+}
+
+function validate(err, xml, done) {
+
+  if (err) {
+    return done(err);
+  }
+
+  if (!xml) {
+    return done(new Error('XML is not defined'));
+  }
+
+  SchemaValidator.validateXML(xml, DMN_XSD, function(err, result) {
+
+    if (err) {
+      return done(err);
+    }
+
+    expect(result.valid).to.be.true;
+    done();
+  });
 }
