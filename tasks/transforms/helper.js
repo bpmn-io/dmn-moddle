@@ -81,6 +81,24 @@ function findProperty(typeProperty, schema) {
 
 module.exports.findProperty = findProperty;
 
+/**
+ * Remove property with the given name from the schema
+ *
+ * @param {String} typeAndProperty
+ * @param {Object} schema
+ *
+ * @returns {Object}
+ */
+function removeProperty(typeAndProperty, schema) {
+  const [ typeName, propertyName ] = typeAndProperty.split('#');
+
+  const type = findType(typeName, schema);
+
+  return type.properties = type.properties.filter(property => property.name !== propertyName);
+}
+
+module.exports.removeProperty = removeProperty;
+
 
 /**
 * Fix order of properties according to <sequence> indicators specified in XSD.

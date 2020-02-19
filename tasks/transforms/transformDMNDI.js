@@ -5,6 +5,7 @@ const {
   findType,
   fixSequence,
   parseXML,
+  removeProperty,
   removeWhitespace
 } = require('./helper');
 
@@ -46,6 +47,8 @@ module.exports = async function(results) {
       type: 'String'
     }]
   });
+
+  removeProperty('DMNStyle#id', model);
 
   // fix dmndi:DMNDiagram#sharedStyle and dmndi:DMNDiagramElement#sharedStyle
   // by redefining di:DiagramElement#sharedStyle

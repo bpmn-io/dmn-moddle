@@ -260,6 +260,18 @@ describe('dmn-moddle - read', function() {
               }
             ]
           }
+        ],
+        styles: [
+          {
+            '$type': 'dmndi:DMNStyle',
+            'id': 'SharedStyle_1',
+            'fontFamily': 'arial,helvetica,sans-serif',
+            'fontSize': 14,
+            'fontBold': false,
+            'fontItalic': false,
+            'fontUnderline': false,
+            'fontStrikeThrough': false
+          }
         ]
       });
     });
