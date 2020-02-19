@@ -46,11 +46,17 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
   const fileNames = glob(tckDirectory + '/TestCases/**/*.dmn', { cwd: __dirname });
 
+  function shouldRun(fileName) {
+    const match = process.env.GREP;
+
+    return !match || fileName.toLowerCase().includes(match);
+  }
+
   describe('should roundtrip', function() {
 
     for (const fileName of fileNames) {
 
-      it(fileName, function(done) {
+      (shouldRun(fileName) ? it : it.skip)(fileName, function(done) {
         this.timeout(5000);
 
         // given
