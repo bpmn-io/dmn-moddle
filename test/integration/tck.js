@@ -39,7 +39,7 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
     exec(
       'git',
-      [ 'clone', '--depth=1', 'git@github.com:dmn-tck/tck.git', tckDirectory ],
+      [ 'clone', '--depth=1', 'https://github.com/dmn-tck/tck.git', tckDirectory ],
       { cwd: __dirname }
     );
   }
