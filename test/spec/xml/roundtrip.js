@@ -22,14 +22,20 @@ describe('dmn-moddle - roundtrip', function() {
       return new Promise((resolve, reject) => {
         const file = fs.readFileSync(fileName, 'utf8');
 
-        moddle.fromXML(file, 'dmn:Definitions', (err, definitions) => {
+        moddle.fromXML(file, 'dmn:Definitions', (err, definitions, context) => {
           if (err) {
-            reject(err);
+            return reject(err);
           }
 
-          moddle.toXML(definitions, { format: true }, (err, xml) => {
+          try {
+            expect(context.warnings).to.be.empty;
+          } catch (err) {
+            return reject(err);
+          }
+
+          return moddle.toXML(definitions, { format: true }, (err, xml) => {
             if (err) {
-              reject(err);
+              return reject(err);
             }
 
             validateXML(xml, xsd, (err, result) => {
@@ -37,7 +43,7 @@ describe('dmn-moddle - roundtrip', function() {
                 return reject(err);
               }
 
-              resolve(result);
+              return resolve(result);
             });
           });
         });
