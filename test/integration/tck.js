@@ -78,6 +78,10 @@ describe('dmn-moddle - TCK roundtrip', function() {
           try {
             const warnings = filterWhitelisted(context.warnings, fileName);
 
+            if (process.env.VERBOSE && warnings.length > 0) {
+              console.log('import warnings', warnings);
+            }
+
             expect(warnings).to.be.empty;
           } catch (err) {
             return done(err);
