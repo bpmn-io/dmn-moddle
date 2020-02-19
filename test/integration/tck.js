@@ -46,42 +46,46 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
   const fileNames = glob(tckDirectory + '/TestCases/**/*.dmn', { cwd: __dirname });
 
-  for (const fileName of fileNames) {
+  describe('should roundtrip', function() {
 
-    it(`should serialize valid DMN xml after read (${ fileName })`, function(done) {
-      this.timeout(5000);
+    for (const fileName of fileNames) {
 
-      // given
-      let fileContents = readFile(`${ __dirname }/${ fileName }`, 'utf8');
+      it(fileName, function(done) {
+        this.timeout(5000);
 
-      // replace DMN 1.2 namespaces with DMN 1.3 namespaces
-      fileContents = replaceNamespaces(fileContents, {
-        'http://www.omg.org/spec/DMN/20180521/MODEL/': 'https://www.omg.org/spec/DMN/20191111/MODEL/',
-        'http://www.omg.org/spec/DMN/20180521/DMNDI/': 'https://www.omg.org/spec/DMN/20191111/DMNDI/',
-      });
+        // given
+        let fileContents = readFile(`${ __dirname }/${ fileName }`, 'utf8');
 
-      // when
-      moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result, context) {
+        // replace DMN 1.2 namespaces with DMN 1.3 namespaces
+        fileContents = replaceNamespaces(fileContents, {
+          'http://www.omg.org/spec/DMN/20180521/MODEL/': 'https://www.omg.org/spec/DMN/20191111/MODEL/',
+          'http://www.omg.org/spec/DMN/20180521/DMNDI/': 'https://www.omg.org/spec/DMN/20191111/DMNDI/',
+        });
 
-        if (err) {
-          return done(err);
-        }
+        // when
+        moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result, context) {
 
-        try {
-          expect(context.warnings).to.be.empty;
-        } catch (err) {
-          return done(err);
-        }
+          if (err) {
+            return done(err);
+          }
 
-        return toXML(result, { format: true }, function(err, xml) {
+          try {
+            expect(context.warnings).to.be.empty;
+          } catch (err) {
+            return done(err);
+          }
 
-          // then
-          validate(err, xml, done);
+          return toXML(result, { format: true }, function(err, xml) {
+
+            // then
+            validate(err, xml, done);
+          });
         });
       });
-    });
 
-  }
+    }
+
+  });
 
 });
 
