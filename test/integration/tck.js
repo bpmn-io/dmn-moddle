@@ -103,12 +103,6 @@ function replaceNamespaces(xml, namespaces) {
   return xml;
 }
 
-function fromFile(moddle, file, done) {
-  var fileContents = readFile(file, 'utf8');
-
-  moddle.fromXML(fileContents, 'dmn:Definitions', done);
-}
-
 function toXML(element, opts, done) {
   element.$model.toXML(element, opts, done);
 }
