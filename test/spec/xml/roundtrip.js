@@ -37,6 +37,9 @@ describe('dmn-moddle - roundtrip', function() {
 
     it('with Label', roundtrip('test/fixtures/dmn/dmndi/label.dmn'));
 
+
+    it('with Size', roundtrip('test/fixtures/dmn/dmndi/size.dmn'));
+
   });
 
 });
