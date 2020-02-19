@@ -307,14 +307,16 @@ function fixSubstitutionGroups(model, xsd) {
           } = property;
 
           // (3.2) add substitute
-          type.properties = [
-            ...type.properties,
-            {
-              ...rest,
-              name: substitute.name,
-              type: substitute.type.slice(1)
-            }
-          ];
+          if (type.name !== substitute.type.slice(1)) {
+            type.properties = [
+              ...type.properties,
+              {
+                ...rest,
+                name: substitute.name,
+                type: substitute.type.slice(1)
+              }
+            ];
+          }
         });
       }
     });
