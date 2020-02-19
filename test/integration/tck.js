@@ -146,5 +146,9 @@ function filterWhitelisted(warnings, fileName) {
     return warnings.filter(err => err.message !== 'unresolved reference <include1:_32543811-b499-4608-b784-6c6f294b1c58>');
   }
 
+  if (fileName.endsWith('0012-list-functions.dmn')) {
+    return warnings.filter(err => err.message !== 'unresolved reference <_883c9eb4-1f4f-4885-82c0-234f9ac9a1d7>');
+  }
+
   return warnings;
 }
