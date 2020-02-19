@@ -62,7 +62,7 @@ describe('dmn-moddle - write', function() {
 
       const decision = moddle.create('dmn:Decision', {
         id: 'Decision_1',
-        literalExpression: literalExpression,
+        decisionLogic: literalExpression,
         name: 'Foo',
         variable: informationItem
       });

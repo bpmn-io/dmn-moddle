@@ -2,7 +2,8 @@
 
 const {
   isArray,
-  matchPattern
+  matchPattern,
+  without
 } = require('min-dash');
 
 const sax = require('sax');
@@ -80,25 +81,6 @@ function findProperty(typeProperty, schema) {
 }
 
 module.exports.findProperty = findProperty;
-
-/**
- * Remove property with the given name from the schema
- *
- * @param {String} typeAndProperty
- * @param {Object} schema
- *
- * @returns {Object}
- */
-function removeProperty(typeAndProperty, schema) {
-  const [ typeName, propertyName ] = typeAndProperty.split('#');
-
-  const type = findType(typeName, schema);
-
-  return type.properties = type.properties.filter(property => property.name !== propertyName);
-}
-
-module.exports.removeProperty = removeProperty;
-
 
 /**
 * Fix order of properties according to <sequence> indicators specified in XSD.
@@ -222,6 +204,33 @@ function fixSequence(model, parsedXSD) {
 }
 
 module.exports.fixSequence = fixSequence;
+
+/**
+ * Order properties of type.
+ *
+ * @param {string} typeName
+ * @param {Array<string>} propertiesOrder
+ * @param {Object} schema
+ *
+ * @returns {Object}
+ */
+function orderProperties(typeName, propertiesOrder, schema) {
+  const type = findType(typeName, schema);
+
+  const { properties } = type;
+
+  propertiesOrder.reverse().forEach(propertyName => {
+    const index = properties.indexOf(
+      properties.find(matchPattern({ name: propertyName }))
+    );
+
+    properties.unshift(properties.splice(index, 1).pop());
+  });
+
+  return schema;
+}
+
+module.exports.orderProperties = orderProperties;
 
 /**
  * Parse XML tag.
@@ -364,6 +373,39 @@ function removePrefixes(model, prefixes) {
 }
 
 module.exports.removePrefixes = removePrefixes;
+
+/**
+ * Remove property from type.
+ *
+ * @param {string} typeProperty
+ * @param {Object} model
+ *
+ * @returns {Object}
+ */
+function removeProperty(typeProperty, model) {
+  let [ type, property ] = typeProperty.split('#');
+
+  type = findType(type, model);
+
+  return type.properties = without(type.properties, matchPattern({ name: property }));
+}
+
+module.exports.removeProperty = removeProperty;
+
+/**
+ * Remove properties from type.
+ *
+ * @param {string} type
+ * @param {Array<string>} properties
+ * @param {Object} model
+ */
+function removeProperties(type, properties, model) {
+  properties.forEach(property => {
+    removeProperty(`${ type }#${ property }`, model);
+  });
+}
+
+module.exports.removeProperties = removeProperties;
 
 /**
  * Remove whitespace from all property names.

@@ -3,6 +3,7 @@ import fs from 'fs';
 import expect from '../../expect';
 
 import DmnModdle from '../../../lib';
+import { matchPattern } from 'min-dash';
 
 
 describe('dmn-moddle - read', function() {
@@ -47,7 +48,28 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('InputData', async function() {
+    it('dmn:Decision#decisionLogic', async function() {
+
+      // given
+      const expected = {
+        $type: 'dmn:Decision',
+        id: 'Decision_1',
+        name: 'Decision',
+        decisionLogic: {
+          $type: 'dmn:LiteralExpression',
+          id: 'LiteralExpression_1'
+        }
+      };
+
+      // when
+      const decision = await read('test/fixtures/dmn/dmn/decision-decisionLogic.part.dmn', 'dmn:Decision');
+
+      // then
+      expect(decision).to.jsonEqual(expected);
+    });
+
+
+    it('dmn:InputData', async function() {
 
       // given
       const expected = {
@@ -81,6 +103,57 @@ describe('dmn-moddle - read', function() {
 
       // then
       expect(definitions.get('drgElement')[ 0 ].get('informationRequirement')[ 0 ]).to.jsonEqual(expected);
+    });
+
+
+    it('Context', async function() {
+
+      // given
+      const expected = {
+        $type: 'dmn:Context',
+        contextEntry: [
+          {
+            $type: 'dmn:ContextEntry',
+            variable: {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'MonthlyFee'
+            },
+            value: {
+              $type: 'dmn:LiteralExpression',
+              text: 'if ProductType ="STANDARD LOAN" then 20.00 else if ProductType ="SPECIAL LOAN" then 25.00 else null'
+            }
+          },
+          {
+            $type: 'dmn:ContextEntry',
+            variable: {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'MonthlyRepayment'
+            },
+            value: {
+              $type: 'dmn:LiteralExpression',
+              text: '(Amount *Rate/12) / (1 - (1 + Rate/12)**-Term)'
+            }
+          },
+          {
+            $type: 'dmn:ContextEntry',
+            value: {
+              $type: 'dmn:LiteralExpression',
+              typeRef: 'number',
+              text: 'MonthlyRepayment+MonthlyFee'
+            }
+          }
+        ]
+      };
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmn/context.dmn');
+
+      // then
+      const bkm = definitions.get('drgElement').find(matchPattern({ name: 'InstallmentCalculation' }));
+
+      expect(bkm.encapsulatedLogic.body).to.jsonEqual(expected);
     });
 
   });
