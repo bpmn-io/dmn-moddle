@@ -25,6 +25,8 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
   const moddle = new DmnModdle();
 
+  const warnings = [];
+
   this.timeout(30000);
 
   if (exists(path.join(__dirname, tckDirectory, '.git'))) {
@@ -45,6 +47,21 @@ describe('dmn-moddle - TCK roundtrip', function() {
   }
 
   const fileNames = glob(tckDirectory + '/TestCases/**/*.dmn', { cwd: __dirname });
+
+  after(function() {
+    if (!warnings.length) {
+      return;
+    }
+
+    const actualWarnings = warnings.map(({ message }) => message.split('\n')[0]);
+    const uniqueWarnings = Array.from(new Set(actualWarnings));
+
+    console.error('Unique warnings:');
+    uniqueWarnings.forEach(warning => {
+      console.error('* ' + warning);
+    });
+  });
+
 
   for (const fileName of fileNames) {
 
@@ -70,6 +87,7 @@ describe('dmn-moddle - TCK roundtrip', function() {
         try {
           expect(context.warnings).to.be.empty;
         } catch (err) {
+          warnings.push(...context.warnings);
           return done(err);
         }
 
