@@ -2,6 +2,7 @@
 
 const {
   isArray,
+  groupBy,
   matchPattern
 } = require('min-dash');
 
@@ -222,6 +223,43 @@ function fixSequence(model, parsedXSD) {
 }
 
 module.exports.fixSequence = fixSequence;
+
+/**
+ * Get all properties of type including inherited properties.
+ *
+ * @param {string} type
+ * @param {Object} schema
+ *
+ * @returns {Object}
+ */
+function getAllProperties(type, schema) {
+  return groupBy(_getAllProperties(type, schema), 'name');
+}
+
+module.exports.getAllProperties = getAllProperties;
+
+function _getAllProperties(type, schema) {
+  type = findType(type, schema);
+
+  const { superClass } = type;
+
+  let { properties } = type;
+
+  if (!properties) {
+    properties = [];
+  }
+
+  if (superClass) {
+    return [
+      ...properties,
+      ...superClass.reduce((properties, type) => {
+        return [...properties, ..._getAllProperties(type, schema)];
+      }, [])
+    ];
+  }
+
+  return properties;
+}
 
 /**
  * Parse XML tag.

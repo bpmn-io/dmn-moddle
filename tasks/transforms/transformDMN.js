@@ -10,6 +10,7 @@ const {
   findProperty,
   findType,
   fixSequence,
+  getAllProperties,
   parseXML,
   removeWhitespace
 } = require('./helper');
@@ -306,15 +307,28 @@ function fixSubstitutionGroups(model, xsd) {
             ...rest
           } = property;
 
+          const { superClass } = type;
+
+          let allProperties = {};
+
+          if (superClass) {
+            allProperties = getAllProperties(type.name, model);
+          }
+
           // (3.2) add substitute
-          type.properties = [
-            ...type.properties,
-            {
-              ...rest,
-              name: substitute.name,
-              type: substitute.type.slice(1)
-            }
-          ];
+          if (
+            (type.name !== substitute.type.slice(1)) &&
+            !allProperties[ substitute.name ]
+          ) {
+            type.properties = [
+              ...type.properties,
+              {
+                ...rest,
+                name: substitute.name,
+                type: substitute.type.slice(1)
+              }
+            ];
+          }
         });
       }
     });
@@ -322,6 +336,8 @@ function fixSubstitutionGroups(model, xsd) {
 
   return model;
 }
+
+
 
 function lowerCase(string) {
   return `${ string.charAt(0).toLowerCase() }${ string.slice(1) }`;

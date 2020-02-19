@@ -556,10 +556,6 @@
           "type": "LiteralExpression"
         },
         {
-          "name": "invocation",
-          "type": "Invocation"
-        },
-        {
           "name": "decisionTable",
           "type": "DecisionTable"
         },
@@ -568,16 +564,8 @@
           "type": "Context"
         },
         {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition"
-        },
-        {
           "name": "relation",
           "type": "Relation"
-        },
-        {
-          "name": "list",
-          "type": "List"
         },
         {
           "name": "binding",
@@ -1080,16 +1068,8 @@
           "type": "Context"
         },
         {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition"
-        },
-        {
           "name": "relation",
           "type": "Relation"
-        },
-        {
-          "name": "list",
-          "type": "List"
         },
         {
           "name": "body",
@@ -1200,16 +1180,6 @@
         {
           "name": "context",
           "type": "Context",
-          "isMany": true
-        },
-        {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition",
-          "isMany": true
-        },
-        {
-          "name": "list",
-          "type": "List",
           "isMany": true
         },
         {
