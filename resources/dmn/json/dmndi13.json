@@ -100,8 +100,11 @@
           "isReference": true
         },
         {
-          "name": "size",
-          "type": "dc:Dimension"
+          "name": "Size",
+          "type": "dc:Dimension",
+          "xml": {
+            "serialize": "property"
+          }
         },
         {
           "name": "localStyle",

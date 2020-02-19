@@ -52,6 +52,11 @@ module.exports = async function(results) {
   findProperty('DMNDiagram#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
   findProperty('DMNDiagramElement#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
 
+  // fix dmndi:DMNDiagram#size property name and serialization
+  const size = findProperty('DMNDiagram#size', model);
+  size.name = 'Size';
+  size.xml = { 'serialize': 'property' };
+
   model = removeWhitespace(model);
 
   const file = fs.readFileSync('resources/dmn/xsd/DMNDI13.xsd', 'utf8');
