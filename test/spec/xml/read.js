@@ -276,6 +276,21 @@ describe('dmn-moddle - read', function() {
       });
     });
 
+
+    it('with size', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmndi/size.dmn');
+
+      // then
+      const diagram = definitions.get('dmnDI').diagrams[0];
+
+      expect(diagram.size).to.jsonEqual({
+        $type: 'dmndi:Size',
+        height: 650.0,
+        width: 650.0
+      });
+    });
   });
 
 });

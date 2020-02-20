@@ -55,10 +55,14 @@ module.exports = async function(results) {
   findProperty('DMNDiagram#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
   findProperty('DMNDiagramElement#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
 
-  // fix dmndi:DMNDiagram#size property name and serialization
-  const size = findProperty('DMNDiagram#size', model);
-  size.name = 'Size';
-  size.xml = { 'serialize': 'property' };
+  // add dmndi:Size and change dmndi:DMNDiagram#size type to that
+  model.types.push({
+    name: 'Size',
+    superClass: [
+      'dc:Dimension'
+    ]
+  });
+  findProperty('DMNDiagram#size', model).type = 'Size';
 
   model = removeWhitespace(model);
 

@@ -94,11 +94,8 @@
           "isReference": true
         },
         {
-          "name": "Size",
-          "type": "dc:Dimension",
-          "xml": {
-            "serialize": "property"
-          }
+          "name": "size",
+          "type": "Size"
         },
         {
           "name": "localStyle",
@@ -220,6 +217,12 @@
           "isBody": true,
           "type": "String"
         }
+      ]
+    },
+    {
+      "name": "Size",
+      "superClass": [
+        "dc:Dimension"
       ]
     }
   ],
