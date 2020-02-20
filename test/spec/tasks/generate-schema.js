@@ -214,6 +214,17 @@ describe('generate schema', function() {
       expect(schema.name).to.equal('DMN');
     });
 
+
+    it('should redefine Expression#binding', function() {
+
+      // then
+      const binding = findProperty('Invocation#binding', schema);
+
+      expect(binding.redefines).to.exist;
+
+      expect(binding.redefines).to.equal('Expression#binding');
+    });
+
   });
 
 

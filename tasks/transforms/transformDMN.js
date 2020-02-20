@@ -51,6 +51,9 @@ module.exports = async function(results) {
 
   findProperty('ExtensionElements#extensionElement', model).name = 'values';
 
+  // redefine `Expression#binding`
+  findProperty('Invocation#binding', model).redefines = 'Expression#binding';
+
   model = removeWhitespace(model);
 
   const file = fs.readFileSync('resources/dmn/xsd/DMN13.xsd', 'utf8');

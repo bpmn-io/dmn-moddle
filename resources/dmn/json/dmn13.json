@@ -571,6 +571,7 @@
           "name": "binding",
           "type": "Binding",
           "isMany": true,
+          "redefines": "Expression#binding",
           "xml": {
             "serialize": "property"
           }
