@@ -1,6 +1,6 @@
 {
   "name": "dmn-moddle",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "A moddle wrapper for DMN 1.1",
   "scripts": {
     "all": "run-s generate-schema lint test distro",
