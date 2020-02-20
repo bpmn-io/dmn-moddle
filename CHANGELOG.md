@@ -6,6 +6,11 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.3
+
+* `FIX`: do not assign duplicate `dmndi:DMNStyle#id`
+* `FIX`: read and serialize correctly `dmndi:DMNDiagram#Size`
+
 ## 8.0.2
 
 * `CHORE`: drop unneeded files from bundle
