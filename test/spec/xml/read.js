@@ -3,6 +3,7 @@ import fs from 'fs';
 import expect from '../../expect';
 
 import DmnModdle from '../../../lib';
+import { matchPattern } from 'min-dash';
 
 
 describe('dmn-moddle - read', function() {
@@ -81,6 +82,57 @@ describe('dmn-moddle - read', function() {
 
       // then
       expect(definitions.get('drgElement')[ 0 ].get('informationRequirement')[ 0 ]).to.jsonEqual(expected);
+    });
+
+
+    it('Context', async function() {
+
+      // given
+      const expected = {
+        $type: 'dmn:Context',
+        contextEntry: [
+          {
+            $type: 'dmn:ContextEntry',
+            variable: {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'MonthlyFee'
+            },
+            literalExpression: {
+              $type: 'dmn:LiteralExpression',
+              text: 'if ProductType ="STANDARD LOAN" then 20.00 else if ProductType ="SPECIAL LOAN" then 25.00 else null'
+            }
+          },
+          {
+            $type: 'dmn:ContextEntry',
+            variable: {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'MonthlyRepayment'
+            },
+            literalExpression: {
+              $type: 'dmn:LiteralExpression',
+              text: '(Amount *Rate/12) / (1 - (1 + Rate/12)**-Term)'
+            }
+          },
+          {
+            $type: 'dmn:ContextEntry',
+            literalExpression: {
+              $type: 'dmn:LiteralExpression',
+              typeRef: 'number',
+              text: 'MonthlyRepayment+MonthlyFee'
+            }
+          }
+        ]
+      };
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmn/context.dmn');
+
+      // then
+      const { context } = definitions.get('drgElement').find(matchPattern({ name: 'InstallmentCalculation' })).encapsulatedLogic;
+
+      expect(context).to.jsonEqual(expected);
     });
 
   });

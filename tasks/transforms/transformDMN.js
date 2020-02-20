@@ -54,6 +54,12 @@ module.exports = async function(results) {
   // redefine `Expression#binding`
   findProperty('Invocation#binding', model).redefines = 'Expression#binding';
 
+  // redefine `Context#contextEntry` and fix property name
+  const contextEntry = findProperty('Context#contextEnrty', model);
+
+  contextEntry.name = 'contextEntry';
+  contextEntry.redefines = 'Expression#contextEntry';
+
   model = removeWhitespace(model);
 
   const file = fs.readFileSync('resources/dmn/xsd/DMN13.xsd', 'utf8');
