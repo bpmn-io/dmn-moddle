@@ -3,7 +3,6 @@ import fs from 'fs';
 import expect from '../../expect';
 
 import DmnModdle from '../../../lib';
-import { matchPattern } from 'min-dash';
 
 
 describe('dmn-moddle - read', function() {
@@ -108,8 +107,14 @@ describe('dmn-moddle - read', function() {
 
     it('Context', async function() {
 
-      // given
-      const expected = {
+      // when
+      const context = await read(
+        'test/fixtures/dmn/dmn/context.part.dmn',
+        'dmn:Context'
+      );
+
+      // then
+      expect(context).to.jsonEqual({
         $type: 'dmn:Context',
         contextEntry: [
           {
@@ -145,15 +150,8 @@ describe('dmn-moddle - read', function() {
             }
           }
         ]
-      };
+      });
 
-      // when
-      const definitions = await read('test/fixtures/dmn/dmn/context.dmn');
-
-      // then
-      const bkm = definitions.get('drgElement').find(matchPattern({ name: 'InstallmentCalculation' }));
-
-      expect(bkm.encapsulatedLogic.body).to.jsonEqual(expected);
     });
 
   });

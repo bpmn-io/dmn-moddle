@@ -26,7 +26,7 @@ describe('dmn-moddle - write', function() {
 
   describe('dmn', function() {
 
-    it('Definitions', async function() {
+    it('dmn:Definitions', async function() {
 
       // given
       const expected = '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" />';
@@ -41,7 +41,7 @@ describe('dmn-moddle - write', function() {
     });
 
 
-    it('LiteralExpression', async function() {
+    it('dmn:LiteralExpression', async function() {
 
       // given
       const expected =
@@ -74,12 +74,49 @@ describe('dmn-moddle - write', function() {
       expect(xml).to.equal(expected);
     });
 
+
+    it('dmn:Context', async function() {
+
+      // given
+      const variable = moddle.create('dmn:InformationItem', {
+        name: 'foo'
+      });
+
+      const literalExpression = moddle.create('dmn:LiteralExpression', {
+        text: 'if foo = 10 then true else false'
+      });
+
+      const contextEntry = moddle.create('dmn:ContextEntry', {
+        variable,
+        value: literalExpression
+      });
+
+      const context = moddle.create('dmn:Context', {
+        contextEntry: [ contextEntry ]
+      });
+
+      // when
+      const xml = await write(context);
+
+      // then
+      expect(xml).to.eql(
+        '<dmn:context xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/">' +
+          '<dmn:contextEntry>' +
+            '<dmn:variable name="foo" />' +
+            '<dmn:literalExpression>' +
+              '<dmn:text>if foo = 10 then true else false</dmn:text>' +
+            '</dmn:literalExpression>' +
+          '</dmn:contextEntry>' +
+        '</dmn:context>'
+      );
+    });
+
   });
 
 
   describe('di', function() {
 
-    it('Decision', async function() {
+    it('dmn:Decision', async function() {
 
       // given
       const expected =
@@ -147,7 +184,7 @@ describe('dmn-moddle - write', function() {
     });
 
 
-    it('InputData', async function() {
+    it('dmn:InputData', async function() {
 
       // given
       const expected =
