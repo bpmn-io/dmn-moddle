@@ -208,12 +208,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -457,12 +451,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "requiresInformation",
-          "type": "InformationRequirement",
-          "isReference": true,
-          "isMany": true
         }
       ]
     },
@@ -806,12 +794,6 @@
           "type": "String"
         },
         {
-          "name": "outputDefinition",
-          "type": "ItemDefinition",
-          "isVirtual": true,
-          "isReference": true
-        },
-        {
           "name": "typeRef",
           "isAttr": true,
           "type": "String"
@@ -1034,12 +1016,6 @@
         {
           "name": "text",
           "type": "String"
-        },
-        {
-          "name": "ruleAnnotation",
-          "type": "DecisionRule",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
