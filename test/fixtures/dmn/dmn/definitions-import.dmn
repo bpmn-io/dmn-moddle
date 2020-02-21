@@ -1,0 +1,3 @@
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" name="Definitions" namespace="http://ns">
+  <import namespace="http://my.ns" name="myimport" importType="https://www.omg.org/spec/DMN/20191111/MODEL/" />
+</definitions>
