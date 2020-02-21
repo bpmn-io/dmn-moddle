@@ -40,10 +40,7 @@
       "properties": [
         {
           "name": "typeRef",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "allowedValues",
@@ -67,10 +64,7 @@
         },
         {
           "name": "functionItem",
-          "type": "FunctionItem",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "FunctionItem"
         },
         {
           "name": "isCollection",
@@ -165,17 +159,11 @@
         {
           "name": "authorityRequirement",
           "type": "AuthorityRequirement",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "type",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "owner",
@@ -286,26 +274,17 @@
         {
           "name": "informationRequirement",
           "type": "InformationRequirement",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "knowledgeRequirement",
           "type": "KnowledgeRequirement",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "authorityRequirement",
           "type": "AuthorityRequirement",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "supportedObjective",
@@ -493,17 +472,11 @@
       "properties": [
         {
           "name": "description",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "extensionElements",
-          "type": "ExtensionElements",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "ExtensionElements"
         },
         {
           "name": "id",
@@ -623,10 +596,7 @@
         },
         {
           "name": "importedValues",
-          "type": "ImportedValues",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "ImportedValues"
         }
       ]
     },
@@ -677,18 +647,12 @@
         {
           "name": "knowledgeRequirement",
           "type": "KnowledgeRequirement",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "authorityRequirement",
           "type": "AuthorityRequirement",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         }
       ]
     },
@@ -893,10 +857,7 @@
       "properties": [
         {
           "name": "importedElement",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "expressionLanguage",
@@ -1047,10 +1008,7 @@
       "properties": [
         {
           "name": "text",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "textFormat",
@@ -1075,10 +1033,7 @@
       "properties": [
         {
           "name": "text",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "ruleAnnotation",
