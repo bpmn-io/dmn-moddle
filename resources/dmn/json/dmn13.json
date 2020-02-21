@@ -690,24 +690,6 @@
           }
         },
         {
-          "name": "ruleOutput",
-          "type": "DecisionRule",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "output",
-          "type": "OutputClause",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "expressionInput",
-          "type": "InputClause",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
           "name": "importedValues",
           "type": "ImportedValues",
           "xml": {
