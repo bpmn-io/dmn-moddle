@@ -87,8 +87,14 @@ describe('dmn-moddle - read', function() {
 
     it('Context', async function() {
 
-      // given
-      const expected = {
+      // when
+      const context = await read(
+        'test/fixtures/dmn/dmn/context.part.dmn',
+        'dmn:Context'
+      );
+
+      // then
+      expect(context).to.jsonEqual({
         $type: 'dmn:Context',
         contextEntry: [
           {
@@ -124,15 +130,8 @@ describe('dmn-moddle - read', function() {
             }
           }
         ]
-      };
+      });
 
-      // when
-      const definitions = await read('test/fixtures/dmn/dmn/context.dmn');
-
-      // then
-      const { context } = definitions.get('drgElement').find(matchPattern({ name: 'InstallmentCalculation' })).encapsulatedLogic;
-
-      expect(context).to.jsonEqual(expected);
     });
 
   });

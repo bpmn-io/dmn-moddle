@@ -1,0 +1,19 @@
+<context xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/">
+  <contextEntry>
+      <variable typeRef="number" name="MonthlyFee"/>
+      <literalExpression>
+        <text>if ProductType ="STANDARD LOAN" then 20.00 else if ProductType ="SPECIAL LOAN" then 25.00 else null</text>
+      </literalExpression>
+  </contextEntry>
+  <contextEntry>
+    <variable typeRef="number" name="MonthlyRepayment"/>
+    <literalExpression>
+      <text>(Amount *Rate/12) / (1 - (1 + Rate/12)**-Term)</text>
+    </literalExpression>
+  </contextEntry>
+  <contextEntry>
+    <literalExpression typeRef="number">
+      <text>MonthlyRepayment+MonthlyFee</text>
+    </literalExpression>
+  </contextEntry>
+</context>
