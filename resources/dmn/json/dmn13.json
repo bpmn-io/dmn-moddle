@@ -826,33 +826,7 @@
       ],
       "properties": [
         {
-          "name": "relation",
-          "type": "Relation",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "literalExpression",
-          "type": "LiteralExpression",
-          "isMany": true
-        },
-        {
-          "name": "invocation",
-          "type": "Invocation",
-          "isMany": true
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable",
-          "isMany": true
-        },
-        {
-          "name": "context",
-          "type": "Context",
-          "isMany": true
-        },
-        {
-          "name": "element",
+          "name": "expressions",
           "type": "Expression",
           "isMany": true
         }

@@ -115,6 +115,31 @@ describe('dmn-moddle - read', function() {
     });
 
 
+    it('dmn:List', async function() {
+
+      // when
+      const list = await read(
+        'test/fixtures/dmn/dmn/list.part.dmn',
+        'dmn:List'
+      );
+
+      // then
+      expect(list).to.jsonEqual({
+        $type: 'dmn:List',
+        expressions: [
+          {
+            $type: 'dmn:LiteralExpression',
+            text: 'FOO'
+          },
+          {
+            $type: 'dmn:LiteralExpression',
+            text: 'BAR'
+          }
+        ]
+      });
+    });
+
+
     it('dmn:BusinessKnowledgeModel', async function() {
 
       // when
