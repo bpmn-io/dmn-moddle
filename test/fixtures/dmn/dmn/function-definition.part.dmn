@@ -1,0 +1,5 @@
+<functionDefinition xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" kind="FEEL">
+  <formalParameter typeRef="string" name="ProductType"/>
+  <formalParameter typeRef="number" name="Rate"/>
+  <context />
+</functionDefinition>
