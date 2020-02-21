@@ -367,35 +367,7 @@
           }
         },
         {
-          "name": "literalExpression",
-          "type": "LiteralExpression"
-        },
-        {
-          "name": "invocation",
-          "type": "Invocation"
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable"
-        },
-        {
-          "name": "context",
-          "type": "Context"
-        },
-        {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition"
-        },
-        {
-          "name": "relation",
-          "type": "Relation"
-        },
-        {
-          "name": "list",
-          "type": "List"
-        },
-        {
-          "name": "decisionLogic",
+          "name": "expression",
           "type": "Expression"
         }
       ]
