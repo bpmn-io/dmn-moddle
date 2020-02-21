@@ -1,0 +1,1 @@
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:foo="http://foo" foo:bar="FOOBAR" name="Definitions" namespace="http://ns" />
