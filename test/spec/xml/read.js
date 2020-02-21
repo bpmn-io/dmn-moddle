@@ -126,7 +126,7 @@ describe('dmn-moddle - read', function() {
       // then
       expect(list).to.jsonEqual({
         $type: 'dmn:List',
-        expressions: [
+        elements: [
           {
             $type: 'dmn:LiteralExpression',
             text: 'FOO'

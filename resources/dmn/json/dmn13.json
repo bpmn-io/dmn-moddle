@@ -826,7 +826,7 @@
       ],
       "properties": [
         {
-          "name": "expressions",
+          "name": "elements",
           "type": "Expression",
           "isMany": true
         }
