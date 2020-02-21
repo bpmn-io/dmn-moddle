@@ -601,12 +601,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
