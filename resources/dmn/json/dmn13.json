@@ -92,10 +92,7 @@
         {
           "name": "itemDefinition",
           "type": "ItemDefinition",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "drgElement",
@@ -110,10 +107,7 @@
         {
           "name": "elementCollection",
           "type": "ElementCollection",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
+          "isMany": true
         },
         {
           "name": "businessContextElement",

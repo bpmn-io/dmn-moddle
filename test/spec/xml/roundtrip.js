@@ -24,6 +24,9 @@ describe('dmn-moddle - roundtrip', function() {
 
     it('Context', roundtrip('test/fixtures/dmn/dmn/context.dmn'));
 
+
+    it('Import', roundtrip('test/fixtures/dmn/dmn/definitions-import.dmn'));
+
   });
 
 
