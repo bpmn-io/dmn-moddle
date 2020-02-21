@@ -29,7 +29,7 @@ describe('dmn-moddle - read', function() {
   }
 
 
-  describe('DMN', function() {
+  describe('dmn', function() {
 
     it('dmn:Decision', async function() {
 
@@ -186,7 +186,7 @@ describe('dmn-moddle - read', function() {
   });
 
 
-  describe('DI', function() {
+  describe('di', function() {
 
     it('dmn:Decision + DI', async function() {
 
