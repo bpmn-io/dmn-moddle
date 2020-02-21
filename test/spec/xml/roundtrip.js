@@ -14,31 +14,31 @@ describe('dmn-moddle - roundtrip', function() {
   this.timeout(30000);
 
 
-  describe('DMN', function() {
+  describe('dmn', function() {
 
-    it('Decision', roundtrip('test/fixtures/dmn/dmn/decision.dmn'));
-
-
-    it('InputData', roundtrip('test/fixtures/dmn/dmn/input-data.dmn'));
+    it('dmn:Decision', roundtrip('test/fixtures/dmn/dmn/decision.dmn'));
 
 
-    it('Context', roundtrip('test/fixtures/dmn/dmn/context.dmn'));
+    it('dmn:InputData', roundtrip('test/fixtures/dmn/dmn/input-data.dmn'));
 
 
-    it('Import', roundtrip('test/fixtures/dmn/dmn/definitions-import.dmn'));
+    it('dmn:Context', roundtrip('test/fixtures/dmn/dmn/context.dmn'));
+
+
+    it('dmn:Import', roundtrip('test/fixtures/dmn/dmn/definitions-import.dmn'));
 
   });
 
 
-  describe('DI', function() {
+  describe('di', function() {
 
-    it('Decision', roundtrip('test/fixtures/dmn/dmndi/decision.dmn'));
-
-
-    it('InputData', roundtrip('test/fixtures/dmn/dmndi/input-data.dmn'));
+    it('dmn:Decision + DI', roundtrip('test/fixtures/dmn/dmndi/decision.dmn'));
 
 
-    it('TextAnnotation & DI', roundtrip('test/fixtures/dmn/dmndi/text-annotation.dmn'));
+    it('dmn:InputData + DI', roundtrip('test/fixtures/dmn/dmndi/input-data.dmn'));
+
+
+    it('dmn:TextAnnotation + DI', roundtrip('test/fixtures/dmn/dmndi/text-annotation.dmn'));
 
 
     it('with Label', roundtrip('test/fixtures/dmn/dmndi/label.dmn'));
