@@ -56,9 +56,10 @@ describe('dmn-moddle - edit', function() {
 
   }
 
-  describe('DMN', function() {
 
-    it('edit Decision name', async function() {
+  describe('dmn', function() {
+
+    it('should edit dmn:Decision name', async function() {
 
       // given
       const expected =
@@ -78,7 +79,7 @@ describe('dmn-moddle - edit', function() {
     });
 
 
-    it('create ItemDefinition', async function() {
+    it('should create dmn:ItemDefinition', async function() {
 
       const def_1 = moddle.create('dmn:ItemDefinition', {
         typeLanguage: 'FEEL',
