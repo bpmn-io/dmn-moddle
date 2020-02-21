@@ -266,51 +266,9 @@
       ],
       "properties": [
         {
-          "name": "binding",
-          "type": "Binding",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "decision",
-          "type": "Decision",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "list",
-          "type": "List",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "contextEntry",
-          "type": "ContextEntry",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "caller",
-          "type": "Invocation",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
           "name": "typeRef",
           "isAttr": true,
           "type": "String"
-        },
-        {
-          "name": "type",
-          "type": "ItemDefinition",
-          "isVirtual": true,
-          "isReference": true
         }
       ]
     },
@@ -571,7 +529,6 @@
           "name": "binding",
           "type": "Binding",
           "isMany": true,
-          "redefines": "Expression#binding",
           "xml": {
             "serialize": "property"
           }
@@ -1098,8 +1055,7 @@
         {
           "name": "contextEntry",
           "type": "ContextEntry",
-          "isMany": true,
-          "redefines": "Expression#contextEntry"
+          "isMany": true
         }
       ]
     },
