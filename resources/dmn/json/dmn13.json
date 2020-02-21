@@ -892,12 +892,6 @@
       "name": "ExtensionElements",
       "properties": [
         {
-          "name": "element",
-          "type": "DMNElement",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
           "name": "values",
           "type": "Element",
           "isMany": true
@@ -907,12 +901,6 @@
     {
       "name": "ExtensionAttribute",
       "properties": [
-        {
-          "name": "element",
-          "type": "DMNElement",
-          "isAttr": true,
-          "isReference": true
-        },
         {
           "name": "value",
           "type": "Element"
