@@ -30,6 +30,28 @@ describe('dmn-moddle - read', function() {
 
   describe('dmn', function() {
 
+    it('dmn:Definition#import', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmn/definitions-import.dmn');
+
+      // then
+      expect(definitions).to.jsonEqual({
+        $type: 'dmn:Definitions',
+        name: 'Definitions',
+        namespace: 'http://ns',
+        import: [
+          {
+            $type: 'dmn:Import',
+            namespace: 'http://my.ns',
+            name: 'myimport',
+            importType: 'https://www.omg.org/spec/DMN/20191111/MODEL/'
+          }
+        ]
+      });
+    });
+
+
     it('dmn:Decision', async function() {
 
       // given
