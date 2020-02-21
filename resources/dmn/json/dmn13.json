@@ -425,32 +425,13 @@
       ],
       "properties": [
         {
-          "name": "literalExpression",
-          "type": "LiteralExpression"
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable"
-        },
-        {
-          "name": "context",
-          "type": "Context"
-        },
-        {
-          "name": "relation",
-          "type": "Relation"
+          "name": "calledFunction",
+          "type": "Expression"
         },
         {
           "name": "binding",
           "type": "Binding",
-          "isMany": true,
-          "xml": {
-            "serialize": "property"
-          }
-        },
-        {
-          "name": "calledFunction",
-          "type": "Expression"
+          "isMany": true
         }
       ]
     },
@@ -770,37 +751,7 @@
           }
         },
         {
-          "name": "invocation",
-          "type": "Invocation",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "literalExpression",
-          "type": "LiteralExpression"
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable"
-        },
-        {
-          "name": "context",
-          "type": "Context"
-        },
-        {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition"
-        },
-        {
-          "name": "relation",
-          "type": "Relation"
-        },
-        {
-          "name": "list",
-          "type": "List"
-        },
-        {
-          "name": "bindingFormula",
+          "name": "expression",
           "type": "Expression"
         }
       ]

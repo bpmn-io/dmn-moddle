@@ -152,12 +152,12 @@ describe('dmn-moddle - write', function() {
 
       const binding = moddle.create('dmn:Binding', {
         parameter: informationItem,
-        literalExpression: literalExpression2
+        expression: literalExpression2
       });
 
       const invocation = moddle.create('dmn:Invocation', {
         id: 'Invocation_1',
-        literalExpression: literalExpression1,
+        calledFunction: literalExpression1,
         binding: [ binding ]
       });
 
