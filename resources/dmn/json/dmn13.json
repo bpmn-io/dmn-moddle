@@ -675,7 +675,7 @@
           }
         },
         {
-          "name": "expression",
+          "name": "bindingFormula",
           "type": "Expression"
         }
       ]
