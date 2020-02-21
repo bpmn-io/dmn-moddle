@@ -111,6 +111,55 @@ describe('dmn-moddle - write', function() {
       );
     });
 
+
+    it('dmn:Invocation', async function() {
+
+      // given
+      const literalExpression1 = moddle.create('dmn:LiteralExpression', {
+        id: 'LiteralExpression_1'
+      });
+
+      const informationItem = moddle.create('dmn:InformationItem', {
+        id: 'Parameter_1',
+        name: 'Bar'
+      });
+
+      const literalExpression2 = moddle.create('dmn:LiteralExpression', {
+        id: 'LiteralExpression_2',
+        text: 'Baz'
+      });
+
+      const binding = moddle.create('dmn:Binding', {
+        parameter: informationItem,
+        literalExpression: literalExpression2
+      });
+
+      const invocation = moddle.create('dmn:Invocation', {
+        id: 'Invocation_1',
+        literalExpression: literalExpression1,
+        binding: [ binding ]
+      });
+
+      // when
+      const xml = await write(invocation);
+
+      // then
+      // dmn:LiteralExpression should come before dmn:Binding but doesn't
+      expect(xml).to.equal(
+        '<invocation xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" id="Invocation_1">' +
+          '<literalExpression id="LiteralExpression_1">' +
+            '<text>Foo</text>' +
+          '</literalExpression>' +
+          '<binding>' +
+            '<parameter id="Parameter_1" name="Bar"/>' +
+            '<literalExpression id="LiteralExpression_2">' +
+              '<text>Baz</text>' +
+            '</literalExpression>' +
+          '</binding>' +
+        '</invocation>'
+      );
+    });
+
   });
 
 
