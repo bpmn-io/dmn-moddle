@@ -58,12 +58,6 @@
           "isAttr": true
         },
         {
-          "name": "definitions",
-          "type": "Definitions",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
           "name": "itemComponent",
           "type": "ItemDefinition",
           "isMany": true,
@@ -429,12 +423,6 @@
           "name": "namespace",
           "type": "String",
           "isAttr": true
-        },
-        {
-          "name": "definitions",
-          "type": "Definitions",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -473,12 +461,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "definitions",
-          "type": "Definitions",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -487,14 +469,6 @@
       "isAbstract": true,
       "superClass": [
         "NamedElement"
-      ],
-      "properties": [
-        {
-          "name": "definitions",
-          "type": "Definitions",
-          "isAttr": true,
-          "isReference": true
-        }
       ]
     },
     {
@@ -734,12 +708,6 @@
           "name": "URI",
           "type": "String",
           "isAttr": true
-        },
-        {
-          "name": "definitions",
-          "type": "Definitions",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -1047,14 +1015,6 @@
       "isAbstract": true,
       "superClass": [
         "DMNElement"
-      ],
-      "properties": [
-        {
-          "name": "definitions",
-          "type": "Definitions",
-          "isAttr": true,
-          "isReference": true
-        }
       ]
     },
     {
