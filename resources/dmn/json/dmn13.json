@@ -279,88 +279,9 @@
       ],
       "properties": [
         {
-          "name": "decisionOutput",
-          "type": "Decision",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "binding",
-          "type": "Binding",
-          "isReference": true,
-          "isMany": true
-        },
-        {
-          "name": "bkm",
-          "type": "BusinessKnowledgeModel",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "contextEntry",
-          "type": "ContextEntry",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "relation",
-          "type": "Relation",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "inputData",
-          "type": "InputData",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
           "name": "typeRef",
           "isAttr": true,
           "type": "String"
-        },
-        {
-          "name": "valueExpression",
-          "type": "Expression",
-          "isVirtual": true,
-          "isReference": true
-        },
-        {
-          "name": "type",
-          "type": "ItemDefinition",
-          "isVirtual": true,
-          "isReference": true
-        },
-        {
-          "name": "literalExpression",
-          "type": "LiteralExpression",
-          "isReference": true
-        },
-        {
-          "name": "invocation",
-          "type": "Invocation",
-          "isReference": true
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable",
-          "isReference": true
-        },
-        {
-          "name": "context",
-          "type": "Context",
-          "isReference": true
-        },
-        {
-          "name": "list",
-          "type": "List",
-          "isReference": true
         }
       ]
     },
