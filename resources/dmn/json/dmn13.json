@@ -650,10 +650,7 @@
         },
         {
           "name": "text",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "importedValues",
