@@ -41,6 +41,26 @@ describe('dmn-moddle - write', function() {
     });
 
 
+    it('dmn:FunctionDefinition', async function() {
+
+      // given
+      const functionDefinition = moddle.create('dmn:FunctionDefinition', {
+        kind: 'FEEL',
+        body: moddle.create('dmn:Context')
+      });
+
+      // when
+      const xml = await write(functionDefinition);
+
+      // then
+      expect(xml).to.equal(
+        '<dmn:functionDefinition xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" kind="FEEL">' +
+          '<dmn:context />' +
+        '</dmn:functionDefinition>'
+      );
+    });
+
+
     it('dmn:LiteralExpression', async function() {
 
       // given

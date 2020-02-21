@@ -833,12 +833,6 @@
           "type": "Expression"
         },
         {
-          "name": "bkm",
-          "type": "BusinessKnowledgeModel",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
           "name": "kind",
           "type": "FunctionKind",
           "isAttr": true

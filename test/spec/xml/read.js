@@ -84,6 +84,37 @@ describe('dmn-moddle - read', function() {
     });
 
 
+    it('dmn:FunctionDefinition', async function() {
+
+      // when
+      const functionDefinition = await read(
+        'test/fixtures/dmn/dmn/function-definition.part.dmn',
+        'dmn:FunctionDefinition'
+      );
+
+      // then
+      expect(functionDefinition).to.jsonEqual({
+        $type: 'dmn:FunctionDefinition',
+        kind: 'FEEL',
+        formalParameter: [
+          {
+            $type: 'dmn:InformationItem',
+            typeRef: 'string',
+            name: 'ProductType'
+          },
+          {
+            $type: 'dmn:InformationItem',
+            typeRef: 'number',
+            name: 'Rate'
+          }
+        ],
+        body: {
+          $type: 'dmn:Context'
+        }
+      });
+    });
+
+
     it('dmn:BusinessKnowledgeModel', async function() {
 
       // when
@@ -125,7 +156,7 @@ describe('dmn-moddle - read', function() {
               name: 'Amount'
             }
           ],
-          context: {
+          body: {
             $type: 'dmn:Context'
           }
         }
