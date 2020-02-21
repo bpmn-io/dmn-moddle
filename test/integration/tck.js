@@ -47,6 +47,10 @@ describe('dmn-moddle - TCK roundtrip', function() {
   const fileNames = glob(tckDirectory + '/TestCases/**/*.dmn', { cwd: __dirname });
 
   function shouldRun(fileName) {
+    if ([ '0012-list-functions.dmn', '0086-import.dmn' ].some(f => fileName.endsWith(f))) {
+      return false;
+    }
+
     const match = process.env.GREP;
 
     return !match || fileName.toLowerCase().includes(match);
