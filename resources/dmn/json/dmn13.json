@@ -66,10 +66,11 @@
           }
         },
         {
-          "name": "containingDefinition",
-          "type": "ItemDefinition",
-          "isAttr": true,
-          "isReference": true
+          "name": "functionItem",
+          "type": "FunctionItem",
+          "xml": {
+            "serialize": "property"
+          }
         },
         {
           "name": "isCollection",
@@ -1123,15 +1124,17 @@
       ],
       "properties": [
         {
+          "name": "parameters",
+          "type": "InformationItem",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
           "name": "outputTypeRef",
           "isAttr": true,
           "type": "String"
-        },
-        {
-          "name": "outputType",
-          "type": "ItemDefinition",
-          "isVirtual": true,
-          "isReference": true
         }
       ]
     },
