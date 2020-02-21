@@ -1518,7 +1518,7 @@
           "name": "textFormat",
           "isAttr": true,
           "type": "String",
-          "default": "\"text/plain\""
+          "default": "text/plain"
         }
       ]
     },

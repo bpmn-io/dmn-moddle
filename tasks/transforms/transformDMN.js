@@ -48,6 +48,8 @@ module.exports = async function(results) {
   // fix extension elements
   delete findProperty('DMNElement#extensionElements', model).isMany;
 
+  findProperty('TextAnnotation#textFormat', model).default = 'text/plain';
+
   findProperty('ExtensionElements#extensionElement', model).name = 'values';
 
   model = removeWhitespace(model);
