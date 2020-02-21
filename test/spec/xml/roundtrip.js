@@ -21,6 +21,9 @@ describe('dmn-moddle - roundtrip', function() {
 
     it('InputData', roundtrip('test/fixtures/dmn/dmn/input-data.dmn'));
 
+
+    it('Context', roundtrip('test/fixtures/dmn/dmn/context.dmn'));
+
   });
 
 
@@ -60,8 +63,14 @@ function roundtrip(fileName) {
           return reject(err);
         }
 
+        const { warnings } = context;
+
         try {
-          expect(context.warnings).to.be.empty;
+          if (process.env.VERBOSE && warnings.length > 0) {
+            console.log('import warnings', warnings);
+          }
+
+          expect(warnings).to.be.empty;
         } catch (err) {
           return reject(err);
         }
