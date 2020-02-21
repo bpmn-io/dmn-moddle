@@ -3,7 +3,6 @@ import fs from 'fs';
 import expect from '../../expect';
 
 import DmnModdle from '../../../lib';
-import { matchPattern } from 'min-dash';
 
 
 describe('dmn-moddle - read', function() {
