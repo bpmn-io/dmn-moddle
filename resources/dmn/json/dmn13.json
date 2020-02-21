@@ -415,12 +415,6 @@
         {
           "name": "decisionLogic",
           "type": "Expression"
-        },
-        {
-          "name": "requiresInformation",
-          "type": "InformationRequirement",
-          "isReference": true,
-          "isMany": true
         }
       ]
     },
