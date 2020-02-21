@@ -70,6 +70,16 @@ describe('dmn-moddle', function() {
       expect(decisionTable.$instanceOf('dmn:Expression')).to.be.true;
     });
 
+
+    it('should create TextAnnotation', function() {
+
+      // when
+      const annotation = moddle.create('dmn:TextAnnotation');
+
+      // then
+      expect(annotation.textFormat).to.eql('text/plain');
+    });
+
   });
 
 });
