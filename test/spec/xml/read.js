@@ -31,7 +31,7 @@ describe('dmn-moddle - read', function() {
 
   describe('DMN', function() {
 
-    it('Decision', async function() {
+    it('dmn:Decision', async function() {
 
       // given
       const expected = {
@@ -48,7 +48,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('InputData', async function() {
+    it('dmn:InputData', async function() {
 
       // given
       const expected = {
@@ -65,7 +65,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('InformationRequirement', async function() {
+    it('dmn:InformationRequirement', async function() {
 
       // given
       const expected = {
@@ -85,7 +85,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('BusinessKnowledgeModel', async function() {
+    it('dmn:BusinessKnowledgeModel', async function() {
 
       // when
       const bkm = await read(
@@ -134,7 +134,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('Context', async function() {
+    it('dmn:Context', async function() {
 
       // when
       const context = await read(
@@ -188,7 +188,7 @@ describe('dmn-moddle - read', function() {
 
   describe('DI', function() {
 
-    it('Decision & DI', async function() {
+    it('dmn:Decision + DI', async function() {
 
       // given
       const expected = {
@@ -220,7 +220,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('InputData & DI', async function() {
+    it('dmn:InputData + DI', async function() {
 
       // given
       const expected = {
@@ -252,7 +252,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('TextAnnotation & DI', async function() {
+    it('dmn:TextAnnotation + DI', async function() {
 
       // when
       const definitions = await read('test/fixtures/dmn/dmndi/text-annotation.dmn');
@@ -287,7 +287,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('with label', async function() {
+    it('dmndi:DMNLabel', async function() {
 
       // when
       const definitions = await read('test/fixtures/dmn/dmndi/label.dmn');
@@ -377,7 +377,7 @@ describe('dmn-moddle - read', function() {
     });
 
 
-    it('with size', async function() {
+    it('dmndi:Diagram with dmndi:Size', async function() {
 
       // when
       const definitions = await read('test/fixtures/dmn/dmndi/size.dmn');
@@ -391,6 +391,7 @@ describe('dmn-moddle - read', function() {
         width: 650.0
       });
     });
+
   });
 
 });
