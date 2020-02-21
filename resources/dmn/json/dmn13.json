@@ -29,24 +29,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "bkm",
-          "type": "BusinessKnowledgeModel",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "decision",
-          "type": "Decision",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "knowledgeSource",
-          "type": "KnowledgeSource",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -503,12 +485,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "decision",
-          "type": "Decision",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -768,18 +744,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "bkm",
-          "type": "BusinessKnowledgeModel",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "decision",
-          "type": "Decision",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -811,17 +775,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "parameter",
-          "type": "InformationItem",
-          "isMany": true
-        },
-        {
-          "name": "encapsulatedDecisions",
-          "type": "ElementCollection",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },
@@ -874,26 +827,6 @@
           "xml": {
             "serialize": "property"
           }
-        },
-        {
-          "name": "literalExpression",
-          "type": "LiteralExpression"
-        },
-        {
-          "name": "invocation",
-          "type": "Invocation"
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable"
-        },
-        {
-          "name": "context",
-          "type": "Context"
-        },
-        {
-          "name": "relation",
-          "type": "Relation"
         },
         {
           "name": "body",
