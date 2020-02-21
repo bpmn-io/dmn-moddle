@@ -1187,39 +1187,12 @@
       "properties": [
         {
           "name": "text",
-          "type": "String",
-          "xml": {
-            "serialize": "property"
-          }
+          "type": "String"
         },
         {
           "name": "expressionLanguage",
           "type": "String",
           "isAttr": true
-        },
-        {
-          "name": "ruleInput",
-          "type": "DecisionRule",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "allowedInItemDefinition",
-          "type": "ItemDefinition",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "input",
-          "type": "InputClause",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "output",
-          "type": "OutputClause",
-          "isAttr": true,
-          "isReference": true
         }
       ]
     },

@@ -134,6 +134,24 @@ describe('dmn-moddle - read', function() {
     });
 
 
+    it('dmn:UnaryTests', async function() {
+
+      // when
+      const unaryTests = await read(
+        'test/fixtures/dmn/dmn/unary-tests.part.dmn',
+        'dmn:UnaryTests'
+      );
+
+      // then
+      expect(unaryTests).to.jsonEqual({
+        $type: 'dmn:UnaryTests',
+        expressionLanguage: 'LANG',
+        text: 'FOO'
+      });
+
+    });
+
+
     it('dmn:Context', async function() {
 
       // when
