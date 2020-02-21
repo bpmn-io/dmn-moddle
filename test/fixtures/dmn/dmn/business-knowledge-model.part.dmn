@@ -1,0 +1,10 @@
+<businessKnowledgeModel name="InstallmentCalculation" id="b_InstallmentCalculation" xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/">
+  <variable name="InstallmentCalculation"/>
+  <encapsulatedLogic>
+    <formalParameter typeRef="string" name="ProductType"/>
+    <formalParameter typeRef="number" name="Rate"/>
+    <formalParameter typeRef="number" name="Term"/>
+    <formalParameter typeRef="number" name="Amount"/>
+    <context />
+  </encapsulatedLogic>
+</businessKnowledgeModel>
