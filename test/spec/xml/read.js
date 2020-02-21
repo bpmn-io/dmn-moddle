@@ -30,7 +30,7 @@ describe('dmn-moddle - read', function() {
 
   describe('dmn', function() {
 
-    it('dmn:Definition#import', async function() {
+    it('dmn:Definitions#import', async function() {
 
       // when
       const definitions = await read('test/fixtures/dmn/dmn/definitions-import.dmn');
@@ -49,6 +49,88 @@ describe('dmn-moddle - read', function() {
           }
         ]
       });
+    });
+
+
+    it('dmn:Definitions#extensionElements', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmn/definitions-extensionElements.dmn');
+
+      // then
+      expect(definitions).to.jsonEqual({
+        $type: 'dmn:Definitions',
+        name: 'Definitions',
+        namespace: 'http://ns',
+        extensionElements: {
+          $type: 'dmn:ExtensionElements',
+          values: [
+            {
+              $type: 'foo:prop',
+              name: 'FOO',
+              value: 'BAR'
+            }
+          ]
+        }
+      });
+    });
+
+
+    it('dmn:Decision#extensionElements', async function() {
+
+      // when
+      const decision = await read(
+        'test/fixtures/dmn/dmn/decision-extensionElements.part.dmn',
+        'dmn:Decision'
+      );
+
+      // then
+      expect(decision).to.jsonEqual({
+        $type: 'dmn:Decision',
+        extensionElements: {
+          $type: 'dmn:ExtensionElements',
+          values: [
+            {
+              $type: 'foo:prop',
+              name: 'FOO',
+              value: 'BAR'
+            }
+          ]
+        }
+      });
+    });
+
+
+    it('dmn:Definitions extension attributes', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmn/definitions-extensionAttributes.dmn');
+
+      // then
+      expect(definitions).to.jsonEqual({
+        $type: 'dmn:Definitions',
+        name: 'Definitions',
+        namespace: 'http://ns'
+      });
+
+      expect(definitions.get('foo:bar')).to.eql('FOOBAR');
+    });
+
+
+    it('dmn:Decision extension attributes', async function() {
+
+      // when
+      const decision = await read(
+        'test/fixtures/dmn/dmn/decision-extensionAttributes.part.dmn',
+        'dmn:Decision'
+      );
+
+      // then
+      expect(decision).to.jsonEqual({
+        $type: 'dmn:Decision'
+      });
+
+      expect(decision.get('foo:bar')).to.eql('FOOBAR');
     });
 
 

@@ -1,0 +1,5 @@
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:foo="http://foo" name="Definitions" namespace="http://ns">
+  <extensionElements>
+    <foo:prop name="FOO" value="BAR" />
+  </extensionElements>
+</definitions>
