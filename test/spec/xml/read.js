@@ -105,6 +105,55 @@ describe('dmn-moddle - read', function() {
     });
 
 
+    it('BusinessKnowledgeModel', async function() {
+
+      // when
+      const bkm = await read(
+        'test/fixtures/dmn/dmn/business-knowledge-model.part.dmn',
+        'dmn:BusinessKnowledgeModel'
+      );
+
+      // then
+      expect(bkm).to.jsonEqual({
+        $type: 'dmn:BusinessKnowledgeModel',
+        name: 'InstallmentCalculation',
+        id: 'b_InstallmentCalculation',
+        variable: {
+          $type: 'dmn:InformationItem',
+          name: 'InstallmentCalculation'
+        },
+        encapsulatedLogic: {
+          $type: 'dmn:FunctionDefinition',
+          formalParameter: [
+            {
+              $type: 'dmn:InformationItem',
+              typeRef: 'string',
+              name: 'ProductType'
+            },
+            {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'Rate'
+            },
+            {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'Term'
+            },
+            {
+              $type: 'dmn:InformationItem',
+              typeRef: 'number',
+              name: 'Amount'
+            }
+          ],
+          context: {
+            $type: 'dmn:Context'
+          }
+        }
+      });
+    });
+
+
     it('Context', async function() {
 
       // when
