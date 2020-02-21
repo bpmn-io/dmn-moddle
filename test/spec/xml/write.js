@@ -75,6 +75,26 @@ describe('dmn-moddle - write', function() {
     });
 
 
+    it('dmn:UnaryTests', async function() {
+
+      // given
+      const unaryTests = moddle.create('dmn:UnaryTests', {
+        expressionLanguage: 'LANG',
+        text: 'FOO'
+      });
+
+      // when
+      const xml = await write(unaryTests);
+
+      // then
+      expect(xml).to.eql(
+        '<dmn:unaryTests xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" expressionLanguage="LANG">' +
+          '<dmn:text>FOO</dmn:text>' +
+        '</dmn:unaryTests>'
+      );
+    });
+
+
     it('dmn:Context', async function() {
 
       // given
