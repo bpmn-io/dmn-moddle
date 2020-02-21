@@ -1073,37 +1073,7 @@
           }
         },
         {
-          "name": "context",
-          "type": "Context",
-          "isAttr": true,
-          "isReference": true
-        },
-        {
-          "name": "literalExpression",
-          "type": "LiteralExpression"
-        },
-        {
-          "name": "invocation",
-          "type": "Invocation"
-        },
-        {
-          "name": "decisionTable",
-          "type": "DecisionTable"
-        },
-        {
-          "name": "functionDefinition",
-          "type": "FunctionDefinition"
-        },
-        {
-          "name": "relation",
-          "type": "Relation"
-        },
-        {
-          "name": "list",
-          "type": "List"
-        },
-        {
-          "name": "value",
+          "name": "expression",
           "type": "Expression"
         }
       ]

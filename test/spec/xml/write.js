@@ -88,7 +88,7 @@ describe('dmn-moddle - write', function() {
 
       const contextEntry = moddle.create('dmn:ContextEntry', {
         variable,
-        literalExpression
+        expression: literalExpression
       });
 
       const context = moddle.create('dmn:Context', {

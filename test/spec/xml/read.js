@@ -153,7 +153,7 @@ describe('dmn-moddle - read', function() {
               typeRef: 'number',
               name: 'MonthlyFee'
             },
-            literalExpression: {
+            expression: {
               $type: 'dmn:LiteralExpression',
               text: 'if ProductType ="STANDARD LOAN" then 20.00 else if ProductType ="SPECIAL LOAN" then 25.00 else null'
             }
@@ -165,14 +165,14 @@ describe('dmn-moddle - read', function() {
               typeRef: 'number',
               name: 'MonthlyRepayment'
             },
-            literalExpression: {
+            expression: {
               $type: 'dmn:LiteralExpression',
               text: '(Amount *Rate/12) / (1 - (1 + Rate/12)**-Term)'
             }
           },
           {
             $type: 'dmn:ContextEntry',
-            literalExpression: {
+            expression: {
               $type: 'dmn:LiteralExpression',
               typeRef: 'number',
               text: 'MonthlyRepayment+MonthlyFee'
