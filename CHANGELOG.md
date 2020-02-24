@@ -6,6 +6,10 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.4
+
+* `FIX`: correct `dmn:TextAnnotation#textFormat` default
+
 ## 8.0.3
 
 * `FIX`: do not assign duplicate `dmndi:DMNStyle#id`
