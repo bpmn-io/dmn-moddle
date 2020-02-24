@@ -110,16 +110,6 @@
           "isMany": true
         },
         {
-          "name": "performanceIndicator",
-          "type": "PerformanceIndicator",
-          "isMany": true
-        },
-        {
-          "name": "organizationUnit",
-          "type": "OrganizationUnit",
-          "isMany": true
-        },
-        {
           "name": "namespace",
           "type": "String",
           "isAttr": true
@@ -437,7 +427,8 @@
       "isAbstract": true,
       "superClass": [
         "NamedElement"
-      ]
+      ],
+      "properties": []
     },
     {
       "name": "InputData",
@@ -739,8 +730,8 @@
       "properties": [
         {
           "name": "elements",
-          "type": "Expression",
-          "isMany": true
+          "isMany": true,
+          "type": "Expression"
         }
       ]
     },
@@ -941,7 +932,8 @@
       "isAbstract": true,
       "superClass": [
         "DMNElement"
-      ]
+      ],
+      "properties": []
     },
     {
       "name": "Association",
@@ -1044,8 +1036,8 @@
       "properties": [
         {
           "name": "parameters",
-          "type": "InformationItem",
           "isMany": true,
+          "type": "InformationItem",
           "xml": {
             "serialize": "property"
           }

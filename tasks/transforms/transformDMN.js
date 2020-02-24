@@ -1,17 +1,15 @@
 const fs = require('fs');
 
-const {
-  groupBy,
-  matchPattern
-} = require('min-dash');
+const { matchPattern } = require('min-dash');
 
 const {
   findChildren,
   findProperty,
   findType,
   fixSequence,
-  getAllProperties,
+  orderProperties,
   parseXML,
+  removeProperties,
   removeWhitespace
 } = require('./helper');
 
@@ -51,14 +49,49 @@ module.exports = async function(results) {
 
   findProperty('ExtensionElements#extensionElement', model).name = 'values';
 
-  // redefine `Expression#binding`
-  findProperty('Invocation#binding', model).redefines = 'Expression#binding';
+  // fix `Context#contextEntry` name
+  findProperty('Context#contextEnrty', model).name = 'contextEntry';
 
-  // redefine `Context#contextEntry` and fix property name
-  const contextEntry = findProperty('Context#contextEnrty', model);
+  // fix `TextAnnotation#textFormat` default
+  findProperty('TextAnnotation#textFormat', model).default = 'text/plain';
 
-  contextEntry.name = 'contextEntry';
-  contextEntry.redefines = 'Expression#contextEntry';
+  findType('Decision', model).properties.push({
+    name: 'expression',
+    type: 'Expression'
+  });
+
+  findType('List', model).properties.push({
+    name: 'elements',
+    isMany: true,
+    type: 'Expression'
+  });
+
+  // fix `ItemDefinition#containingDefinition`
+  const containingDefinition = findProperty('ItemDefinition#containingDefinition', model);
+
+  containingDefinition.name = 'functionItem';
+  containingDefinition.type = 'FunctionItem';
+
+  delete containingDefinition.isAttr;
+  delete containingDefinition.isReference;
+
+  containingDefinition.xml = {
+    serialize: 'property'
+  };
+
+  // fix `FunctionItem`
+  findType('FunctionItem', model).properties.push({
+    name: 'parameters',
+    isMany: true,
+    type: 'InformationItem',
+    xml: {
+      serialize: 'property'
+    }
+  });
+
+  removeProperties('FunctionItem', [
+    'outputType'
+  ], model);
 
   model = removeWhitespace(model);
 
@@ -68,19 +101,231 @@ module.exports = async function(results) {
 
   model = fixElementReferences(model, xsd);
 
-  model = fixSubstitutionGroups(model, xsd);
-
   model = fixPropertySerialization(model, xsd);
 
   model = fixSequence(model, xsd);
 
+  [
+    'BusinessKnowledgeModel#authorityRequirement',
+    'BusinessKnowledgeModel#knowledgeRequirement',
+    'Decision#authorityRequirement',
+    'Decision#informationRequirement',
+    'Decision#knowledgeRequirement',
+    'Definitions#elementCollection',
+    'Definitions#itemDefinition',
+    'DMNElement#description',
+    'DMNElement#extensionElements',
+    'ImportedValues#importedElement',
+    'Invocation#binding',
+    'ItemDefinition#functionItem',
+    'ItemDefinition#typeRef',
+    'KnowledgeSource#authorityRequirement',
+    'KnowledgeSource#type',
+    'LiteralExpression#importedValues',
+    'LiteralExpression#text',
+    'RuleAnnotation#text',
+    'TextAnnotation#text',
+    'UnaryTests#text'
+  ].forEach(name => {
+    delete findProperty(name, model).xml;
+  });
+
+  [
+    'Artifact',
+    'BusinessContextElement',
+    'DRGElement',
+    'ElementCollection',
+    'Import',
+    'ItemDefinition'
+  ].forEach(name => {
+    removeProperties(name, [
+      'definitions'
+    ], model);
+  });
+
+  // remove `AuthorityRequirement` properties
+  removeProperties('AuthorityRequirement', [
+    'bkm',
+    'decision',
+    'knowledgeSource'
+  ], model);
+
+  // remove `Binding` properties
+  removeProperties('Binding', [
+    'context',
+    'decisionTable',
+    'functionDefinition',
+    'invocation',
+    'list',
+    'literalExpression',
+    'relation'
+  ], model);
+
+  // remove `BusinessKnowledgeModel` properties
+  removeProperties('BusinessKnowledgeModel', [
+    'encapsulatedDecisions',
+    'parameter'
+  ], model);
+
+  // remove `ContextEntry` properties
+  removeProperties('ContextEntry', [
+    'context',
+    'decisionTable',
+    'functionDefinition',
+    'invocation',
+    'list',
+    'literalExpression',
+    'relation'
+  ], model);
+
+  // remove `Decision` properties
+  removeProperties('Decision', [
+    'context',
+    'decisionLogic',
+    'decisionTable',
+    'functionDefinition',
+    'invocation',
+    'list',
+    'literalExpression',
+    'relation',
+    'requiresInformation'
+  ], model);
+
+  // remove `DecisionRule` properties
+  removeProperties('DecisionRule', [
+    'decisionTable'
+  ], model);
+
   // remove Defintions#association, Definitions#group and Defintions#textAnnotation
   // artifacts will be accessible through Definitions#artifact
-  const definitions = findType('Definitions', model);
+  removeProperties('Definitions', [
+    'association',
+    'group',
+    'textAnnotation'
+  ], model);
 
-  definitions.properties = definitions.properties.filter(({ name }) => {
-    return ![ 'association', 'group', 'textAnnotation'].includes(name);
-  });
+  // remove `Expression` properties
+  removeProperties('Expression', [
+    'binding',
+    'caller',
+    'contextEntry',
+    'decision',
+    'functionDefinition',
+    'list',
+    'type'
+  ], model);
+
+  // remove `ExtensionAttribute` properties
+  removeProperties('ExtensionAttribute', [
+    'element'
+  ], model);
+
+  // remove `ExtensionElements` properties
+  removeProperties('ExtensionElements', [
+    'element'
+  ], model);
+
+  // remove `FunctionDefinition` properties
+  removeProperties('FunctionDefinition', [
+    'bkm',
+    'context',
+    'decisionTable',
+    'invocation',
+    'literalExpression',
+    'relation'
+  ], model);
+
+  // remove `InformationItem` properties
+  removeProperties('InformationItem', [
+    'binding',
+    'bkm',
+    'context',
+    'contextEntry',
+    'decisionOutput',
+    'decisionTable',
+    'functionDefinition',
+    'inputData',
+    'invocation',
+    'list',
+    'literalExpression',
+    'relation',
+    'type',
+    'valueExpression'
+  ], model);
+
+  // remove `InformationRequirement` properties
+  removeProperties('InformationRequirement', [
+    'decision'
+  ], model);
+
+  // remove `InputClause` properties
+  removeProperties('InputClause', [
+    'decisionTable'
+  ], model);
+
+  // remove `InputData` properties
+  removeProperties('InputData', [
+    'requiresInformation'
+  ], model);
+
+  // remove `Invocation` properties
+  removeProperties('Invocation', [
+    'context',
+    'decisionTable',
+    'literalExpression',
+    'relation'
+  ], model);
+
+  // remove `ItemDefinition` properties
+  removeProperties('ItemDefinition', [
+    'definitions'
+  ], model);
+
+  // remove `KnowledgeRequirement` properties
+  removeProperties('KnowledgeRequirement', [
+    'bkm',
+    'decision'
+  ], model);
+
+  // remove `List` properties
+  removeProperties('List', [
+    'context',
+    'decisionTable',
+    'element',
+    'invocation',
+    'literalExpression',
+    'relation'
+  ], model);
+
+  // remove `LiteralExpression` properties
+  removeProperties('LiteralExpression', [
+    'expressionInput',
+    'output',
+    'ruleOutput'
+  ], model);
+
+  // remove `OutputClause` properties
+  removeProperties('OutputClause', [
+    'outputDefinition'
+  ], model);
+
+  // remove `RuleAnnotation` properties
+  removeProperties('RuleAnnotation', [
+    'ruleAnnotation'
+  ], model);
+
+  // remove `UnaryTests` properties
+  removeProperties('UnaryTests', [
+    'allowedInItemDefinition',
+    'input',
+    'output',
+    'ruleInput'
+  ], model);
+
+  orderProperties('Invocation', [
+    'calledFunction',
+    'binding'
+  ], model);
 
   // set uri
   model.uri = xsd.elementsByTagName[ 'xsd:schema' ][ 0 ].targetNamespace;
@@ -240,114 +485,4 @@ function fixPropertySerialization(model, xsd) {
   });
 
   return model;
-}
-
-/**
- * As specified in the XSD, in some instances, properties are substitutable for other properties.
- * Therefore, these properties are added to the respective types.
- *
- * Example:
- *
- * <xsd:complexType name="tDecision">
- *   ...
- *     <xsd:element ref="expression" minOccurs="0" maxOccurs="1"/>
- *   ...
- * </xsd:complexType>
- *
- * and
- *
- * <xsd:element name="decisionTable" type="tDecisionTable" substitutionGroup="expression"/>
- *
- * and
- *
- * <xsd:element name="literalExpression" type="tLiteralExpression" substitutionGroup="expression"/>
- *
- * ensure that both
- *
- * <decision>
- *   <decisionTable>
- *     ...
- *   </decisionTable>
- * </decision>
- *
- * and
- *
- * <decision>
- *   <literalExpression />
- * </decision>
- *
- * are possible.
- */
-function fixSubstitutionGroups(model, xsd) {
-  const { elementsByTagName } = xsd,
-        xsdSchema = elementsByTagName[ 'xsd:schema' ][ 0 ];
-
-  // (1) find all substitutes
-  let substitutes = findChildren(xsdSchema, matchPattern({ tagName: 'xsd:element' }))
-    .filter(({ substitutionGroup }) => substitutionGroup);
-
-  if (!substitutes.length) {
-    return model;
-  }
-
-  substitutes = groupBy(substitutes, ({ substitutionGroup }) => substitutionGroup);
-
-  // (2) find properties that are substitutable
-  model.types.forEach(type => {
-    const { properties } = type;
-
-    if (!properties) {
-      return;
-    }
-
-    properties.forEach(property => {
-      if (substitutes[ lowerCase(property.type) ]) {
-
-        // (3) add substitutes
-        substitutes[ lowerCase(property.type) ].forEach(substitute => {
-
-          // (3.1) do NOT add substitute if property with same name already added
-          if (type.properties.find(matchPattern({ name: substitute.name }))) {
-            return;
-          }
-
-          const {
-            isVirtual,
-            ...rest
-          } = property;
-
-          const { superClass } = type;
-
-          let allProperties = {};
-
-          if (superClass) {
-            allProperties = getAllProperties(type.name, model);
-          }
-
-          // (3.2) add substitute
-          if (
-            (type.name !== substitute.type.slice(1)) &&
-            !allProperties[ substitute.name ]
-          ) {
-            type.properties = [
-              ...type.properties,
-              {
-                ...rest,
-                name: substitute.name,
-                type: substitute.type.slice(1)
-              }
-            ];
-          }
-        });
-      }
-    });
-  });
-
-  return model;
-}
-
-
-
-function lowerCase(string) {
-  return `${ string.charAt(0).toLowerCase() }${ string.slice(1) }`;
 }

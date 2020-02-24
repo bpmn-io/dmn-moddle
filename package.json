@@ -11,7 +11,7 @@
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
     "prepublishOnly": "run-s distro",
-    "generate-schema": "echo \"==> NOT GENERATING SCHEMA RIGHT NOW\"",
+    "generate-schema": "node tasks/generate-schema",
     "test:tck": "npm run test:integration",
     "test:integration": "mocha -r esm --reporter=spec test/integration/*.js"
   },
