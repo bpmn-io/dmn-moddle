@@ -6,6 +6,23 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 9.0.0
+
+_An update of the meta-model to better represent the DMN schema ([#12](https://github.com/bpmn-io/dmn-moddle/pull/12))._
+
+* `FEAT`: properly represent DMN model elements using DMN schema derived inheritance ([#12](https://github.com/bpmn-io/dmn-moddle/pull/12))
+* `FIX`: correctly import `dmn:Context` elements
+* `FIX`: correct `FunctionItem#parameters`
+* `CHORE`: remove `Decision#literalExpression`, `Decision#decisionTable` accessors in favor of DMN schema derived `Decision#decisionLogic`
+* `CHORE`: remove `Definitions#performanceIndicator`, `Definitions#organizationUnit` accessors in favor of DMN schema derived `Definitions#businessContextElement`
+* `CHORE`: rename `List#element` to `List#elements` to match DMN schema
+* `CHORE`: remove unused virtual / inverse properties
+* `CHORE`: remove unneeded serialization hints
+
+### Breaking Changes
+
+* As indicated above, access to certain elements, most importantly `Decision#...` is now done via DMN standards derived accessors. This improves the robustness of import, export, validation and error handling and prevents unintentional miss-use.
+
 ## 8.0.4
 
 * `FIX`: correct `dmn:TextAnnotation#textFormat` default
@@ -24,6 +41,8 @@ ___Note:__ Yet to be released changes appear here._
 * `FIX`: add package names ([`2859ed`](https://github.com/bpmn-io/dmn-moddle/commit/2859edc1835217001fe39487eb57bedee4eba76a))
 
 ## 8.0.0
+
+_A rewrite of the library that makes it compatible with DMN 1.3 files._
 
 * `FEAT`: read and write DMN 1.3 diagrams
 * `FEAT`: recognize full DMN 1.3
