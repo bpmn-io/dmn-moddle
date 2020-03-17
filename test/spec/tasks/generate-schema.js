@@ -269,6 +269,22 @@ describe('generate schema', function() {
       });
     });
 
+
+    it('should use lowercase prefix for dmn schema', function() {
+
+
+      [ 'DMNDiagram', 'DMNDiagramElement' ].forEach(type => {
+
+        // then
+        const dmnElementRef = findProperty(`${ type }#dmnElementRef`, schema);
+
+        expect(dmnElementRef.type).to.exist;
+
+        expect(dmnElementRef.type).to.equal('dmn:DMNElement');
+      });
+
+    });
+
   });
 
 });

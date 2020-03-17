@@ -55,6 +55,10 @@ module.exports = async function(results) {
   findProperty('DMNDiagram#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
   findProperty('DMNDiagramElement#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
 
+  // fix dmndi:DMNDiagram#dmnElementRef and dmndi:DMNDiagramElement#dmnElementRef type prefix
+  findProperty('DMNDiagram#dmnElementRef', model).type = 'dmn:DMNElement';
+  findProperty('DMNDiagramElement#dmnElementRef', model).type = 'dmn:DMNElement';
+
   // add dmndi:Size and change dmndi:DMNDiagram#size type to that
   model.types.push({
     name: 'Size',

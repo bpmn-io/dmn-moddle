@@ -89,7 +89,7 @@
       "properties": [
         {
           "name": "dmnElementRef",
-          "type": "DMN:DMNElement",
+          "type": "dmn:DMNElement",
           "isAttr": true,
           "isReference": true
         },
@@ -125,7 +125,7 @@
       "properties": [
         {
           "name": "dmnElementRef",
-          "type": "DMN:DMNElement",
+          "type": "dmn:DMNElement",
           "isAttr": true,
           "isReference": true
         },
