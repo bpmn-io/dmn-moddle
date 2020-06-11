@@ -80,7 +80,7 @@ describe('dmn-moddle - TCK roundtrip', function() {
           }
 
           try {
-            const warnings = filterWhitelisted(context.warnings, fileName);
+            const warnings = filterIgnored(context.warnings, fileName);
 
             if (process.env.VERBOSE && warnings.length > 0) {
               console.log('import warnings', warnings);
@@ -148,7 +148,7 @@ function validate(err, xml, done) {
   });
 }
 
-function filterWhitelisted(warnings, fileName) {
+function filterIgnored(warnings, fileName) {
 
   if (fileName.endsWith('0086-import.dmn')) {
     return warnings.filter(err => err.message !== 'unresolved reference <include1:_32543811-b499-4608-b784-6c6f294b1c58>');
