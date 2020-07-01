@@ -592,4 +592,20 @@ describe('dmn-moddle - read', function() {
 
   });
 
+
+  describe('biodi', function() {
+
+    it('should read biodi', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/biodi/biodi.dmn');
+
+      // then
+      const decisionTable = definitions.get('drgElement')[0].decisionLogic;
+
+      expect(decisionTable).to.have.property('annotationsWidth', 200);
+      expect(decisionTable.input[0]).to.have.property('width', 150);
+      expect(decisionTable.output[0]).to.have.property('width', 150);
+    });
+  });
 });

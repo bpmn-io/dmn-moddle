@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.1.0-dev.20200702">
+  <decision id="Decision" name="Decision">
+    <decisionTable id="DecisionTable_046av0s" biodi:annotationsWidth="200">
+      <input id="InputClause" biodi:width="150">
+        <inputExpression id="LiteralExpression_17mnp7i" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output" typeRef="string" biodi:width="150" />
+    </decisionTable>
+  </decision>
+</definitions>

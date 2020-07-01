@@ -48,6 +48,12 @@ describe('dmn-moddle - roundtrip', function() {
 
   });
 
+
+  describe('biodi', function() {
+
+    it('biodi', roundtrip('test/fixtures/dmn/biodi/biodi.dmn'));
+
+  });
 });
 
 
