@@ -1,0 +1,52 @@
+{
+  "name": "bpmn.io DI for DMN",
+  "uri": "http://bpmn.io/schema/dmn/biodi/2.0",
+  "prefix": "biodi",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "types": [
+    {
+      "name": "DecisionTable",
+      "isAbstract": true,
+      "extends": [
+        "dmn:DecisionTable"
+      ],
+      "properties": [
+        {
+          "name": "annotationsWidth",
+          "isAttr": true,
+          "type": "Integer"
+        }
+      ]
+    },
+    {
+      "name": "OutputClause",
+      "isAbstract": true,
+      "extends": [
+        "dmn:OutputClause"
+      ],
+      "properties": [
+        {
+          "name": "width",
+          "isAttr": true,
+          "type": "Integer"
+        }
+      ]
+    },
+    {
+      "name": "InputClause",
+      "isAbstract": true,
+      "extends": [
+        "dmn:InputClause"
+      ],
+      "properties": [
+        {
+          "name": "width",
+          "isAttr": true,
+          "type": "Integer"
+        }
+      ]
+    }
+  ]
+}

@@ -343,4 +343,64 @@ describe('dmn-moddle - write', function() {
 
   });
 
+
+  describe('biodi', function() {
+
+    it('should write DecisionTable#annotationsWidth', async function() {
+
+      // given
+      const expected = '<dmn:decisionTable ' +
+        'xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" ' +
+        'xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" ' +
+        'biodi:annotationsWidth="200" />';
+
+      const decisionTable = moddle.create('dmn:DecisionTable');
+      decisionTable.set('annotationsWidth', 200);
+
+      // when
+      const xml = await write(decisionTable);
+
+      // then
+      expect(xml).to.equal(expected);
+    });
+
+
+    it('should write InputClause#width', async function() {
+
+      // given
+      const expected = '<dmn:inputClause ' +
+        'xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" ' +
+        'xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" ' +
+        'biodi:width="200" />';
+
+      const inputClause = moddle.create('dmn:InputClause');
+      inputClause.set('width', 200);
+
+      // when
+      const xml = await write(inputClause);
+
+      // then
+      expect(xml).to.equal(expected);
+    });
+
+
+    it('should write OutputClause#width', async function() {
+
+      // given
+      const expected = '<dmn:outputClause ' +
+        'xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" ' +
+        'xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" ' +
+        'biodi:width="200" />';
+
+      const outputClause = moddle.create('dmn:OutputClause');
+      outputClause.set('width', 200);
+
+      // when
+      const xml = await write(outputClause);
+
+      // then
+      expect(xml).to.equal(expected);
+    });
+
+  });
 });
