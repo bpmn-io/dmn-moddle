@@ -6,6 +6,11 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 9.1.0
+
+* `FEAT`: add biodi@2.0 package which allows to set columns width ([#15](https://github.com/bpmn-io/dmn-moddle/pull/15))
+* `FIX`: use lowercase DMN prefix ([#8](https://github.com/bpmn-io/dmn-moddle/issues/8))
+
 ## 9.0.0
 
 _An update of the meta-model to better represent the DMN schema ([#12](https://github.com/bpmn-io/dmn-moddle/pull/12))._
