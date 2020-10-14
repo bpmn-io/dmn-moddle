@@ -1,6 +1,6 @@
 # dmn-moddle
 
-[![Build Status](https://travis-ci.org/bpmn-io/dmn-moddle.svg?branch=master)](https://travis-ci.org/bpmn-io/dmn-moddle)
+[![Build Status](https://travis-ci.com/bpmn-io/dmn-moddle.svg?branch=master)](https://travis-ci.com/bpmn-io/dmn-moddle)
 
 Read and write DMN 1.3 files in NodeJS and the browser.
 
