@@ -13,18 +13,10 @@ describe('dmn-moddle - read', function() {
     moddle = new DmnModdle();
   });
 
-  async function read(fileName, root = 'dmn:Definitions') {
-    return new Promise((resolve, reject) => {
-      const file = fs.readFileSync(fileName, 'utf8');
+  function readFromFile(fileName, root = 'dmn:Definitions') {
+    const file = fs.readFileSync(fileName, 'utf8');
 
-      moddle.fromXML(file, root, (err, definitions) => {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(definitions);
-      });
-    });
+    return moddle.fromXML(file, root);
   }
 
 
@@ -33,10 +25,10 @@ describe('dmn-moddle - read', function() {
     it('dmn:Definitions#import', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmn/definitions-import.dmn');
+      const { rootElement } = await readFromFile('test/fixtures/dmn/dmn/definitions-import.dmn');
 
       // then
-      expect(definitions).to.jsonEqual({
+      expect(rootElement).to.jsonEqual({
         $type: 'dmn:Definitions',
         name: 'Definitions',
         namespace: 'http://ns',
@@ -55,7 +47,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:Definitions#extensionElements', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmn/definitions-extensionElements.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmn/definitions-extensionElements.dmn');
 
       // then
       expect(definitions).to.jsonEqual({
@@ -79,7 +71,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:Decision#extensionElements', async function() {
 
       // when
-      const decision = await read(
+      const { rootElement: decision } = await readFromFile(
         'test/fixtures/dmn/dmn/decision-extensionElements.part.dmn',
         'dmn:Decision'
       );
@@ -104,7 +96,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:Definitions extension attributes', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmn/definitions-extensionAttributes.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmn/definitions-extensionAttributes.dmn');
 
       // then
       expect(definitions).to.jsonEqual({
@@ -120,7 +112,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:Decision extension attributes', async function() {
 
       // when
-      const decision = await read(
+      const { rootElement: decision } = await readFromFile(
         'test/fixtures/dmn/dmn/decision-extensionAttributes.part.dmn',
         'dmn:Decision'
       );
@@ -144,10 +136,10 @@ describe('dmn-moddle - read', function() {
       };
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmn/decision.dmn');
+      const { rootElement: decision } = await readFromFile('test/fixtures/dmn/dmn/decision.dmn');
 
       // then
-      expect(definitions.get('drgElement')[ 0 ]).to.jsonEqual(expected);
+      expect(decision.get('drgElement')[ 0 ]).to.jsonEqual(expected);
     });
 
 
@@ -165,7 +157,7 @@ describe('dmn-moddle - read', function() {
       };
 
       // when
-      const decision = await read('test/fixtures/dmn/dmn/decision-decisionLogic.part.dmn', 'dmn:Decision');
+      const { rootElement: decision } = await readFromFile('test/fixtures/dmn/dmn/decision-decisionLogic.part.dmn', 'dmn:Decision');
 
       // then
       expect(decision).to.jsonEqual(expected);
@@ -182,10 +174,10 @@ describe('dmn-moddle - read', function() {
       };
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmn/input-data.dmn');
+      const { rootElement: inputData } = await readFromFile('test/fixtures/dmn/dmn/input-data.dmn');
 
       // then
-      expect(definitions.get('drgElement')[ 0 ]).to.jsonEqual(expected);
+      expect(inputData.get('drgElement')[ 0 ]).to.jsonEqual(expected);
     });
 
 
@@ -202,7 +194,7 @@ describe('dmn-moddle - read', function() {
       };
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmn/information-requirement.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmn/information-requirement.dmn');
 
       // then
       expect(definitions.get('drgElement')[ 0 ].get('informationRequirement')[ 0 ]).to.jsonEqual(expected);
@@ -212,7 +204,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:FunctionDefinition', async function() {
 
       // when
-      const functionDefinition = await read(
+      const { rootElement: functionDefinition } = await readFromFile(
         'test/fixtures/dmn/dmn/function-definition.part.dmn',
         'dmn:FunctionDefinition'
       );
@@ -243,7 +235,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:List', async function() {
 
       // when
-      const list = await read(
+      const { rootElement: list } = await readFromFile(
         'test/fixtures/dmn/dmn/list.part.dmn',
         'dmn:List'
       );
@@ -268,7 +260,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:BusinessKnowledgeModel', async function() {
 
       // when
-      const bkm = await read(
+      const { rootElement: bkm } = await readFromFile(
         'test/fixtures/dmn/dmn/business-knowledge-model.part.dmn',
         'dmn:BusinessKnowledgeModel'
       );
@@ -317,7 +309,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:UnaryTests', async function() {
 
       // when
-      const unaryTests = await read(
+      const { rootElement: unaryTests } = await readFromFile(
         'test/fixtures/dmn/dmn/unary-tests.part.dmn',
         'dmn:UnaryTests'
       );
@@ -335,7 +327,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:Context', async function() {
 
       // when
-      const context = await read(
+      const { rootElement: context } = await readFromFile(
         'test/fixtures/dmn/dmn/context.part.dmn',
         'dmn:Context'
       );
@@ -411,7 +403,7 @@ describe('dmn-moddle - read', function() {
       };
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmndi/decision.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmndi/decision.dmn');
 
       // then
       expect(definitions.get('dmnDI')).to.jsonEqual(expected);
@@ -443,7 +435,7 @@ describe('dmn-moddle - read', function() {
       };
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmndi/input-data.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmndi/input-data.dmn');
 
       // then
       expect(definitions.get('dmnDI')).to.jsonEqual(expected);
@@ -453,7 +445,7 @@ describe('dmn-moddle - read', function() {
     it('dmn:TextAnnotation + DI', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmndi/text-annotation.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmndi/text-annotation.dmn');
 
       // then
       const artifact = definitions.get('artifact');
@@ -488,7 +480,7 @@ describe('dmn-moddle - read', function() {
     it('dmndi:DMNLabel', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmndi/label.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmndi/label.dmn');
 
       // then
       expect(definitions.get('dmnDI')).to.jsonEqual({
@@ -578,7 +570,7 @@ describe('dmn-moddle - read', function() {
     it('dmndi:Diagram with dmndi:Size', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmndi/size.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmndi/size.dmn');
 
       // then
       const diagram = definitions.get('dmnDI').diagrams[0];
@@ -594,7 +586,7 @@ describe('dmn-moddle - read', function() {
     it('dmndi:Diagram with di:Extension', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/dmndi/extension.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmndi/extension.dmn');
 
       // then
       const diagram = definitions.get('dmnDI').diagrams[0];
@@ -618,7 +610,7 @@ describe('dmn-moddle - read', function() {
     it('should read biodi', async function() {
 
       // when
-      const definitions = await read('test/fixtures/dmn/biodi/biodi.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/biodi/biodi.dmn');
 
       // then
       const decisionTable = definitions.get('drgElement')[0].decisionLogic;

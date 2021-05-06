@@ -16,30 +16,14 @@ describe('dmn-moddle - edit', function() {
     moddle = new DmnModdle();
   });
 
-  async function read(fileName, root = 'dmn:Definitions') {
-    return new Promise((resolve, reject) => {
-      const file = fs.readFileSync(fileName, 'utf8');
+  function readFromFile(fileName, root = 'dmn:Definitions') {
+    const file = fs.readFileSync(fileName, 'utf8');
 
-      moddle.fromXML(file, root, (err, definitions) => {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(definitions);
-      });
-    });
+    return moddle.fromXML(file, root);
   }
 
   function write(element, options = { preamble: false }) {
-    return new Promise((resolve, reject) => {
-      moddle.toXML(element, options, (err, xml) => {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(xml);
-      });
-    });
+    return moddle.toXML(element, options);
   }
 
   function validate(xml) {
@@ -67,12 +51,12 @@ describe('dmn-moddle - edit', function() {
           '<decision id="Decision_1" name="Decision" />' +
         '</definitions>';
 
-      const definitions = await read('test/fixtures/dmn/dmn/decision.dmn');
+      const { rootElement: definitions } = await readFromFile('test/fixtures/dmn/dmn/decision.dmn');
 
       // when
       definitions.name = 'Foo';
 
-      const xml = await write(definitions, { preamble: false });
+      const { xml } = await write(definitions, { preamble: false });
 
       // then
       expect(xml).to.equal(expected);
@@ -135,7 +119,7 @@ describe('dmn-moddle - edit', function() {
       });
 
       // when
-      const xml = await write(definitions);
+      const { xml } = await write(definitions);
 
       // then
       await validate(xml);
