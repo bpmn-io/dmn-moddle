@@ -8,6 +8,10 @@
       "isAbstract": true,
       "properties": [
         {
+          "name": "extension",
+          "type": "Extension"
+        },
+        {
           "name": "id",
           "isAttr": true,
           "isId": true,
@@ -91,6 +95,16 @@
           "isAttr": true,
           "isId": true,
           "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Extension",
+      "properties": [
+        {
+          "name": "values",
+          "isMany": true,
+          "type": "Element"
         }
       ]
     }

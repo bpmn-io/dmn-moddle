@@ -590,6 +590,26 @@ describe('dmn-moddle - read', function() {
       });
     });
 
+
+    it('dmndi:Diagram with di:Extension', async function() {
+
+      // when
+      const definitions = await read('test/fixtures/dmn/dmndi/extension.dmn');
+
+      // then
+      const diagram = definitions.get('dmnDI').diagrams[0];
+
+      expect(diagram.get('extension')).to.jsonEqual({
+        $type: 'di:Extension',
+        values: [
+          {
+            $type: 'custom:Element',
+            id: 'CustomElement'
+          }
+        ]
+      });
+    });
+
   });
 
 
