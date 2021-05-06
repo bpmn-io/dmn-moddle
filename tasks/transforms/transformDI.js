@@ -59,6 +59,10 @@ module.exports = async function(results) {
   }
 
   diagramElement.properties.push({
+    name: 'extension',
+    type: 'Extension'
+  },
+  {
     name: 'id',
     isAttr: true,
     isId: true,
@@ -94,6 +98,17 @@ module.exports = async function(results) {
   // filter DI
   model.types = model.types.filter(({ name }) => {
     return name && name.includes('di:');
+  });
+
+  model.types.push({
+    name: 'Extension',
+    properties: [
+      {
+        name: 'values',
+        isMany: true,
+        type: 'Element'
+      }
+    ]
   });
 
   model.enumerations = model.enumerations.filter(({ name }) => {

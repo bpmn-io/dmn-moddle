@@ -46,6 +46,9 @@ describe('dmn-moddle - roundtrip', function() {
 
     it('with Size', roundtrip('test/fixtures/dmn/dmndi/size.dmn'));
 
+
+    it('with di:Extension', roundtrip('test/fixtures/dmn/dmndi/extension.dmn'));
+
   });
 
 

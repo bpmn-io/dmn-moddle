@@ -341,6 +341,50 @@ describe('dmn-moddle - write', function() {
       expect(xml).to.equal(expected);
     });
 
+
+    it('di:Extension', async function() {
+
+
+      // given
+      const expected =
+        '<dmn:definitions xmlns:dmn="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/">' +
+          '<dmndi:DMNDI>' +
+            '<dmndi:DMNDiagram id="DMNDiagram_1">' +
+              '<di:extension />' +
+            '</dmndi:DMNDiagram>' +
+          '</dmndi:DMNDI>' +
+        '</dmn:definitions>';
+
+      const definitions = moddle.create('dmn:Definitions');
+
+      const dmnDiagram = moddle.create('dmndi:DMNDiagram', {
+        id: 'DMNDiagram_1',
+        diagramElements: []
+      });
+
+      const dmnDI = moddle.create('dmndi:DMNDI', {
+        diagrams: [ dmnDiagram ]
+      });
+
+      dmnDiagram.$parent = dmnDI;
+
+      definitions.set('dmnDI', dmnDI);
+
+      dmnDI.$parent = definitions;
+
+      const extension = moddle.create('di:Extension');
+
+      dmnDiagram.set('extension', extension);
+
+      extension.$parent = dmnDiagram;
+
+      // when
+      const xml = await write(definitions);
+
+      // then
+      expect(xml).to.equal(expected);
+    });
+
   });
 
 
