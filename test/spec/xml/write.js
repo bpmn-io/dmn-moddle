@@ -12,15 +12,7 @@ describe('dmn-moddle - write', function() {
   });
 
   function write(element, options = { preamble: false }) {
-    return new Promise((resolve, reject) => {
-      moddle.toXML(element, options, (err, xml) => {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(xml);
-      });
-    });
+    return moddle.toXML(element, options);
   }
 
 
@@ -34,7 +26,7 @@ describe('dmn-moddle - write', function() {
       const definitions = moddle.create('dmn:Definitions');
 
       // when
-      const xml = await write(definitions);
+      const { xml } = await write(definitions);
 
       // then
       expect(xml).to.equal(expected);
@@ -50,7 +42,7 @@ describe('dmn-moddle - write', function() {
       });
 
       // when
-      const xml = await write(functionDefinition);
+      const { xml } = await write(functionDefinition);
 
       // then
       expect(xml).to.equal(
@@ -88,7 +80,7 @@ describe('dmn-moddle - write', function() {
       });
 
       // when
-      const xml = await write(decision);
+      const { xml } = await write(decision);
 
       // then
       expect(xml).to.equal(expected);
@@ -104,7 +96,7 @@ describe('dmn-moddle - write', function() {
       });
 
       // when
-      const xml = await write(unaryTests);
+      const { xml } = await write(unaryTests);
 
       // then
       expect(xml).to.eql(
@@ -136,7 +128,7 @@ describe('dmn-moddle - write', function() {
       });
 
       // when
-      const xml = await write(context);
+      const { xml } = await write(context);
 
       // then
       expect(xml).to.eql(
@@ -182,7 +174,7 @@ describe('dmn-moddle - write', function() {
       });
 
       // when
-      const xml = await write(invocation);
+      const { xml } = await write(invocation);
 
       // then
       // dmn:LiteralExpression should come before dmn:Binding but doesn't
@@ -267,7 +259,7 @@ describe('dmn-moddle - write', function() {
       shape.$parent = dmnDiagram.get('diagramElements');
 
       // when
-      const xml = await write(definitions);
+      const { xml } = await write(definitions);
 
       // then
       expect(xml).to.equal(expected);
@@ -335,7 +327,7 @@ describe('dmn-moddle - write', function() {
       shape.$parent = dmnDiagram.get('diagramElements');
 
       // when
-      const xml = await write(definitions);
+      const { xml } = await write(definitions);
 
       // then
       expect(xml).to.equal(expected);
@@ -379,7 +371,7 @@ describe('dmn-moddle - write', function() {
       extension.$parent = dmnDiagram;
 
       // when
-      const xml = await write(definitions);
+      const { xml } = await write(definitions);
 
       // then
       expect(xml).to.equal(expected);
@@ -402,7 +394,7 @@ describe('dmn-moddle - write', function() {
       decisionTable.set('annotationsWidth', 200);
 
       // when
-      const xml = await write(decisionTable);
+      const { xml } = await write(decisionTable);
 
       // then
       expect(xml).to.equal(expected);
@@ -421,7 +413,7 @@ describe('dmn-moddle - write', function() {
       inputClause.set('width', 200);
 
       // when
-      const xml = await write(inputClause);
+      const { xml } = await write(inputClause);
 
       // then
       expect(xml).to.equal(expected);
@@ -440,7 +432,7 @@ describe('dmn-moddle - write', function() {
       outputClause.set('width', 200);
 
       // when
-      const xml = await write(outputClause);
+      const { xml } = await write(outputClause);
 
       // then
       expect(xml).to.equal(expected);
