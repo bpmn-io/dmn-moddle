@@ -2,6 +2,11 @@
   "name": "dmn-moddle",
   "version": "9.1.0",
   "description": "A moddle wrapper for DMN 1.3",
+  "files": [
+    "dist",
+    "resources",
+    "!resources/dmn/xmi/"
+  ],
   "scripts": {
     "all": "run-s generate-schema lint test distro",
     "lint": "eslint .",
