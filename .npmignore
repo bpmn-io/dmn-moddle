@@ -5,5 +5,4 @@ lib/
 !dist/
 .eslintrc
 .eslintignore
-.travis.yml
 rollup.config.js
