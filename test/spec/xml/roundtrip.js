@@ -62,45 +62,38 @@ describe('dmn-moddle - roundtrip', function() {
 
 // helpers ////////////////
 
+function validate(xml) {
+
+  return new Promise((resolve, reject) => {
+    validateXML(xml, xsd, (err, result) => {
+      if (err) {
+        return reject(err);
+      }
+
+      return resolve(result);
+    });
+  });
+
+}
+
 function roundtrip(fileName) {
   return async function() {
-
     const moddle = new DmnModdle();
 
-    return new Promise((resolve, reject) => {
-      const file = fs.readFileSync(fileName, 'utf8');
+    const file = fs.readFileSync(fileName, 'utf8');
 
-      moddle.fromXML(file, 'dmn:Definitions', (err, definitions, context) => {
-        if (err) {
-          return reject(err);
-        }
+    const {
+      rootElement: definitions,
+      warnings } = await moddle.fromXML(file, 'dmn:Definitions');
 
-        const { warnings } = context;
+    if (process.env.VERBOSE && warnings.length > 0) {
+      console.log('import warnings', warnings);
+    }
 
-        try {
-          if (process.env.VERBOSE && warnings.length > 0) {
-            console.log('import warnings', warnings);
-          }
+    expect(warnings).to.be.empty;
 
-          expect(warnings).to.be.empty;
-        } catch (err) {
-          return reject(err);
-        }
+    const { xml } = await moddle.toXML(definitions, { format: true });
 
-        return moddle.toXML(definitions, { format: true }, (err, xml) => {
-          if (err) {
-            return reject(err);
-          }
-
-          validateXML(xml, xsd, (err, result) => {
-            if (err) {
-              return reject(err);
-            }
-
-            return resolve(result);
-          });
-        });
-      });
-    });
+    await validate(xml);
   };
 }
