@@ -84,7 +84,8 @@ function roundtrip(fileName) {
 
     const {
       rootElement: definitions,
-      warnings } = await moddle.fromXML(file, 'dmn:Definitions');
+      warnings
+    } = await moddle.fromXML(file, 'dmn:Definitions');
 
     if (process.env.VERBOSE && warnings.length > 0) {
       console.log('import warnings', warnings);
