@@ -76,7 +76,8 @@ describe('dmn-moddle - TCK roundtrip', function() {
         // when
         const {
           rootElement: definitions,
-          warnings } = await moddle.fromXML(fileContents, 'dmn:Definitions');
+          warnings
+        } = await moddle.fromXML(fileContents, 'dmn:Definitions');
 
         const warningsFiltered = filterIgnored(warnings, fileName);
 
