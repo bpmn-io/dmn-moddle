@@ -11,7 +11,7 @@ import path from 'path';
 
 import DmnModdle from '../..';
 
-import SchemaValidator from 'xsd-schema-validator';
+import { validateXML } from 'xsd-schema-validator';
 
 import { expect } from 'chai';
 
@@ -60,7 +60,8 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
     for (const fileName of fileNames) {
 
-      (shouldRun(fileName) ? it : it.skip)(fileName, function(done) {
+      (shouldRun(fileName) ? it : it.skip)(fileName, async function() {
+
         this.timeout(5000);
 
         // given
@@ -73,36 +74,25 @@ describe('dmn-moddle - TCK roundtrip', function() {
         });
 
         // when
-        moddle.fromXML(fileContents, 'dmn:Definitions', function(err, result, context) {
+        const {
+          rootElement: definitions,
+          warnings } = await moddle.fromXML(fileContents, 'dmn:Definitions');
 
-          if (err) {
-            return done(err);
-          }
+        const warningsFiltered = filterIgnored(warnings, fileName);
 
-          try {
-            const warnings = filterIgnored(context.warnings, fileName);
+        if (process.env.VERBOSE && warnings.length > 0) {
+          console.log('import warnings', warningsFiltered);
+        }
 
-            if (process.env.VERBOSE && warnings.length > 0) {
-              console.log('import warnings', warnings);
-            }
+        expect(warningsFiltered).to.be.empty;
 
-            expect(warnings).to.be.empty;
-          } catch (err) {
-            return done(err);
-          }
+        // then
+        const { xml } = await moddle.toXML(definitions, { format: true });
 
-          return toXML(result, { format: true }, function(err, xml) {
-
-            // then
-            validate(err, xml, done);
-          });
-        });
+        await validate(xml);
       });
-
     }
-
   });
-
 });
 
 /**
@@ -123,31 +113,6 @@ function replaceNamespaces(xml, namespaces) {
   return xml;
 }
 
-function toXML(element, opts, done) {
-  element.$model.toXML(element, opts, done);
-}
-
-function validate(err, xml, done) {
-
-  if (err) {
-    return done(err);
-  }
-
-  if (!xml) {
-    return done(new Error('XML is not defined'));
-  }
-
-  SchemaValidator.validateXML(xml, DMN_XSD, function(err, result) {
-
-    if (err) {
-      return done(err);
-    }
-
-    expect(result.valid).to.be.true;
-    done();
-  });
-}
-
 function filterIgnored(warnings, fileName) {
 
   if (fileName.endsWith('0086-import.dmn')) {
@@ -159,4 +124,18 @@ function filterIgnored(warnings, fileName) {
   }
 
   return warnings;
+}
+
+function validate(xml) {
+
+  return new Promise((resolve, reject) => {
+    validateXML(xml, DMN_XSD, (err, result) => {
+      if (err) {
+        return reject(err);
+      }
+
+      return resolve(result);
+    });
+  });
+
 }
