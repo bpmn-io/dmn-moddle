@@ -6,6 +6,16 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 10.0.0
+
+* `FEAT`: promisify `#fromXML` and `#toXML` APIs ([#19](https://github.com/bpmn-io/dmn-moddle/issues/19))
+* `FIX`: support `di:extension` elements ([#20](https://github.com/bpmn-io/dmn-moddle/issues/20))
+* `CHORE`: bump to `moddle-xml@9.0.5`
+
+### Breaking Changes
+
+* `#fromXML` and `#toXML` APIs now return a Promise. These APIs don't support callbacks anymore and their usage requires to move from using Callbacks to Promises.
+
 ## 9.1.0
 
 * `FEAT`: add biodi@2.0 package which allows to set columns width ([#15](https://github.com/bpmn-io/dmn-moddle/pull/15))
