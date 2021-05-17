@@ -1,9 +1,0 @@
-test/
-tasks/
-resources/dmn/xmi/
-lib/
-!dist/
-.github/
-.eslintrc
-.eslintignore
-rollup.config.js
