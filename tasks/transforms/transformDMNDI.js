@@ -41,11 +41,11 @@ module.exports = async function(results) {
 
   model.types.push({
     name: 'Text',
-    properties: [{
+    properties: [ {
       name: 'text',
       isBody: true,
       type: 'String'
-    }]
+    } ]
   });
 
   removeProperty('DMNStyle#id', model);
