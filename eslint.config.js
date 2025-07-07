@@ -1,31 +1,41 @@
 import bpmnIoPlugin from 'eslint-plugin-bpmn-io';
 
+import babelParser from '@babel/eslint-parser';
+
 const files = {
-  lib: [
-    'lib/**/*.js'
+  build: [
+    'tasks/**/*.cjs'
   ],
   test: [
-    'test/**/*.js'
+    'test/**/*.js',
+    'test/**/*.cjs'
+  ],
+  ignored: [
+    'dist',
+    'tmp'
   ]
 };
 
 export default [
+  {
+    'ignores': files.ignored
+  },
 
-  // build + test
+  // build
   ...bpmnIoPlugin.configs.node.map(config => {
 
     return {
       ...config,
-      ignores: files.lib
+      files: files.build
     };
   }),
 
-  // lib
+  // lib + test
   ...bpmnIoPlugin.configs.recommended.map(config => {
 
     return {
       ...config,
-      files: files.lib
+      ignores: files.build
     };
   }),
 
@@ -37,21 +47,23 @@ export default [
       files: files.test
     };
   }),
-  {
-    languageOptions: {
-      globals: {
-        sinon: true
-      }
-    },
-    files: files.test
-  },
 
   // other
-  // hook up ecma version to support import attributes
+  // hook up babel parser
   {
     files: [ '**/*.js', '**/*.mjs' ],
     languageOptions: {
-      ecmaVersion: 2025
+      parser: babelParser,
+      parserOptions: {
+        requireConfigFile: false,
+        babelOptions: {
+          babelrc: false,
+          configFile: false,
+          plugins: [
+            '@babel/plugin-syntax-import-attributes'
+          ]
+        },
+      }
     }
   }
 ];

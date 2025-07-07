@@ -5,9 +5,10 @@ import { globSync as glob } from 'glob';
 import {
   readFileSync as readFile,
   existsSync as exists
-} from 'fs';
+} from 'node:fs';
 
-import path from 'path';
+import path from 'node:path';
+import process from 'node:process';
 
 import DmnModdle from 'dmn-moddle';
 
