@@ -26,21 +26,6 @@ describe('dmn-moddle - edit', function() {
     return moddle.toXML(element, options);
   }
 
-  function validate(xml) {
-
-    return new Promise((resolve, reject) => {
-      validateXML(xml, xsd, (err, result) => {
-        if (err) {
-          return reject(err);
-        }
-
-        return resolve(result);
-      });
-    });
-
-  }
-
-
   describe('dmn', function() {
 
     it('should edit dmn:Decision name', async function() {
@@ -122,7 +107,7 @@ describe('dmn-moddle - edit', function() {
       const { xml } = await write(definitions);
 
       // then
-      await validate(xml);
+      await validateXML(xml, xsd);
     });
 
   });
