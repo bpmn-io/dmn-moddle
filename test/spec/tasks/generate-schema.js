@@ -2,19 +2,19 @@ import fs from 'fs';
 
 import parseFile from 'cmof-parser';
 
-import expect from '../../expect';
+import expect from '../../expect.js';
 
 import {
   transformDC,
   transformDI,
   transformDMN,
   transformDMNDI
-} from '../../../tasks/transforms';
+} from '../../../tasks/transforms/index.cjs';
 
 import {
   findProperty,
   findType
-} from '../../../tasks/transforms/helper';
+} from '../../../tasks/transforms/helper.cjs';
 
 async function generateSchema(file) {
   const {

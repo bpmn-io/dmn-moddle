@@ -1,6 +1,6 @@
 import json from '@rollup/plugin-json';
 
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 function pgl(plugins = []) {
   return [
@@ -9,14 +9,14 @@ function pgl(plugins = []) {
   ];
 }
 
-const srcEntry = pkg.source;
+const srcEntry = 'lib/index.js';
 
 export default [
   {
     input: srcEntry,
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' }
+      { file: pkg.exports['.'].require, format: 'cjs' },
+      { file: pkg.exports['.'].import, format: 'es' }
     ],
     external: [
       'min-dash',

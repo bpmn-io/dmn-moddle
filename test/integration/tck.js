@@ -9,14 +9,16 @@ import {
 
 import path from 'path';
 
-import DmnModdle from '../..';
+import DmnModdle from 'dmn-moddle';
 
 import { validateXML } from 'xsd-schema-validator';
 
 import { expect } from 'chai';
 
+
 const DMN_XSD = 'resources/dmn/xsd/DMN13.xsd';
 
+const __dirname = import.meta.dirname;
 
 const tckDirectory = 'tmp/tck';
 

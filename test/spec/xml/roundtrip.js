@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import { validateXML } from 'xsd-schema-validator';
 
-import DmnModdle from '../../../lib';
+import DmnModdle from '../../../lib/index.js';
 
 import { expect } from 'chai';
 
