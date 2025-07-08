@@ -1,6 +1,6 @@
-import expect from '../expect';
+import expect from '../expect.js';
 
-import DmnModdle from '../../lib';
+import DmnModdle from '../../lib/index.js';
 
 
 describe('dmn-moddle', function() {

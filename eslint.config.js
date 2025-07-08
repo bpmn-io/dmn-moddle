@@ -44,5 +44,14 @@ export default [
       }
     },
     files: files.test
+  },
+
+  // other
+  // hook up ecma version to support import attributes
+  {
+    files: [ '**/*.js', '**/*.mjs' ],
+    languageOptions: {
+      ecmaVersion: 2025
+    }
   }
 ];

@@ -1,8 +1,8 @@
 import fs from 'fs';
 
-import expect from '../../expect';
+import expect from '../../expect.js';
 
-import DmnModdle from '../../../lib';
+import DmnModdle from '../../../lib/index.js';
 
 import { validateXML } from 'xsd-schema-validator';
 
