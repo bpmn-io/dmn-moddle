@@ -1,6 +1,6 @@
-import { sync as exec } from 'execa';
+import { spawnSync as exec } from 'node:child_process';
 
-import { sync as glob } from 'glob';
+import { globSync as glob } from 'glob';
 
 import {
   readFileSync as readFile,

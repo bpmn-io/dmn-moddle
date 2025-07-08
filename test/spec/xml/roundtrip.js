@@ -62,20 +62,6 @@ describe('dmn-moddle - roundtrip', function() {
 
 // helpers ////////////////
 
-function validate(xml) {
-
-  return new Promise((resolve, reject) => {
-    validateXML(xml, xsd, (err, result) => {
-      if (err) {
-        return reject(err);
-      }
-
-      return resolve(result);
-    });
-  });
-
-}
-
 function roundtrip(fileName) {
   return async function() {
     const moddle = new DmnModdle();
@@ -95,6 +81,6 @@ function roundtrip(fileName) {
 
     const { xml } = await moddle.toXML(definitions, { format: true });
 
-    await validate(xml);
+    await validateXML(xml, xsd);
   };
 }
