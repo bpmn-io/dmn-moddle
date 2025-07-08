@@ -92,7 +92,7 @@ describe('dmn-moddle - TCK roundtrip', function() {
         // then
         const { xml } = await moddle.toXML(definitions, { format: true });
 
-        await validate(xml);
+        await validateXML(xml, DMN_XSD);
       });
     }
   });
@@ -127,18 +127,4 @@ function filterIgnored(warnings, fileName) {
   }
 
   return warnings;
-}
-
-function validate(xml) {
-
-  return new Promise((resolve, reject) => {
-    validateXML(xml, DMN_XSD, (err, result) => {
-      if (err) {
-        return reject(err);
-      }
-
-      return resolve(result);
-    });
-  });
-
 }
