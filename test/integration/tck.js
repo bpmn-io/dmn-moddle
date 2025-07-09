@@ -19,7 +19,7 @@ import { expect } from 'chai';
 
 const DMN_XSD = 'resources/dmn/xsd/DMN13.xsd';
 
-const __dirname = import.meta.dirname;
+const __dirname = path.join(import.meta.dirname, '../..');
 
 const tckDirectory = 'tmp/tck';
 
@@ -32,7 +32,7 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
   this.timeout(30000);
 
-  if (exists(path.join(__dirname, tckDirectory, '.git'))) {
+  if (exists(path.join(tckDirectory, '.git'))) {
     console.log(`dmn-tck/tck repository already cloned, fetching and checking out ${tckBranch}...`);
 
     const cwd = path.join(__dirname, tckDirectory);
