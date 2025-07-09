@@ -111,7 +111,7 @@ describe('dmn-moddle - TCK roundtrip', function() {
           console.log('import warnings', warningsFiltered);
         }
 
-        expect(warningsFiltered).to.be.empty;
+        expect(warningsFiltered, 'import warnings').to.be.empty;
 
         // then
         const { xml } = await moddle.toXML(definitions, { format: true });
