@@ -23,6 +23,8 @@ const __dirname = import.meta.dirname;
 
 const tckDirectory = 'tmp/tck';
 
+const tckBranch = 'master';
+
 
 describe('dmn-moddle - TCK roundtrip', function() {
 
@@ -31,18 +33,18 @@ describe('dmn-moddle - TCK roundtrip', function() {
   this.timeout(30000);
 
   if (exists(path.join(__dirname, tckDirectory, '.git'))) {
-    console.log('tck repository already cloned, fetching and checking out origin/master...');
+    console.log(`dmn-tck/tck repository already cloned, fetching and checking out ${tckBranch}...`);
 
     const cwd = path.join(__dirname, tckDirectory);
 
     exec('git', [ 'fetch' ], { cwd });
-    exec('git', [ 'checkout', 'origin/master' ], { cwd });
+    exec('git', [ 'checkout', tckBranch ], { cwd });
   } else {
-    console.log(`cloning tck repository to ${ tckDirectory }...`);
+    console.log(`cloning repository dmn-tck/tck#${tckBranch} to ${ tckDirectory }...`);
 
     exec(
       'git',
-      [ 'clone', '--depth=1', 'https://github.com/dmn-tck/tck.git', tckDirectory ],
+      [ 'clone', '--depth=1', `--branch=${tckBranch}`, 'https://github.com/dmn-tck/tck.git', tckDirectory ],
       { cwd: __dirname }
     );
   }
