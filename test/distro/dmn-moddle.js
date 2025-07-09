@@ -10,7 +10,7 @@ const pkgExports = pkg.exports['.'];
 describe('dmn-moddle', function() {
 
   it('should expose ESM bundle', async function() {
-    const DmnModdle = await import('../../' + pkgExports.import).then(m => m.default);
+    const DmnModdle = await import('dmn-moddle').then(m => m.default);
 
     expect(new DmnModdle()).to.exist;
   });
