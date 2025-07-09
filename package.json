@@ -33,6 +33,9 @@
     "./resources/*": "./resources/*",
     "./package.json": "./package.json"
   },
+  "engines": {
+    "node": ">= 18"
+  },
   "keywords": [
     "dmn",
     "moddle",
