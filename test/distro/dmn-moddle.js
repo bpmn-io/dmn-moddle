@@ -6,6 +6,7 @@ import pkg from '../../package.json' with { type: 'json' };
 
 const pkgExports = pkg.exports['.'];
 
+
 describe('dmn-moddle', function() {
 
   it('should expose ESM bundle', async function() {
@@ -21,4 +22,5 @@ describe('dmn-moddle', function() {
 
     expect(new DmnModdle()).to.exist;
   });
+
 });
