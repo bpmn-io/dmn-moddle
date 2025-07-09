@@ -6,6 +6,21 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 11.0.0
+
+* `FEAT`: add `exports` configuration ([#29](https://github.com/bpmn-io/dmn-moddle/pull/29))
+* `FIX`: remove broken `main` export ([#29](https://github.com/bpmn-io/dmn-moddle/pull/29))
+* `CHORE`: drop UMD distribution ([#29](https://github.com/bpmn-io/bpmn-moddle/pull/110))
+* `CHORE`: turn into ES module ([#29](https://github.com/bpmn-io/dmn-moddle/pull/29))
+* `CHORE`: require Node >= 18
+* `DEPS`: update to `moddle@7.0.0` ([#29](https://github.com/bpmn-io/dmn-moddle/pull/29))
+* `DEPS`: update to `moddle-xml@11.0.0` ([#29](https://github.com/bpmn-io/dmn-moddle/pull/29))
+
+### Breaking Changes
+
+* Require Node >= 18
+* Drop UMD distribution. Use ES module export in modern JavaScript run-times
+
 ## 10.0.0
 
 * `FEAT`: promisify `#fromXML` and `#toXML` APIs ([#19](https://github.com/bpmn-io/dmn-moddle/issues/19))
