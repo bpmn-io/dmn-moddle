@@ -56,6 +56,18 @@ describe('dmn-moddle - TCK roundtrip', function() {
       return false;
     }
 
+    // DMN 1.5 (unsupported)
+    if ([
+      '1154-boxed-every.dmn',
+      '1161-boxed-list-expression.dmn',
+      '1153-boxed-some.dmn',
+      '1152-boxed-for.dmn',
+      '1150-boxed-conditional.dmn',
+      '1151-boxed-filter.dmn'
+    ].some(f => fileName.endsWith(f))) {
+      return false;
+    }
+
     const match = process.env.GREP;
 
     return !match || fileName.toLowerCase().includes(match);
@@ -74,8 +86,17 @@ describe('dmn-moddle - TCK roundtrip', function() {
 
         // replace DMN 1.2 namespaces with DMN 1.3 namespaces
         fileContents = replaceNamespaces(fileContents, {
+
+          // DMN 1.2
           'http://www.omg.org/spec/DMN/20180521/MODEL/': 'https://www.omg.org/spec/DMN/20191111/MODEL/',
           'http://www.omg.org/spec/DMN/20180521/DMNDI/': 'https://www.omg.org/spec/DMN/20191111/DMNDI/',
+
+          // DMN 1.4
+          'https://www.omg.org/spec/DMN/20211108/MODEL/': 'https://www.omg.org/spec/DMN/20191111/DMNDI/',
+
+          // DMN 1.5
+          'https://www.omg.org/spec/DMN/20230324/MODEL/': 'https://www.omg.org/spec/DMN/20191111/MODEL/',
+          'https://www.omg.org/spec/DMN/20230324/DMNDI/': 'https://www.omg.org/spec/DMN/20191111/DMNDI/'
         });
 
         // when
