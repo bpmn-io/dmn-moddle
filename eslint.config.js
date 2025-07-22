@@ -50,7 +50,7 @@ export default [
   // support "with" import
   {
     languageOptions: {
-      ecmaVersion: 'latest'
+      ecmaVersion: 2025
     }
   }
 ];
