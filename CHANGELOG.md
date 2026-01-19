@@ -6,9 +6,18 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 12.0.0
+
+* `CHORE`: drop CJS distribution ([#32](https://github.com/bpmn-io/dmn-moddle/pull/32))
+* `CHORE`: use named `DmnModdle` export ([#32](https://github.com/bpmn-io/dmn-moddle/pull/32))
 * `DEPS`: update to `moddle@8.0.0`
 * `DEPS`: update to `moddle-xml@12.0.0`
 * `DEPS`: update to `min-dash@5.0.0`
+
+### Breaking Changes
+
+* Library is now ESM only, and can be consumed in Node >= 20.12
+* Moved to named export `DmnModdle` instead of default one.
 
 ## 11.0.0
 
