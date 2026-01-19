@@ -59,7 +59,7 @@
     "mocha": "^11.7.5",
     "npm-run-all2": "^8.0.0",
     "rollup": "^4.12.1",
-    "sax": "^1.2.4",
+    "sax": "^1.4.4",
     "tiny-stack": "^2.0.1",
     "xsd-schema-validator": "^0.11.0"
   },
