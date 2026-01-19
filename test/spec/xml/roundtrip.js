@@ -1,9 +1,11 @@
-import fs from 'node:fs';
 import process from 'node:process';
 
 import { validateXML } from 'xsd-schema-validator';
 
-import DmnModdle from '../../../lib/index.js';
+import {
+  createModdle,
+  readFile
+} from '../../helper.js';
 
 import { expect } from 'chai';
 
@@ -65,14 +67,12 @@ describe('dmn-moddle - roundtrip', function() {
 
 function roundtrip(fileName) {
   return async function() {
-    const moddle = new DmnModdle();
-
-    const file = fs.readFileSync(fileName, 'utf8');
+    const moddle = createModdle();
 
     const {
       rootElement: definitions,
       warnings
-    } = await moddle.fromXML(file, 'dmn:Definitions');
+    } = await moddle.fromXML(readFile(fileName), 'dmn:Definitions');
 
     if (process.env.VERBOSE && warnings.length > 0) {
       console.log('import warnings', warnings);

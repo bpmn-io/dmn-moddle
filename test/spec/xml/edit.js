@@ -2,18 +2,19 @@ import fs from 'node:fs';
 
 import expect from '../../expect.js';
 
-import DmnModdle from '../../../lib/index.js';
+import { createModdle } from '../../helper.js';
 
 import { validateXML } from 'xsd-schema-validator';
 
 const xsd = 'resources/dmn/xsd/DMN13.xsd';
+
 
 describe('dmn-moddle - edit', function() {
 
   let moddle;
 
   beforeEach(function() {
-    moddle = new DmnModdle();
+    moddle = createModdle();
   });
 
   function readFromFile(fileName, root = 'dmn:Definitions') {
