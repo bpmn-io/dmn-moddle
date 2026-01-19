@@ -1,8 +1,9 @@
-import fs from 'fs';
-
 import expect from '../../expect.js';
 
-import DmnModdle from '../../../lib/index.js';
+import {
+  createModdle,
+  readFile
+} from '../../helper.js';
 
 
 describe('dmn-moddle - read', function() {
@@ -10,13 +11,11 @@ describe('dmn-moddle - read', function() {
   let moddle;
 
   beforeEach(function() {
-    moddle = new DmnModdle();
+    moddle = createModdle();
   });
 
   function readFromFile(fileName, root = 'dmn:Definitions') {
-    const file = fs.readFileSync(fileName, 'utf8');
-
-    return moddle.fromXML(file, root);
+    return moddle.fromXML(readFile(fileName), root);
   }
 
 

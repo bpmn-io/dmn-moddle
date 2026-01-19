@@ -1,6 +1,8 @@
 import expect from '../expect.js';
 
-import DmnModdle from '../../lib/index.js';
+import {
+  createModdle
+} from '../helper.js';
 
 
 describe('dmn-moddle', function() {
@@ -8,7 +10,7 @@ describe('dmn-moddle', function() {
   let moddle;
 
   beforeEach(function() {
-    moddle = new DmnModdle();
+    moddle = createModdle();
   });
 
 
