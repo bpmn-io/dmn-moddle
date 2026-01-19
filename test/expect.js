@@ -1,6 +1,6 @@
-import chai from 'chai';
+import { use as chaiUse } from 'chai';
 
-chai.use(function(chai, utils) {
+chaiUse(function(chai, utils) {
   utils.addMethod(chai.Assertion.prototype, 'jsonEqual', function(comparison) {
     const actual = JSON.stringify(this._obj);
     const expected = JSON.stringify(comparison);
