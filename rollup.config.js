@@ -15,8 +15,7 @@ export default [
   {
     input: srcEntry,
     output: [
-      { file: pkg.exports['.'].require, format: 'cjs' },
-      { file: pkg.exports['.'].import, format: 'es' }
+      { file: pkg.exports['.'], format: 'es' }
     ],
     external: [
       'min-dash',
