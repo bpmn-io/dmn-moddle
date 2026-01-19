@@ -6,6 +6,10 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+* `DEPS`: update to `moddle@8.0.0`
+* `DEPS`: update to `moddle-xml@12.0.0`
+* `DEPS`: update to `min-dash@5.0.0`
+
 ## 11.0.0
 
 * `FEAT`: add `exports` configuration ([#29](https://github.com/bpmn-io/dmn-moddle/pull/29))
