@@ -10,7 +10,7 @@ import {
 import path from 'node:path';
 import process from 'node:process';
 
-import DmnModdle from 'dmn-moddle';
+import { DmnModdle } from 'dmn-moddle';
 
 import { validateXML } from 'xsd-schema-validator';
 

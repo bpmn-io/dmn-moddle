@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import DmnModdle from 'dmn-moddle';
+import { DmnModdle } from 'dmn-moddle';
 
 export function ensureDirExists(dir) {
 
