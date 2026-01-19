@@ -61,7 +61,7 @@
     "rollup": "^4.12.1",
     "sax": "^1.2.4",
     "tiny-stack": "^2.0.1",
-    "xsd-schema-validator": "^0.10.0"
+    "xsd-schema-validator": "^0.11.0"
   },
   "dependencies": {
     "min-dash": "^4.0.0",
