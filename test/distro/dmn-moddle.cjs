@@ -1,19 +1,23 @@
 const { expect } = require('chai');
 
 
-describe('dmn-moddle', function() {
+describe('dmn-moddle - integration', function() {
 
-  it('should expose ESM bundle', async function() {
-    const { DmnModdle } = await import('dmn-moddle');
+  describe('distribution', function() {
 
-    expect(new DmnModdle()).to.exist;
-  });
+    it('should expose ESM bundle', async function() {
+      const { DmnModdle } = await import('dmn-moddle');
+
+      expect(new DmnModdle()).to.exist;
+    });
 
 
-  it('should export CJS bundle', function() {
-    const { DmnModdle } = require('dmn-moddle');
+    it('should export CJS bundle', function() {
+      const { DmnModdle } = require('dmn-moddle');
 
-    expect(new DmnModdle()).to.exist;
+      expect(new DmnModdle()).to.exist;
+    });
+
   });
 
 });
