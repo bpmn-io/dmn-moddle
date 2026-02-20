@@ -12,7 +12,7 @@ const {
 module.exports = async function(results) {
   const { elementsByType } = results;
 
-  let model = elementsByType[ 'uml:Package' ][ 0 ];
+  let model = elementsByType[ 'uml:Model' ][ 0 ];
 
   model.name = 'DI';
 
@@ -31,23 +31,6 @@ module.exports = async function(results) {
 
   // remove associations
   model.associations = [];
-
-  // move dc:Style from DC to DI (belongs to DI, not DC)
-  const style = findType('dc:Style', model);
-
-  style.name = 'di:Style';
-
-  // add di:Style#id (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/10)
-  if (!style.properties) {
-    style.properties = [];
-  }
-
-  style.properties.push({
-    name: 'id',
-    isAttr: true,
-    isId: true,
-    type: 'String'
-  });
 
   // add di:DiagramElement#id and di:DiagramElement#style
   // (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/9)
@@ -85,11 +68,8 @@ module.exports = async function(results) {
   findType('di:Edge', model).superClass = [ 'di:DiagramElement' ];
   findType('di:Shape', model).superClass = [ 'di:DiagramElement' ];
 
-  // rename di:Edge#wayPoints as specified in XSD
-  // (cf. https://github.com/omg-dmn-taskforce/omg-dmn-spec/issues/11)
-  const wayPoints = findProperty('di:Edge#wayPoints', model);
-
-  wayPoints.name = 'waypoint';
+  // add serialization
+  const wayPoints = findProperty('di:Edge#waypoint', model);
 
   wayPoints.xml = {
     serialize: 'property'

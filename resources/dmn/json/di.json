@@ -93,8 +93,8 @@
         {
           "name": "id",
           "isAttr": true,
-          "isId": true,
-          "type": "String"
+          "type": "String",
+          "isId": true
         }
       ]
     },
