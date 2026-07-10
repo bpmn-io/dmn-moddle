@@ -12,7 +12,7 @@ const {
 module.exports = async function(results) {
   const { elementsByType } = results;
 
-  let model = elementsByType[ 'uml:Model' ][ 0 ];
+  let model = elementsByType[ 'uml:Package' ][ 0 ];
 
   // remove associations
   model.associations = [];
@@ -53,7 +53,8 @@ module.exports = async function(results) {
   // fix dmndi:DMNDiagram#sharedStyle and dmndi:DMNDiagramElement#sharedStyle
   // by redefining di:DiagramElement#sharedStyle
   findProperty('DMNDiagram#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
-  findProperty('DMNDiagramElement#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
+
+  // findProperty('DMNDiagramElement#sharedStyle', model).redefines = 'di:DiagramElement#sharedStyle';
 
   // fix dmndi:DMNDiagram#dmnElementRef and dmndi:DMNDiagramElement#dmnElementRef type prefix
   findProperty('DMNDiagram#dmnElementRef', model).type = 'dmn:DMNElement';

@@ -12,7 +12,7 @@ const {
 module.exports = async function(results) {
   const { elementsByType } = results;
 
-  let model = elementsByType[ 'uml:Model' ][ 0 ];
+  let model = elementsByType[ 'uml:Package' ][ 0 ];
 
   model.name = 'DI';
 

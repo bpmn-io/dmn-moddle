@@ -28,8 +28,8 @@ async function generateSchema(files) {
 
 generateSchema([
   {
-    source: 'resources/dmn/xmi/DMN16.xmi',
-    target: 'resources/dmn/json/dmn16.json',
+    source: 'resources/dmn/xmi/DMN.xmi',
+    target: 'resources/dmn/json/dmn17.json',
     transform: transformDMN,
     options: {
       clean: true,
@@ -38,13 +38,13 @@ generateSchema([
         'DI': 'di',
         'http://www.omg.org/spec/BMM/20130801/BMM.xmi': 'bmm',
         'http://www.omg.org/spec/BPMN/20100501/BPMN20.cmof': 'bpmn',
-        'https://www.omg.org/spec/DMN/20230324/DMNDI15.xmi': 'dmndi'
+        'https://www.omg.org/spec/DMN/20260504/DMNDI.xmi': 'dmndi'
       }
     }
   },
   {
-    source: 'resources/dmn/xmi/DMNDI15.xmi',
-    target: 'resources/dmn/json/dmndi15.json',
+    source: 'resources/dmn/xmi/DMNDI.xmi',
+    target: 'resources/dmn/json/dmndi17.json',
     transform: transformDMNDI,
     options: {
       clean: true,
@@ -55,7 +55,7 @@ generateSchema([
     }
   },
   {
-    source: 'resources/dmn/xmi/DMNDI15.xmi',
+    source: 'resources/dmn/xmi/DMNDI.xmi',
     target: 'resources/dmn/json/dc.json',
     transform: transformDC,
     options: {
@@ -67,7 +67,7 @@ generateSchema([
     }
   },
   {
-    source: 'resources/dmn/xmi/DMNDI15.xmi',
+    source: 'resources/dmn/xmi/DMNDI.xmi',
     target: 'resources/dmn/json/di.json',
     transform: transformDI,
     options: {

@@ -8,6 +8,28 @@
       "isAbstract": true,
       "properties": [
         {
+          "name": "sharedStyle",
+          "type": "DMNStyle",
+          "isVirtual": true,
+          "isReference": true
+        },
+        {
+          "name": "localStyle",
+          "type": "DMNStyle",
+          "isVirtual": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "isAttr": true,
+          "isId": true
+        },
+        {
+          "name": "extension",
+          "type": "ExtensionElements",
+          "isMany": true
+        },
+        {
           "name": "extension",
           "type": "Extension"
         },
