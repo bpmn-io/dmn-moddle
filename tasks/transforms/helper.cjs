@@ -6,7 +6,7 @@ const {
   without
 } = require('min-dash');
 
-const sax = require('sax');
+const { Parser } = require('saxen');
 
 const Stack = require('tiny-stack');
 
@@ -305,32 +305,38 @@ async function parseXML(file) {
 
     const stack = new Stack();
 
-    const saxParser = sax.parser(true);
+    const saxParser = new Parser();
 
-    saxParser.onerror = function(err) {
+    let error;
+
+    saxParser.on('error', err => {
       console.error('error', err);
 
-      this._parser.error = null;
-      this._parser.resume();
+      error = err;
+    });
 
-      reject(err);
-    };
-
-    saxParser.onopentag = tag => {
+    saxParser.on('openTag', (elementName, attrGetter) => {
       const parent = stack.peek();
 
+      const tag = {
+        name: elementName,
+        attributes: attrGetter()
+      };
+
       stack.push(parseTag(tag, parent, context));
-    };
+    });
 
-    saxParser.onclosetag = name => {
+    saxParser.on('closeTag', () => {
       stack.pop();
-    };
+    });
 
-    saxParser.onend = () => {
+    saxParser.parse(file);
+
+    if (error) {
+      reject(error);
+    } else {
       resolve(context);
-    };
-
-    saxParser.write(file).close();
+    }
   });
 }
 
