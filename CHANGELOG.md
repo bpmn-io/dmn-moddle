@@ -6,6 +6,8 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+* `DEPS`: update to `min-dash@5.1.0`
+
 ## 12.0.1
 
 * `CHORE`: restore `main` export
