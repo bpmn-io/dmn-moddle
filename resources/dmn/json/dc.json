@@ -63,15 +63,18 @@
       "properties": [
         {
           "name": "red",
-          "type": "UML_Standard_Profile.mdzip:eee_1045467100323_917313_65"
+          "isAttr": true,
+          "type": "Integer"
         },
         {
           "name": "green",
-          "type": "UML_Standard_Profile.mdzip:eee_1045467100323_917313_65"
+          "isAttr": true,
+          "type": "Integer"
         },
         {
           "name": "blue",
-          "type": "UML_Standard_Profile.mdzip:eee_1045467100323_917313_65"
+          "isAttr": true,
+          "type": "Integer"
         }
       ]
     }

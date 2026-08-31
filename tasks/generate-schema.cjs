@@ -10,7 +10,7 @@ const {
 } = require('./transforms/index.cjs');
 
 async function generateSchema(files) {
-  files.forEach(async file => {
+  for (const file of files) {
     const {
       options,
       source,
@@ -23,13 +23,13 @@ async function generateSchema(files) {
     const transformed = await transform(parsed);
 
     fs.writeFileSync(target, JSON.stringify(transformed, null, 2));
-  });
+  }
 }
 
 generateSchema([
   {
-    source: 'resources/dmn/xmi/DMN13.xmi',
-    target: 'resources/dmn/json/dmn13.json',
+    source: 'resources/dmn/xmi/DMN.xmi',
+    target: 'resources/dmn/json/dmn17.json',
     transform: transformDMN,
     options: {
       clean: true,
@@ -38,13 +38,13 @@ generateSchema([
         'DI': 'di',
         'http://www.omg.org/spec/BMM/20130801/BMM.xmi': 'bmm',
         'http://www.omg.org/spec/BPMN/20100501/BPMN20.cmof': 'bpmn',
-        'https://www.omg.org/spec/DMN/20191111/DMNDI13.xmi': 'dmndi'
+        'https://www.omg.org/spec/DMN/20260504/DMNDI.xmi': 'dmndi'
       }
     }
   },
   {
-    source: 'resources/dmn/xmi/DMNDI13.xmi',
-    target: 'resources/dmn/json/dmndi13.json',
+    source: 'resources/dmn/xmi/DMNDI.xmi',
+    target: 'resources/dmn/json/dmndi17.json',
     transform: transformDMNDI,
     options: {
       clean: true,
@@ -55,7 +55,7 @@ generateSchema([
     }
   },
   {
-    source: 'resources/dmn/xmi/DMNDI13.xmi',
+    source: 'resources/dmn/xmi/DMNDI.xmi',
     target: 'resources/dmn/json/dc.json',
     transform: transformDC,
     options: {
@@ -67,7 +67,7 @@ generateSchema([
     }
   },
   {
-    source: 'resources/dmn/xmi/DMNDI13.xmi',
+    source: 'resources/dmn/xmi/DMNDI.xmi',
     target: 'resources/dmn/json/di.json',
     transform: transformDI,
     options: {
