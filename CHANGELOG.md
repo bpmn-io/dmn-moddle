@@ -6,6 +6,8 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+## 12.2.0
+
 * `FEAT`: parse documents with deeply nested namespace declarations linearly ([nikku/saxen#33](https://github.com/nikku/saxen/pull/33))
 * `DEPS`: update to `moddle-xml@12.3.0`
 
