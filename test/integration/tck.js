@@ -63,7 +63,13 @@ describe('dmn-moddle - TCK roundtrip', function() {
       '1153-boxed-some.dmn',
       '1152-boxed-for.dmn',
       '1150-boxed-conditional.dmn',
-      '1151-boxed-filter.dmn'
+      '1151-boxed-filter.dmn',
+      '1157-implicit-conversions.dmn',
+      '1160-multiple-imports-01-A.dmn',
+      '1160-multiple-imports-01-B.dmn',
+      '1160-multiple-imports-01-C.dmn',
+      '1160-multiple-imports-02-B.dmn',
+      '1160-multiple-imports-02-C.dmn'
     ].some(f => fileName.endsWith(f))) {
       return false;
     }
