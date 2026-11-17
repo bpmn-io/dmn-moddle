@@ -56,9 +56,6 @@ module.exports = async function(results) {
 
   findProperty('ExtensionElements#extensionElement', model).name = 'values';
 
-  // fix `Context#contextEntry` name
-  findProperty('Context#contextEnrty', model).name = 'contextEntry';
-
   // fix `TextAnnotation#textFormat` default
   findProperty('TextAnnotation#textFormat', model).default = 'text/plain';
 
