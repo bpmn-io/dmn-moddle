@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="Definitions_1" name="Definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="Decision_1" name="Decision" />
+  <organizationUnit id="OrganizationUnit_1" name="Finance">
+    <decisionMade href="#Decision_1" />
+    <decisionOwned href="#Decision_1" />
+  </organizationUnit>
+</definitions>

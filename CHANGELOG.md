@@ -6,6 +6,12 @@ All notable changes to [dmn-moddle](https://github.com/bpmn-io/dmn-moddle) are d
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FIX`: parse `<organizationUnit>` as declared by the DMN 1.3 XSD; the type is now `dmn:OrganizationUnit` (was `dmn:OrganisationalUnit`, which matched no XSD element), and `decisionMade` / `decisionOwned` are `dmn:DMNElementReference` children
+
+### Breaking Changes
+
+* `dmn:OrganisationalUnit` is renamed to `dmn:OrganizationUnit`. Documents could not contain the old type, but code creating it by name must use the new one.
+
 ## 12.2.1
 
 * `DEPS`: update to `moddle-xml@12.3.1`
