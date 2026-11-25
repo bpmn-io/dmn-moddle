@@ -30,6 +30,9 @@ describe('dmn-moddle - roundtrip', function() {
 
     it('dmn:Import', roundtrip('test/fixtures/dmn/dmn/definitions-import.dmn'));
 
+
+    it('dmn:OrganizationUnit', roundtrip('test/fixtures/dmn/dmn/organization-unit.dmn'));
+
   });
 
 

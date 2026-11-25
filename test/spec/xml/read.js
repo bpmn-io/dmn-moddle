@@ -180,6 +180,33 @@ describe('dmn-moddle - read', function() {
     });
 
 
+    it('dmn:OrganizationUnit', async function() {
+
+      // given
+      const expected = {
+        $type: 'dmn:OrganizationUnit',
+        id: 'OrganizationUnit_1',
+        name: 'Finance',
+        decisionMade: [
+          { $type: 'dmn:DMNElementReference', href: '#Decision_1' }
+        ],
+        decisionOwned: [
+          { $type: 'dmn:DMNElementReference', href: '#Decision_1' }
+        ]
+      };
+
+      // when
+      const {
+        rootElement: definitions,
+        warnings
+      } = await readFromFile('test/fixtures/dmn/dmn/organization-unit.dmn');
+
+      // then
+      expect(warnings).to.be.empty;
+      expect(definitions.get('businessContextElement')[ 0 ]).to.jsonEqual(expected);
+    });
+
+
     it('dmn:InformationRequirement', async function() {
 
       // given

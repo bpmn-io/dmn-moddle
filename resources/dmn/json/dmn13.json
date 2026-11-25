@@ -342,22 +342,26 @@
       ]
     },
     {
-      "name": "OrganisationalUnit",
+      "name": "OrganizationUnit",
       "superClass": [
         "BusinessContextElement"
       ],
       "properties": [
         {
           "name": "decisionMade",
-          "type": "Decision",
-          "isReference": true,
-          "isMany": true
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
         },
         {
           "name": "decisionOwned",
-          "type": "Decision",
-          "isReference": true,
-          "isMany": true
+          "type": "DMNElementReference",
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
         }
       ]
     },

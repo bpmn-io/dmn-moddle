@@ -59,6 +59,11 @@ module.exports = async function(results) {
   // fix `Context#contextEntry` name
   findProperty('Context#contextEnrty', model).name = 'contextEntry';
 
+  // fix `OrganisationalUnit` name: the metamodel spells it with an "s", the XSD
+  // declares <organizationUnit> (type tOrganizationUnit), and the XML tag is
+  // derived from the type name, so conformant files did not parse
+  findType('OrganisationalUnit', model).name = 'OrganizationUnit';
+
   // fix `TextAnnotation#textFormat` default
   findProperty('TextAnnotation#textFormat', model).default = 'text/plain';
 
